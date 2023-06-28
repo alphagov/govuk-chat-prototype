@@ -1,0 +1,17 @@
+<%= form_with(model: feedback) do |form| %>
+  <%= form.hidden_field :chat_id %>
+
+  <div>
+    <%= form.label :rating, style: "display: block" %>
+    <%= form.number_field :rating, in: 1..5, step: 1 %>
+  </div>
+
+  <div>
+    <%= form.label "Any thing else", style: "display: block" %>
+    <%= form.text_area :content, rows: 8 %>
+  </div>
+
+  <div>
+    <%= form.submit "Send" %>
+  </div>
+<% end %>

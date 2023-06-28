@@ -1,0 +1,8 @@
+<h1>👽 Talk to GOV.UK</h1>
+
+<%= render "form", chat: @chat %>
+
+<article>
+  <h2>Give us feedback</h2>
+  <%= render "feedbacks/form", feedback: Feedback.new(chat_id: @chat.chat_id) %>
+</article>

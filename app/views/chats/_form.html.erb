@@ -1,0 +1,14 @@
+<%= form_with(model: chat) do |form| %>
+  <%= form.hidden_field :chat_id %>
+
+  <% if chat.reply.present? %>
+    <p class="notice">
+      <%= chat.reply %>
+    </p>
+  <% end %>
+
+  <div>
+    <%= form.text_area :prompt, value: "", rows: 8 %>
+    <%= form.submit "Send" %>
+  </div>
+<% end %>
