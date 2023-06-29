@@ -1,14 +1,19 @@
-<%= form_with(model: chat) do |form| %>
-  <%= form.hidden_field :chat_id %>
-
+<%= form_with(model: chat, class: "govuk-form") do |form| %>
   <% if chat.reply.present? %>
-    <p class="notice">
-      <%= chat.reply %>
-    </p>
+    <p class="govuk-body">👤 <%= chat.prompt %></p>
+    <p class="govuk-body">👽 <%= chat.reply %></p>
+  <% else %>
+    <div class="govuk-hint">
+      <p class="govuk-body">You can try typing things like:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>how can I set up a business that trades pens?</li>
+        <li>how do I register for VAT?</li>
+        <li>can I get business support for a start-up in the West Midlands?</li>
+      </ul>
+    </div>
   <% end %>
 
-  <div>
-    <%= form.text_area :prompt, value: "", rows: 8 %>
-    <%= form.submit "Send" %>
-  </div>
+  <%= form.hidden_field :chat_id %>
+  <%= form.text_area :prompt, value: "", rows: 4, class: "govuk-textarea" %>
+  <%= form.submit "Send", class: "govuk-button govuk-button--start" %>
 <% end %>

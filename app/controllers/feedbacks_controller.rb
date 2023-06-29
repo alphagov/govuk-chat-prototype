@@ -1,4 +1,8 @@
 class FeedbacksController < ApplicationController
+  def new
+    @feedback = Feedback.new(chat_id: params[:chat_id])
+  end
+
   def create
     @feedback = Feedback.new(feedback_params)
 

@@ -1,17 +1,16 @@
-<%= form_with(model: feedback) do |form| %>
+<%= form_with(model: feedback, class: "govuk-form") do |form| %>
   <%= form.hidden_field :chat_id %>
 
-  <div>
-    <%= form.label :rating, style: "display: block" %>
-    <%= form.number_field :rating, in: 1..5, step: 1 %>
-  </div>
+  <fieldset class="govuk-fieldset">
+    <div class="govuk-form-group">
+      <label class="govuk-label">Rating</label>
+      <%= form.number_field :rating, in: 1..5, step: 1, class: "govuk-input" %>
+    </div>
+    <div class="govuk-form-group">
+      <label class="govuk-label">Tell us more</label>
+      <%= form.text_area :content, value: "", rows: 6, class: "govuk-textarea" %>
+    </div>
+  </fieldset>
 
-  <div>
-    <%= form.label "Any thing else", style: "display: block" %>
-    <%= form.text_area :content, rows: 8 %>
-  </div>
-
-  <div>
-    <%= form.submit "Send" %>
-  </div>
+  <%= form.submit "Send", class: "govuk-button govuk-button--start" %>
 <% end %>

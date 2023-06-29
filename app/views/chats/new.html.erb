@@ -1,8 +1,38 @@
-<h1>👽 Talk to GOV.UK</h1>
+<div class="container">
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        Experimental
+      </strong>
+      <span class="govuk-phase-banner__text ">
+        This is a new feature. <%= link_to "Send us feedback", new_feedback_path(chat_id: @chat.chat_id), class: "govuk-link" %>
+      </span>
+    </p>
+  </div>
 
-<%= render "form", chat: @chat %>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">👽 Chat with GOV.UK</h1>
 
-<article>
-  <h2>Give us feedback</h2>
-  <%= render "feedbacks/form", feedback: Feedback.new(chat_id: @chat.chat_id) %>
-</article>
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            What is this and how do I use it
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p class="govuk-body">This piece of text needs to go into:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>what this is (a new way to interact with business information and services on GOV.UK)</li>
+            <li>how this works (technology called large language models)</li>
+            <li>how to use it (have a conversation with it, ask follow up questions, be specific, etc.)</li>
+            <li>what it does to your data (???)</li>
+            <li>what to do if something goes wrong (it's experimental so it might lie)</li>
+          </ul>
+        </div>
+      </details>
+
+      <%= render "form", chat: @chat %>
+    </div>
+  </div>
+</div>
