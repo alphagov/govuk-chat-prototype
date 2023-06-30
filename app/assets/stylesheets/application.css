@@ -14,11 +14,20 @@
  *= require_self
  */
 
-.turbo-progress-bar {
+/* .turbo-progress-bar {
   height: 15px;
   background-color: #ffdd00;
   border-bottom-right-radius: 5px;
   border-top-right-radius: 5px;
+} */
+
+.turbo-progress-bar {
+  height: 50px;
+  opacity: 0.1;
+  background-image: url('saucer.png');
+  background-color: rgba(255, 221, 0, 0);
+  background-repeat: no-repeat;
+  background-position: right;
 }
 
 #chat-pane {
