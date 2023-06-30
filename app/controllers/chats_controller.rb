@@ -2,8 +2,8 @@ require "openai"
 
 class ChatsController < ApplicationController
   def new
-    chat_id = params[:chat_id] || SecureRandom.uuid
-    @chat = Chat.where(chat_id: chat_id).last || Chat.new(chat_id: chat_id)
+    @chat_id = params[:chat_id] || SecureRandom.uuid
+    @chats = Chat.where(chat_id: @chat_id) || Chat.new(chat_id: @chat_id)
   end
 
   def create
