@@ -5,7 +5,7 @@
         Experimental
       </strong>
       <span class="govuk-phase-banner__text ">
-        This is a new feature. <%= link_to "Send us feedback", new_feedback_path(chat_id: @chat.chat_id), class: "govuk-link" %>
+        This is a new feature. <%= link_to "Send us feedback", new_feedback_path(chat_id: @chat_id), class: "govuk-link" %>
       </span>
     </p>
   </div>
@@ -32,7 +32,30 @@
         </div>
       </details>
 
-      <%= render "form", chat: @chat %>
+      <% if @chats.any? %>
+        <div id="chat-pane">
+          <% @chats.reverse.each do |chat| %>
+            <div class="interaction">
+              <p class="govuk-body interaction-header">
+                <%= chat.created_at.strftime("%A %d %B %Y at %H:%M:%S") %>
+              </p>
+              <p class="govuk-body">👤 <%= chat.prompt %></p>
+              <p class="govuk-body">👽 <%= chat.reply %></p>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <div id="chat-pane-small">
+          <p class="govuk-body">You can try typing things like:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>how can I set up a business that trades pens?</li>
+            <li>how do I register for VAT?</li>
+            <li>can I get business support for a start-up in the West Midlands?</li>
+          </ul>
+        </div>
+      <% end %>
+
+      <%= render "form", chat: Chat.new(chat_id: @chat_id) %>
     </div>
   </div>
 </div>
