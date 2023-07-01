@@ -39,8 +39,8 @@
               <p class="govuk-body interaction-header">
                 <%= chat.created_at.strftime("%A %d %B %Y at %H:%M:%S") %>
               </p>
-              <p class="govuk-body">👤 <%= chat.prompt %></p>
-              <p class="govuk-body">👽 <%= chat.reply %></p>
+              <div class="govuk-body">👤 <%= chat.prompt %></div>
+              <div class="govuk-body">👽 <%= markdown(chat.reply) %></div>
             </div>
           <% end %>
         </div>
