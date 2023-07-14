@@ -8,13 +8,23 @@ class ChatsController < ApplicationController
 
   def create
     @chat = Chat.new(chat_params)
-    @chat.reply = call_openai_api(@chat.prompt)
+    @chat.reply = chat_api(chat_params)
 
     if @chat.save
       redirect_to root_path(chat_id: @chat.chat_id)
     end
   end
 
+  def chat_api(chat_params)
+    conn = Faraday.new(
+      url: 'http://localhost:4567/',
+      params: {chat_id: chat_params[:chat_id], prompt: chat_params[:prompt]},
+      headers: {'Content-Type' => 'application/json'}
+    )
+
+    response = conn.post('/')
+    response.body
+  end
 private
 
   def chat_params
