@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" data-controller="chat-subscription" data-chat-subscription-chat-id-value="<%= @chat_id %>">
   <div class="govuk-phase-banner">
     <p class="govuk-phase-banner__content">
       <strong class="govuk-tag govuk-phase-banner__content__tag">
@@ -32,35 +32,23 @@
         </div>
       </details>
 
-      <% if @chats.any? %>
-        <div id="chat-pane">
-          <% @chats.reverse.each do |chat| %>
-            <div class="interaction">
-              <p class="govuk-body interaction-header">
-                <%= chat.created_at.strftime("%A %d %B %Y at %H:%M:%S") %>
-              </p>
-              <div class="govuk-body">👤 <%= chat.prompt %></div>
-              <div class="govuk-body">👽 <%= markdown(chat.answer) %></div>
-              <div class="govuk-body">
-                <ul class="govuk-list govuk-list--bullet">
-                  <% chat.sources.each do |source| %>
-                    <li class=><%= link_to source, source, class: "govuk-link", target: "_blank" %></li>
-                  <% end %>
-                </ul>
-              </div>
-            </div>
-          <% end %>
+      <%= @chats.inspect  %>
+      <%# <% if @chats.any? %>
+        <div id="chat-pane" data-chat-subscription-target="messages">
+          <%# <% @chats.reverse.each do |chat| %>
+            <%= render "chat", chats: @chats %>
+          <%# <% end %>
         </div>
-      <% else %>
-        <div id="chat-pane-small">
+      <%# <% else %>
+        <%# <div id="chat-pane-small">
           <p class="govuk-body">You can try typing things like:</p>
           <ul class="govuk-list govuk-list--bullet">
             <li>how can I set up a business that trades pens?</li>
             <li>how do I register for VAT?</li>
             <li>can I get business support for a start-up in the West Midlands?</li>
           </ul>
-        </div>
-      <% end %>
+        </div> %>
+      <%# <% end %>
 
       <%= render "form", chat: Chat.new(chat_id: @chat_id) %>
     </div>

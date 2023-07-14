@@ -9,9 +9,15 @@ class ChatsController < ApplicationController
   def create
     @chat = Chat.new(chat_params)
     @chat.reply = chat_api(chat_params)
+    @chats = Chat.where(chat_id: @chat_id) || Chat.new(chat_id: @chat_id)
 
     if @chat.save
-      redirect_to root_path(chat_id: @chat.chat_id)
+      # redirect_to root_path(chat_id: @chat.chat_id)
+      ChatChannel.broadcast_to(
+        @chat,
+        render_to_string(partial: "chat", locals: {chats: @chats})
+      )
+      head :ok
     end
   end
 
@@ -23,6 +29,7 @@ class ChatsController < ApplicationController
     )
 
     response = conn.post('/')
+    sleep(5)
     response.body
   end
 private
