@@ -12,7 +12,6 @@ class ChatsController < ApplicationController
     @chats = Chat.where(chat_id: @chat_id) || Chat.new(chat_id: @chat_id)
 
     if @chat.save
-      # redirect_to root_path(chat_id: @chat.chat_id)
       ChatChannel.broadcast_to(
         @chat,
         render_to_string(partial: "chat", locals: {chats: @chats})
@@ -21,44 +20,20 @@ class ChatsController < ApplicationController
     end
   end
 
-  def chat_api(chat_params)
-    conn = Faraday.new(
-      url: 'http://localhost:4567/',
-      params: {chat_id: chat_params[:chat_id], prompt: chat_params[:prompt]},
-      headers: {'Content-Type' => 'application/json'}
-    )
-
-    response = conn.post('/')
-    sleep(5)
-    response.body
-  end
 private
 
   def chat_params
     params.require(:chat).permit(:chat_id, :prompt, :reply)
   end
 
-  def call_openai_api(prompt)
-    response = []
-    client = OpenAI::Client.new(access_token: ENV["OPENAI_API_KEY"])
-    client.chat(
-      parameters: {
-        model: "gpt-3.5-turbo",
-        messages: [{ role: "user", content: dress_prompt(prompt)}],
-        temperature: 0.7,
-        stream: proc do |chunk, _bytesize|
-          response << chunk.dig("choices", 0, "delta", "content")
-        end
-      }
+  def chat_api(chat_params)
+    conn = Faraday.new(
+      url: ENV["CHAT_API_URL"],
+      params: { chat_id: chat_params[:chat_id], prompt: chat_params[:prompt] },
+      headers: { "Content-Type" => "application/json" }
     )
-    response.join
-  end
 
-  def dress_prompt(prompt)
-    if ENV["DRESS_OPENAI_PROMPT"] == "true"
-      "You are an expert in content design and work for the UK government. You work for GOV UK. Your goals are to: - write some guidance on #{prompt}. - You must adhere to the GDS style guide for writing good content."
-    else
-      prompt
-    end
+    response = conn.post("/")
+    response.body
   end
 end
