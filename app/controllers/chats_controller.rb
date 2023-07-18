@@ -16,42 +16,23 @@ class ChatsController < ApplicationController
   end
 
   def chat_api(chat_params)
+    body = { chat_id: chat_params[:chat_id], user_query: chat_params[:prompt] }.to_json
     conn = Faraday.new(
-      url: 'http://localhost:4567/',
-      params: {chat_id: chat_params[:chat_id], prompt: chat_params[:prompt]},
-      headers: {'Content-Type' => 'application/json'}
+      url: ENV["CHAT_API_URL"],
+      headers: {
+        "Content-Type" => "application/json",
+        "Accept" => "application/json"
+      }
     )
 
-    response = conn.post('/')
+    response = conn.post("/govchat", body)
+    puts response.body
     response.body
   end
+
 private
 
   def chat_params
     params.require(:chat).permit(:chat_id, :prompt, :reply)
-  end
-
-  def call_openai_api(prompt)
-    response = []
-    client = OpenAI::Client.new(access_token: ENV["OPENAI_API_KEY"])
-    client.chat(
-      parameters: {
-        model: "gpt-3.5-turbo",
-        messages: [{ role: "user", content: dress_prompt(prompt)}],
-        temperature: 0.7,
-        stream: proc do |chunk, _bytesize|
-          response << chunk.dig("choices", 0, "delta", "content")
-        end
-      }
-    )
-    response.join
-  end
-
-  def dress_prompt(prompt)
-    if ENV["DRESS_OPENAI_PROMPT"] == "true"
-      "You are an expert in content design and work for the UK government. You work for GOV UK. Your goals are to: - write some guidance on #{prompt}. - You must adhere to the GDS style guide for writing good content."
-    else
-      prompt
-    end
   end
 end

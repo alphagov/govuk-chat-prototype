@@ -1,2 +1,1 @@
-OPENAI_API_KEY=OPENAI_API_KEY
-DRESS_OPENAI_PROMPT=false or true
+CHAT_API_URL=<your-chat-api-url>
