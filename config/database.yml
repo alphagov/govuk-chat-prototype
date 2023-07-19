@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: govuk_chat_production
-  username: govuk_chat
-  password: <%= ENV["GOVUK_CHAT_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
