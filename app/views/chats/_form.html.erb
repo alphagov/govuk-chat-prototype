@@ -1,4 +1,5 @@
 <%= form_with(model: chat, class: "govuk-form chat-form") do |form| %>
+  <%= hidden_field_tag :view, @view %>
   <%= form.hidden_field :chat_id %>
   <%= form.text_area :prompt, value: "", rows: 4, class: "govuk-textarea" %>
   <%= form.submit "Send", class: "govuk-button govuk-button--start" %>

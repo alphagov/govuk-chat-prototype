@@ -1,0 +1,4 @@
+<%= stylesheet_link_tag "experiment_b" %>
+
+<%= render "chats/responses", chats: @chats %>
+<%= render "chats/form", chat: Chat.new(chat_id: @chat_id) %>

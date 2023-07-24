@@ -1,0 +1,8 @@
+.govuk-header {
+  background-color: #ffdd00;
+}
+
+.govuk-header__link:link,
+.govuk-header__link:visited {
+  color: #0b0c0c;
+}
