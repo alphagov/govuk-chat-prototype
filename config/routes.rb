@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   resources :feedbacks
   resources :chats
-  root "chats#index"
+  root "govuk_page#index"
 end
