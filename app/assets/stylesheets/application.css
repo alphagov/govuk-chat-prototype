@@ -22,3 +22,131 @@
   background-repeat: no-repeat;
   background-position: right;
 }
+
+header.govuk-header--yellow {
+  background: #FFDD00;
+  padding: 15px 0;
+}
+
+header.govuk-header--yellow .govuk-header__container {
+  border-bottom: none;
+}
+
+header.govuk-header--yellow .govuk-header__logo a.govuk-header__link {
+  color: #000000;
+}
+
+header.govuk-header--yellow a .govuk-header__logotype-text span {
+  font-weight: normal;
+}
+
+header.govuk-header--yellow .govuk-phase-banner {
+  border: none;
+  padding: 0 10px;
+}
+
+header.govuk-header--yellow .govuk-phase-banner {
+  margin-top: 3px;
+}
+
+#chat-pane-small .govuk-body--grey {
+  color: #757272;
+}
+
+#chat-pane-small .govuk-list--grey {
+  color: #757272;
+}
+
+.govuk-chat-info {
+  margin: 30px 0;
+}
+
+.govuk-chat-input-wrapper {
+  box-shadow: 0px -2px 10px 1px rgba(151, 151, 151, 0.50);
+  padding: 30px 0;
+  width: 100vw;
+  position: relative;
+  left: calc(-50vw + 50%);
+}
+
+.govuk-chat-form {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.govuk-chat-form .govuk-input {
+  width: 80%;
+}
+
+.govuk-chat-form input[type="submit"] {
+  margin-bottom: 0;
+}
+
+.govuk-chat-form .govuk-button--start {
+  background-color: #1d70b8;
+  padding-bottom: 0;
+  padding-top: 0;
+  box-shadow: none;
+}
+
+.govuk-chat-form .govuk-button--start:hover {
+  background-color: #207dce;
+}
+
+.govuk-body.govuk-body--bold {
+  font-weight: bold;
+}
+
+.govuk-grid-column-two-thirds.govuk-chat-container {
+  height: 500px;
+  overflow: scroll;
+  padding: 20px 15px;
+}
+
+.govuk-chat-container .govuk-date {
+  font-weight: bold;
+  display: block;
+  text-align: center;
+}
+
+.govuk-chat-icon *{
+  display: inline-block;
+}
+
+.govuk-chat-icon svg{
+  vertical-align: text-bottom;
+  margin-right: 5px;
+}
+
+.govuk-chat-link {
+  border-top: 3px solid #FFDD00;
+  background-color: #f3f2f1;
+  padding: 15px;
+}
+
+.govuk-link--bold {
+  font-weight: bold;
+}
+
+@media (max-width: 640px) {
+  .govuk-chat-form {
+    display: block;
+  }
+  
+  .govuk-chat-form .govuk-input {
+    width: 100%;
+  }
+  
+  .govuk-chat-form input[type="submit"] {
+    margin-top: 20px;
+    padding: 10px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  header.govuk-header--yellow .govuk-phase-banner {
+    padding: 10px 0;
+    margin-top: 0;
+  }
+}

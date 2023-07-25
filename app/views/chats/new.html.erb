@@ -1,49 +1,32 @@
-<div class="govuk-phase-banner">
-  <p class="govuk-phase-banner__content">
-    <strong class="govuk-tag govuk-phase-banner__content__tag">
-      Experimental
-    </strong>
-    <span class="govuk-phase-banner__text ">
-      This is a new feature. <%= link_to "Send us feedback", new_feedback_path(chat_id: @chat_id), class: "govuk-link" %>
-    </span>
-  </p>
-</div>
-
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-l">Chat with GOV.UK</h1>
-
-    <details class="govuk-details" data-module="govuk-details">
-      <summary class="govuk-details__summary">
-        <span class="govuk-details__summary-text">
-          What is this and how do I use it
-        </span>
-      </summary>
-      <div class="govuk-details__text">
-        <p class="govuk-body">This piece of text needs to go into:</p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>what this is (a new way to interact with business information and services on GOV.UK)</li>
-          <li>how this works (technology called large language models)</li>
-          <li>how to use it (have a conversation with it, ask follow up questions, be specific, etc.)</li>
-          <li>what it does to your data (???)</li>
-          <li>what to do if something goes wrong (it's experimental so it might lie)</li>
-        </ul>
-      </div>
-    </details>
-
+  <div id="govuk-chat" class="govuk-grid-column-two-thirds govuk-chat-container">
     <% if @chats.any? %>
       <%= render "conversation", chats: @chats %>
     <% else %>
-      <div id="chat-pane-small">
-        <p class="govuk-body">You can try typing things like:</p>
-        <ul class="govuk-list govuk-list--bullet">
+      <div id="chat-pane-small" class="govuk-chat-info">
+        <p class="govuk-body govuk-body--grey">
+          This is a chat service, using artificial intelligence, to help you find answers to your queries. This service is an experiment
+          to find out how you use GOV.UK.
+        </p>
+        <p class="govuk-body govuk-body--grey">
+          To get answers, simply type in your questions, such as:
+        </p>
+        <ul class="govuk-list govuk-list--bullet govuk-list--grey">
           <li>how can I set up a business that trades pens?</li>
           <li>how do I register for VAT?</li>
           <li>can I get business support for a start-up in the West Midlands?</li>
         </ul>
       </div>
     <% end %>
+  </div>
+</div>
 
-    <%= render "form", chat: Chat.new(chat_id: @chat_id) %>
+<div class="govuk-chat-input-wrapper">
+  <div class="govuk-width-container">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds govuk-chat-input">
+        <%= render "form", chat: Chat.new(chat_id: @chat_id) %>
+      </div>
+    </div>
   </div>
 </div>
