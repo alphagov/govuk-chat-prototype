@@ -22,39 +22,3 @@
   background-repeat: no-repeat;
   background-position: right;
 }
-
-#chat-pane {
-  overflow-y: auto;
-  height: 400px;
-  padding: 20px;
-  border: 1px solid #b1b4b6;
-  border-top: 10px solid #1d70b8;
-  margin-bottom: 0px;
-}
-
-#chat-pane-small {
-  padding: 20px;
-  border: 1px solid #b1b4b6;
-  border-top: 10px solid #1d70b8;
-  margin-bottom: 0px;
-  color: #b1b4b6;
-}
-
-.interaction {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-.interaction-header {
-  background-color: #f3f2f1;
-  border-radius: 6px;
-  padding: 5px;
-  text-align: right;
-}
-
-.chat-form {
-  padding: 20px;
-  padding-bottom: 5px;
-  background-color: #f3f2f1;
-  border: 1px solid #b1b4b6;
-}

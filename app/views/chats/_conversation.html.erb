@@ -1,0 +1,12 @@
+<% chats.reverse.each do |chat| %>
+  <div class="govuk-body"><%= chat.created_at.strftime("%A %d %B %Y at %H:%M:%S") %></div>
+  <div class="govuk-body"><%= chat.prompt %></div>
+  <div class="govuk-body"><%= markdown(chat.answer) %></div>
+  <div class="govuk-body">
+    <ul class="govuk-list govuk-list--bullet">
+      <% chat.sources.each do |source| %>
+        <li class=><%= link_to source, source, class: "govuk-link", target: "_blank" %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

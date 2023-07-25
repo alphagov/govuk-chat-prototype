@@ -11,7 +11,7 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-l">👽 Chat with GOV.UK</h1>
+    <h1 class="govuk-heading-l">Chat with GOV.UK</h1>
 
     <details class="govuk-details" data-module="govuk-details">
       <summary class="govuk-details__summary">
@@ -32,24 +32,7 @@
     </details>
 
     <% if @chats.any? %>
-      <div id="chat-pane">
-        <% @chats.reverse.each do |chat| %>
-          <div class="interaction">
-            <p class="govuk-body interaction-header">
-              <%= chat.created_at.strftime("%A %d %B %Y at %H:%M:%S") %>
-            </p>
-            <div class="govuk-body">👤 <%= chat.prompt %></div>
-            <div class="govuk-body">👽 <%= markdown(chat.answer) %></div>
-            <div class="govuk-body">
-              <ul class="govuk-list govuk-list--bullet">
-                <% chat.sources.each do |source| %>
-                  <li class=><%= link_to source, source, class: "govuk-link", target: "_blank" %></li>
-                <% end %>
-              </ul>
-            </div>
-          </div>
-        <% end %>
-      </div>
+      <%= render "conversation", chats: @chats %>
     <% else %>
       <div id="chat-pane-small">
         <p class="govuk-body">You can try typing things like:</p>

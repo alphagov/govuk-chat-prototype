@@ -1,6 +1,7 @@
-require "openai"
-
 class ChatsController < ApplicationController
+  def index
+  end
+
   def new
     @chat_id = params[:chat_id] || SecureRandom.uuid
     @chats = Chat.where(chat_id: @chat_id) || Chat.new(chat_id: @chat_id)
@@ -11,8 +12,14 @@ class ChatsController < ApplicationController
     @chat.reply = chat_api(chat_params)
 
     if @chat.save
-      redirect_to root_path(chat_id: @chat.chat_id)
+      redirect_to new_chat_path(chat_id: @chat.chat_id)
     end
+  end
+
+private
+
+  def chat_params
+    params.require(:chat).permit(:chat_id, :prompt, :reply)
   end
 
   def chat_api(chat_params)
@@ -26,13 +33,6 @@ class ChatsController < ApplicationController
     )
 
     response = conn.post("/govchat", body)
-    puts response.body
     response.body
-  end
-
-private
-
-  def chat_params
-    params.require(:chat).permit(:chat_id, :prompt, :reply)
   end
 end
