@@ -1,5 +1,3 @@
-require "openai"
-
 class ChatsController < ApplicationController
   def new
     @chat_id = params[:chat_id] || SecureRandom.uuid
@@ -15,6 +13,12 @@ class ChatsController < ApplicationController
     end
   end
 
+private
+
+  def chat_params
+    params.require(:chat).permit(:chat_id, :prompt, :reply)
+  end
+
   def chat_api(chat_params)
     body = { chat_id: chat_params[:chat_id], user_query: chat_params[:prompt] }.to_json
     conn = Faraday.new(
@@ -26,13 +30,6 @@ class ChatsController < ApplicationController
     )
 
     response = conn.post("/govchat", body)
-    puts response.body
     response.body
-  end
-
-private
-
-  def chat_params
-    params.require(:chat).permit(:chat_id, :prompt, :reply)
   end
 end
