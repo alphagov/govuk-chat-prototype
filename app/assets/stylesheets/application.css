@@ -23,6 +23,13 @@
   background-position: right;
 }
 
+[href="#main-content"].govuk-skip-link--black:focus {
+  color: #ffffff;
+  background-color: #000000;
+  outline: 4px solid #000000;
+  outline-offset: -1px;
+}
+
 header.govuk-header--yellow {
   background: #FFDD00;
 }
@@ -38,6 +45,13 @@ header.govuk-header--yellow .govuk-header__logo {
 
 header.govuk-header--yellow .govuk-header__logo a.govuk-header__link {
   color: #000000;
+}
+
+header.govuk-header--yellow .govuk-header__logo a.govuk-header__link:focus {
+  color: #ffffff;
+  background-color: #000000;
+  outline: 4px solid #000000;
+  outline-offset: -1px;
 }
 
 header.govuk-header--yellow a .govuk-header__logotype-text span {

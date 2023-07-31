@@ -26,7 +26,7 @@
       document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
     </script>
 
-    <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+    <a href="#main-content" class="govuk-skip-link <% if !current_page?(:controller => 'govuk_page') %>govuk-skip-link--black<% end %>" data-module="govuk-skip-link">Skip to main content</a>
 
     <% if current_page?(:controller => 'govuk_page') %>
       <%= render "shared/header", { new_header: false } %>
