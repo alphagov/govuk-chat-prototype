@@ -1,12 +1,28 @@
-<% chats.reverse.each do |chat| %>
-  <div class="govuk-body"><%= chat.created_at.strftime("%A %d %B %Y at %H:%M:%S") %></div>
-  <div class="govuk-body"><%= chat.prompt %></div>
-  <div class="govuk-body"><%= markdown(chat.answer) %></div>
+<% chats.each do |chat| %>
+  <time 
+    class="govuk-body govuk-chat-timestamp govuk-tag--blue govuk-!-padding-2" 
+    datetime="<%= chat.created_at.strftime("%d-%m-%YT%H:%M:%S") %>"
+  >
+    <%= chat.created_at.strftime("%A %d %B %Y at %H:%M:%S") %>
+  </time>
+  <%= render "chat_icon", { is_prompt: true } %>
+  <p class="govuk-body govuk-chat-prompt"><%= chat.prompt %></p>
+  <%= render "chat_icon", { is_prompt: false } %>
+  <div class="govuk-body govuk-chat-answer"><%= markdown(chat.answer) %></div>
   <div class="govuk-body">
-    <ul class="govuk-list govuk-list--bullet">
-      <% chat.sources.each do |source| %>
-        <li class=><%= link_to source, source, class: "govuk-link", target: "_blank" %></li>
-      <% end %>
-    </ul>
+    <details class="govuk-details" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Show pages used to generate this answer
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        <ul class="govuk-list govuk-list--bullet">
+          <% chat.sources.each do |source| %>
+            <li class=><%= link_to source, source, class: "govuk-link", target: "_blank" %></li>
+          <% end %>
+        </ul>
+      </div>
+    </details>
   </div>
 <% end %>

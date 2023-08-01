@@ -1,5 +1,7 @@
-<%= form_with(model: chat, class: "govuk-form chat-form") do |form| %>
+<%= form_with(model: chat, class: "govuk-form govuk-chat-form") do |form| %>
   <%= form.hidden_field :chat_id %>
-  <%= form.text_area :prompt, value: "", rows: 4, class: "govuk-textarea" %>
+  <%= form.text_field :prompt, value: "", rows: 4, class: "gem-c-input govuk-input" %>
   <%= form.submit "Send", class: "govuk-button govuk-button--start" %>
 <% end %>
+
+<p class="govuk-body">Be aware, responses might not always be accurate as this is an experimental service.</p>
