@@ -90,11 +90,11 @@ header.govuk-header--yellow .govuk-phase-banner {
 .govuk-chat-form {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 .govuk-chat-form .govuk-input {
-  width: 80%;
+  width: 85%;
 }
 
 .govuk-chat-form input[type="submit"] {
