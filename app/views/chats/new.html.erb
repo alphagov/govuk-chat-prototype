@@ -1,5 +1,5 @@
-<div class="govuk-grid-row">
-  <div id="govuk-chat" class="govuk-grid-column-two-thirds govuk-chat-container">
+<div class="govuk-grid-row govuk-chat-container">
+  <div id="govuk-chat" class="govuk-grid-column-two-thirds">
     <% if @chats.any? %>
       <%= render "conversation", chats: @chats %>
     <% else %>
