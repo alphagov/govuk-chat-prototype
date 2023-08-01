@@ -6,9 +6,9 @@
     <%= chat.created_at.strftime("%A %d %B %Y at %H:%M:%S") %>
   </time>
   <%= render "chat_icon", { is_prompt: true } %>
-  <div class="govuk-body"><%= chat.prompt %></div>
+  <p class="govuk-body govuk-chat-prompt"><%= chat.prompt %></p>
   <%= render "chat_icon", { is_prompt: false } %>
-  <div class="govuk-body"><%= markdown(chat.answer) %></div>
+  <div class="govuk-body govuk-chat-answer"><%= markdown(chat.answer) %></div>
   <div class="govuk-body">
     <details class="govuk-details" data-module="govuk-details">
       <summary class="govuk-details__summary">
