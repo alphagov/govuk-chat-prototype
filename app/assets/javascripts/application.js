@@ -1,13 +1,13 @@
-if(document.getElementById("govuk-chat")) {
-    var chatPane = document.getElementById("govuk-chat");
+if(document.querySelector(".govuk-chat-container")) {
+    var chatContainer = document.querySelector(".govuk-chat-container");
     var latestMessage = document.querySelectorAll(".govuk-chat-timestamp")[(document.querySelectorAll(".govuk-chat-timestamp").length - 1)]
 
     scrollToLatestMessage({
-        chatPane: chatPane,
+        chatContainer: chatContainer,
         latestMessage:latestMessage
     })
 }
 
 function scrollToLatestMessage(params) {
-    params.chatPane.scrollTop = params.latestMessage.getBoundingClientRect().y - 60;
+    params.chatContainer.scrollTop = params.latestMessage.getBoundingClientRect().y - 60;
 }
