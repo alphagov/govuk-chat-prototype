@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="../../app.css">
   </head>
 
-  <body class="gem-c-layout-for-public govuk-template__body">
+  <body class="gem-c-layout-for-public govuk-template__body <% if !current_page?(:controller => 'govuk_page') %>govuk-chat<% end %>">
     <script>
       document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
     </script>
@@ -34,7 +34,7 @@
       <%= render "shared/header", { new_header: true } %>
     <% end %>
 
-    <div class="govuk-width-container">
+    <div class="govuk-width-container <% if !current_page?(:controller => 'govuk_page') %>govuk-chat-container-wrapper<% end %>">
       <%= yield %>
     </div>
 
