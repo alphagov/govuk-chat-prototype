@@ -9,7 +9,7 @@
   <p class="govuk-body govuk-chat-prompt"><%= chat.prompt %></p>
   <%= render "chat_icon", { is_prompt: false } %>
   <div class="govuk-body govuk-chat-answer"><%= apply_govuk_styles(chat.answer) %></div>
-  <% if chat.sources.length > 0 %>
+  <% if chat.sources.any? %>
     <div class="govuk-body">
       <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
