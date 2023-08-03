@@ -23,17 +23,36 @@ private
   end
 
   def chat_api(chat_params)
-    body = { chat_id: chat_params[:chat_id], user_query: chat_params[:prompt] }.to_json
-    conn = Faraday.new(
-      url: ENV["CHAT_API_URL"],
-      headers: {
-        "Content-Type" => "application/json",
-        "Accept" => "application/json"
-      }
-    )
-    conn.set_basic_auth(ENV["API_AUTH_USERNAME"], ENV["API_AUTH_PASSWORD"])
+    # if in the development environment, fake the API response
+    if Rails.env.development?
+      fake_chat_api()
+    else 
+      body = { chat_id: chat_params[:chat_id], user_query: chat_params[:prompt] }.to_json
+      conn = Faraday.new(
+        url: ENV["CHAT_API_URL"],
+        headers: {
+          "Content-Type" => "application/json",
+          "Accept" => "application/json"
+        }
+      )
+      conn.set_basic_auth(ENV["API_AUTH_USERNAME"], ENV["API_AUTH_PASSWORD"])
 
-    response = conn.post("/govchat", body)
-    response.body
+      response = conn.post("/govchat", body)
+      response.body
+    end
+  end
+
+  def fake_chat_api
+    renderer = Redcarpet::Render::HTML.new(prettify: true)
+    markdown = Redcarpet::Markdown.new(renderer, fenced_code_blocks: true)
+    random_markdown = Faker::Markdown.sandwich(sentences: 4, repeat: 4)
+    
+    { 
+      "answer": markdown.render(random_markdown),
+      "sources": [
+        "https://www.gov.uk/find-utr-number",
+        "https://www.gov.uk/government/publications/national-insurance-get-your-national-insurance-number-in-writing-ca5403"
+      ]
+    }.to_json
   end
 end

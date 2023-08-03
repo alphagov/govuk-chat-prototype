@@ -92,6 +92,8 @@ GEM
       dotenv (= 2.8.1)
       railties (>= 3.2)
     erubi (1.12.0)
+    faker (3.2.0)
+      i18n (>= 1.8.11, < 2)
     faraday (2.7.7)
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
@@ -175,6 +177,7 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
+    redcarpet (3.6.0)
     redis (4.8.1)
     regexp_parser (2.8.1)
     reline (0.3.5)
@@ -230,12 +233,14 @@ DEPENDENCIES
   capybara
   debug
   dotenv-rails
+  faker
   faraday
   importmap-rails
   jbuilder
   pg
   puma
   rails (= 7.0.5.1)
+  redcarpet
   redis
   selenium-webdriver
   sprockets-rails

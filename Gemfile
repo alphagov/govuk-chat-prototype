@@ -24,6 +24,8 @@ end
 
 group :development do
   gem "web-console"
+  gem "faker"
+  gem "redcarpet"
 end
 
 group :test do
