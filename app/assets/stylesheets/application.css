@@ -162,6 +162,10 @@ header.govuk-header--yellow .govuk-phase-banner {
   font-weight: bold;
 }
 
+.govuk-footer {
+  position: relative;
+}
+
 @media (max-width: 504px) {
   footer.govuk-footer .govuk-footer__meta {
     justify-content: flex-start;
