@@ -1,4 +1,6 @@
-if(document.querySelector(".govuk-chat-container")) {
+console.log("GOVUK Chat JS loaded")
+
+if(document.querySelector(".govuk-chat-timestamp")) {
     var chatContainer = document.querySelector(".govuk-chat-container");
     var latestMessage = document.querySelectorAll(".govuk-chat-timestamp")[(document.querySelectorAll(".govuk-chat-timestamp").length - 1)]
 
