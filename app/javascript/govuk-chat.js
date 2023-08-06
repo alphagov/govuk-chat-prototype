@@ -26,8 +26,9 @@
 })();
 
 function scrollToLatestMessage(params) {
-    if(params.latestMessage.getBoundingClientRect().y - 60 > 0 && params.newMessageReceived) {
-        params.chatContainer.scrollTop = params.latestMessage.getBoundingClientRect().y - 60;
+    var headerHeight = getOuterHeight(document.querySelector(".govuk-header"));
+    if(params.latestMessage.getBoundingClientRect().y - headerHeight > 0 && params.newMessageReceived) {
+        params.chatContainer.scrollTop = params.latestMessage.getBoundingClientRect().y - headerHeight;
     }
 }
 
@@ -47,4 +48,12 @@ function initialiseMessageState() {
 
         return newMessageReceived
     }
+}
+
+function getOuterHeight(element) {
+    var height = element.offsetHeight;
+    var style = getComputedStyle(element);
+    
+    height += parseInt(style.marginBottom) + parseInt(style.marginTop);
+    return height;
 }
