@@ -31,6 +31,7 @@ private
         "Accept" => "application/json"
       }
     )
+    conn.set_basic_auth(ENV["API_AUTH_USERNAME"], ENV["API_AUTH_PASSWORD"])
 
     response = conn.post("/govchat", body)
     response.body
