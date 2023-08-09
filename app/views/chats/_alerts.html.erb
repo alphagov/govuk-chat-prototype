@@ -1,18 +1,13 @@
 <% if flash.any? %>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <div class="govuk-notification-banner govuk-notification-banner--success" role="alert"
+      <div class="govuk-notification-banner govuk-notification-banner--success govuk-!-margin-3" role="alert"
         aria-labelledby="govuk-notification-banner-title"
         data-module="govuk-notification-banner">
-        <div class="govuk-notification-banner__header">
-          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-            Success
-          </h2>
-        </div>
         <div class="govuk-notification-banner__content">
         <% flash.each do |type, msg| %>
           <h3 class="govuk-notification-banner__heading">
-          <%= msg %>
+          <%= "Success: " + msg %>
           </h3>
         <% end %>
         </div>
@@ -23,7 +18,7 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <%= link_to "Alert", alerts_path(chat_id: chat_id), class: "govuk-button govuk-button--warning" %>
-    <%= link_to "Start a new chat", new_chat_path, class: "govuk-button" %>
+    <%= link_to "Alert", alerts_path(chat_id: chat_id), class: "govuk-button govuk-button--warning govuk-!-margin-0" %>
+    <%= link_to "Start a new chat", new_chat_path, class: "govuk-button govuk-!-margin-0" %>
   </div>
 </div>
