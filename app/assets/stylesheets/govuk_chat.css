@@ -191,7 +191,7 @@ header.govuk-header--yellow .govuk-phase-banner {
 }
 
 @media (max-width: 768px) {
-  header.govuk-header {
+  .govuk-chat header.govuk-header {
     padding-bottom: 10px;
   }
 
