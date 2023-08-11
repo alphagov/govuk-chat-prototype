@@ -151,7 +151,12 @@ header.govuk-header--yellow .govuk-phase-banner {
 }
 
 .govuk-footer .govuk-footer__copyright-logo {
-  background-image: url("govuk-crest-2x.png");
+  background-image: none;
+  padding-top: 0;
+}
+
+.govuk-footer .govuk-footer__meta-item {
+  margin-bottom: 0;
 }
 
 @media (max-width: 504px) {
@@ -160,6 +165,7 @@ header.govuk-header--yellow .govuk-phase-banner {
   }
 
   footer.govuk-footer .govuk-footer__meta .govuk-footer__copyright-logo {
+    margin-top: 15px;
     padding-top: 0;
     background-image: none;
     background-repeat: unset;
@@ -185,7 +191,7 @@ header.govuk-header--yellow .govuk-phase-banner {
 
 @media (min-width: 640px) {
   footer.govuk-footer {
-    padding-top: 25px;
+    padding-top: 15px;
     padding-bottom: 15px;
   }
 }
