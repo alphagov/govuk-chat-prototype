@@ -1,12 +1,7 @@
 <div class="govuk-grid-row govuk-chat-container">
   <div class="govuk-grid-column-two-thirds">
-    <% if @chats.any? %>
-      <%= render "conversation", chats: @chats %>
-    <% else %>
-      <div id="chat-pane-small" class="govuk-chat-info">
-        <p class="govuk-body govuk-body--grey">Hello 👋 To get started, ask a question about business or trade. For example, how do I employ people?</p>
-      </div>
-    <% end %>
+    <%= render "chat_header" %>
+    <%= render("conversation", chats: @chats) if @chats.any? %>
   </div>
 </div>
 
