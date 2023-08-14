@@ -179,6 +179,10 @@ header.govuk-header--yellow .govuk-phase-banner {
   border: 0;
 }
 
+.govuk-chat-input-wrapper .govuk-error-message {
+  display: none;
+}
+
 @media (max-width: 504px) {
   footer.govuk-footer .govuk-footer__meta {
     justify-content: flex-start;
