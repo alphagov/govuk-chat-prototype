@@ -66,7 +66,12 @@ header.govuk-header--yellow .govuk-phase-banner {
 }
 
 .govuk-chat-info {
-  margin: 30px 0;
+  margin-top: 20px;
+}
+@media (min-width: 640px) {
+  .govuk-chat-info {
+    margin-top: 30px;
+  }
 }
 
 .govuk-chat-input-wrapper {
@@ -123,6 +128,9 @@ header.govuk-header--yellow .govuk-phase-banner {
   font-weight: bold;
 }
 
+.govuk-chat-icon {
+  margin-bottom: 10px;
+}
 .govuk-chat-icon *{
   display: inline-block;
 }
@@ -131,6 +139,9 @@ header.govuk-header--yellow .govuk-phase-banner {
   vertical-align: text-bottom;
   margin-right: 5px;
 }
+.govuk-chat-icon .govuk-body {
+  margin-bottom: 0;
+}
 
 .govuk-chat-link {
   border-top: 3px solid #FFDD00;
@@ -138,6 +149,9 @@ header.govuk-header--yellow .govuk-phase-banner {
   padding: 15px;
 }
 
+.govuk-chat-container .govuk-chat-message, .govuk-chat-container .govuk-chat-timestamp {
+  margin-bottom: 20px;
+}
 .govuk-chat-answer p {
   margin-top: 0;
 }
@@ -193,6 +207,9 @@ header.govuk-header--yellow .govuk-phase-banner {
   footer.govuk-footer {
     padding-top: 15px;
     padding-bottom: 15px;
+  }
+  .govuk-chat-container .govuk-chat-message, .govuk-chat-container .govuk-chat-timestamp {
+    margin-bottom: 40px;
   }
 }
 
