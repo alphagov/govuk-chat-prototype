@@ -1,6 +1,6 @@
 <% chats.each do |chat| %>
   <div class="govuk-chat-message">
-    <div class="govuk-chat-icon">
+    <div class="govuk-chat-icon"  title="<%= chat.created_at.strftime("%A %d %B %Y at %H:%M:%S")%>">
       <%= render "chat_icon", { is_prompt: true } %>
     </div>
     <p class="govuk-body govuk-chat-prompt"><%= chat.prompt %></p>
