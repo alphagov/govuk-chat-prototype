@@ -1,10 +1,14 @@
 <% chats.each do |chat| %>
   <div class="govuk-chat-message">
-    <%= render "chat_icon", { is_prompt: true } %>
+    <div class="govuk-chat-icon">
+      <%= render "chat_icon", { is_prompt: true } %>
+    </div>
     <p class="govuk-body govuk-chat-prompt"><%= chat.prompt %></p>
   </div>
   <div class="govuk-chat-message">
-    <%= render "chat_icon", { is_prompt: false } %>
+    <div class="govuk-chat-icon">
+      <%= render "chat_icon", { is_prompt: false } %>
+    </div>
     <div class="govuk-body govuk-chat-answer"><%= apply_govuk_styles(chat.answer) %></div>
     <% if chat.sources.any? %>
       <div class="govuk-body">
