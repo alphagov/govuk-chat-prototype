@@ -123,11 +123,6 @@ header.govuk-header--yellow .govuk-phase-banner {
   overflow: auto;
 }
 
-.govuk-chat-container .govuk-chat-timestamp {
-  display: block;
-  font-weight: bold;
-}
-
 .govuk-chat-icon {
   margin-bottom: 10px;
 }
@@ -149,7 +144,7 @@ header.govuk-header--yellow .govuk-phase-banner {
   padding: 15px;
 }
 
-.govuk-chat-container .govuk-chat-message, .govuk-chat-container .govuk-chat-timestamp {
+.govuk-chat-container .govuk-chat-message {
   margin-bottom: 20px;
 }
 .govuk-chat-answer p {
@@ -208,7 +203,7 @@ header.govuk-header--yellow .govuk-phase-banner {
     padding-top: 15px;
     padding-bottom: 15px;
   }
-  .govuk-chat-container .govuk-chat-message, .govuk-chat-container .govuk-chat-timestamp {
+  .govuk-chat-container .govuk-chat-message {
     margin-bottom: 40px;
   }
 }

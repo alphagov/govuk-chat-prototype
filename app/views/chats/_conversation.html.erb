@@ -1,16 +1,14 @@
 <% chats.each do |chat| %>
-  <time
-    class="govuk-body govuk-chat-timestamp govuk-tag--blue govuk-!-padding-2"
-    datetime="<%= chat.created_at.strftime("%d-%m-%YT%H:%M:%S") %>"
-  >
-    <%= chat.created_at.strftime("%A %d %B %Y at %H:%M:%S") %>
-  </time>
   <div class="govuk-chat-message">
-    <%= render "chat_icon", { is_prompt: true } %>
+    <div class="govuk-chat-icon" title="<%= chat.created_at.strftime("%A %d %B %Y at %H:%M:%S")%>">
+      <%= render "chat_icon", { is_prompt: true } %>
+    </div>
     <p class="govuk-body govuk-chat-prompt"><%= chat.prompt %></p>
   </div>
   <div class="govuk-chat-message">
-    <%= render "chat_icon", { is_prompt: false } %>
+    <div class="govuk-chat-icon">
+      <%= render "chat_icon", { is_prompt: false } %>
+    </div>
     <div class="govuk-body govuk-chat-answer"><%= apply_govuk_styles(chat.answer) %></div>
     <% if chat.sources.any? %>
       <div class="govuk-body">

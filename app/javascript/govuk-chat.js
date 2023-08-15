@@ -8,10 +8,10 @@
     var target = document.querySelector("html");
     var config = { childList: true }
     var observer = new MutationObserver(function() {
-        if(document.querySelector(".govuk-chat-timestamp")) {
+        if(document.querySelectorAll(".govuk-chat-message").length > 1) {
             var chatContainer = document.querySelector(".govuk-chat-container");
-            var messageCount = document.querySelectorAll(".govuk-chat-timestamp").length;
-            var latestMessage = document.querySelectorAll(".govuk-chat-timestamp")[(messageCount - 1)];
+            var messageCount = document.querySelectorAll(".govuk-chat-message").length;
+            var latestMessage = document.querySelectorAll(".govuk-chat-message")[(messageCount - 2)];
             var newMessageReceived = hasReceivedNewMessage(messageCount);
 
             scrollToLatestMessage({
