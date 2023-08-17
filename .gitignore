@@ -32,3 +32,5 @@
 
 # Ignore dotenv files
 .env
+
+app.yaml
