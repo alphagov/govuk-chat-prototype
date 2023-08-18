@@ -96,6 +96,10 @@ header.govuk-header--yellow .govuk-phase-banner {
   margin-bottom: 0;
 }
 
+.govuk-chat-form input[type="submit"]:disabled:hover {
+  background-color: #207dce;
+}
+
 .govuk-chat-form .govuk-button--start {
   background-color: #1d70b8;
   padding-bottom: 0;
