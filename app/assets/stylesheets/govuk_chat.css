@@ -10,6 +10,10 @@
   margin-bottom: 10px;
 }
 
+.turbo-progress-bar {
+  visibility: hidden;
+}
+
 [href="#main-content"].govuk-skip-link--black:focus {
   color: #ffffff;
   background-color: #000000;
