@@ -5,6 +5,11 @@
   max-height: 100vh;
 }
 
+.govuk-chat-message .govuk-chat-answer .govuk-chat-header {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
 .turbo-progress-bar {
   height: 50px;
   opacity: 0.1;
@@ -202,7 +207,7 @@ header.govuk-header--yellow .govuk-phase-banner {
   .govuk-chat-form {
     display: block;
   }
-  
+
   .govuk-chat-form .govuk-input {
     width: 100%;
   }
@@ -243,4 +248,4 @@ header.govuk-header--yellow .govuk-phase-banner {
   .govuk-chat-landing-page > .govuk-grid-column-two-thirds {
     width: 100%;
   }
-}  
+}

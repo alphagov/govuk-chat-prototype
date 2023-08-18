@@ -53,7 +53,8 @@ end
 class Header < StyleUpdater
   def style(html)
     html.css("h1, h2, h3, h4, h5, h6").each do |header|
-      header["class"] = "govuk-heading-s"
+      header.name = "p"
+      header["class"] = "govuk-body-l govuk-chat-header"
     end
     html
   end
