@@ -22,9 +22,11 @@
 
             if(document.querySelector(".govuk-chat-form") && newMessageReceived) {
                 detectPIIOnSubmit();
+                addTurboSubmitListeners();
             }
         } else if(document.querySelectorAll(".govuk-chat-message").length === 1) {
             detectPIIOnSubmit();
+            addTurboSubmitListeners();
         }
     });
 
@@ -36,6 +38,12 @@ function scrollToLatestMessage(params) {
     if(params.latestMessage.getBoundingClientRect().y - headerHeight > 0 && params.newMessageReceived) {
         params.chatContainer.scrollTop = params.latestMessage.getBoundingClientRect().y - headerHeight;
     }
+}
+
+function scrollToBottom(params) {
+    params.loadingIndicator.scrollIntoView({
+        behavior: "smooth"
+    });
 }
 
 function initialiseMessageState() {
@@ -98,4 +106,18 @@ function checkInputForPII(string) {
     stripped = stripped.replace(NI_PATTERN, '[redacted]')
 
     return stripped
+}
+
+function addTurboSubmitListeners() {
+    document.addEventListener("turbo:submit-start", function() {
+        document.querySelector(".govuk-chat-loading-indicator").style.display = "flex";
+
+        scrollToBottom({
+            loadingIndicator: document.querySelector(".govuk-chat-loading-indicator")
+        })
+    })
+    
+    document.addEventListener("turbo:submit-end", function() {
+        document.querySelector(".govuk-chat-loading-indicator").style.display = "none";
+    })
 }
