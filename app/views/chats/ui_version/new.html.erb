@@ -1,0 +1,17 @@
+<div class="govuk-grid-row govuk-chat-container">
+  <div class="govuk-grid-column-two-thirds">
+    <%= render "chat_header" %>
+    <%= render("conversation", chats: @chats) if @chats.any? %>
+  </div>
+</div>
+
+<div class="govuk-chat-input-wrapper">
+  <div class="govuk-width-container">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+      <h1>Version One</h1>
+        <%= render "../form", chat: Chat.new(chat_id: @chat_id) %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<% chats.each do |chat| %>
+  <div class="govuk-chat-message">
+    <div class="govuk-chat-icon" title="<%= chat.created_at.strftime("%A %d %B %Y at %H:%M:%S")%>">
+      <%= render "chat_icon", { is_prompt: true } %>
+    </div>
+    <p class="govuk-body govuk-chat-prompt"><%= chat.prompt %></p>
+  </div>
+  <div class="govuk-chat-message">
+    <div class="govuk-chat-icon">
+      <%= render "chat_icon", { is_prompt: false } %>
+    </div>
+    <div class="govuk-body govuk-chat-answer"><%= apply_govuk_styles(chat.answer) %></div>
+    <% if chat.sources.any? %>
+      <div class="govuk-body">
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Show pages used to generate this answer
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <ul class="govuk-list govuk-list--bullet">
+              <% chat.sources.each do |source| %>
+                <li class=><%= link_to source, source, class: "govuk-link", target: "_blank" %></li>
+              <% end %>
+            </ul>
+          </div>
+        </details>
+      </div>
+    <% end %>
+  </div>
+<% end %>

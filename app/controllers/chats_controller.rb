@@ -5,6 +5,12 @@ class ChatsController < ApplicationController
   def new
     @chat_id = params[:chat_id] || SecureRandom.uuid
     @chats = Chat.where(chat_id: @chat_id) || Chat.new(chat_id: @chat_id)
+    if ENV["UI_VERSION"] == "version_one"
+      render 'chats/ui_version/new'
+    end
+    if ENV["UI_VERSION"] == "version_two"
+      render 'chats/ui_version_two/new'
+    end
   end
 
   def create
