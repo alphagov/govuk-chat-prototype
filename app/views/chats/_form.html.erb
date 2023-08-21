@@ -6,7 +6,7 @@
 <% end %>
 
 <p class="govuk-error-message"><span class="govuk-visually-hidden">Error:</span>Personally identifiable information has been detected in your query - please remove any personally identifiable information and try again.</p>
-<p class="govuk-body govuk-!-margin-0">Do not share personal or sensitive information in your conversations with GOV.UK Chat.</p>
-<p class="govuk-body">Be aware, responses might not always be accurate as this is an experimental service.</p>
-
-<%= render "alerts", chat_id: params["chat_id"] %>
+<p class="govuk-body">Do not share personal or sensitive information in your conversations with GOV.UK Chat. Be aware, responses might not always be accurate as this is an experimental service.</p>
+<% if ENV["RED_TEAM"] == "true"  %>
+  <%= render "alerts", chat_id: params["chat_id"] %>
+<% end %>
