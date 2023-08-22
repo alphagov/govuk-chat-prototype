@@ -1,4 +1,4 @@
-<div class="govuk-chat-icon" <% if defined?(timestamp) %> title="<%= timestamp %>" <% end %>>
+
     <% if is_prompt %>
         <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0_37651_24014)">
@@ -26,9 +26,4 @@
             <circle cx="14.9018" cy="7.50682" r="3.5493" fill="#F47738"/>
         </svg>
     <% end %>
-    <p class="govuk-body govuk-body--bold"><%= text %>
-        <% if includeLoadingIcon %>
-            <span class="govuk-chat-loading-indicator__dots"></span>
-        <% end %>
-    </p>
-</div>
+    <p class="govuk-body govuk-body--bold"><%= is_prompt ? "You" : "GOV.UK chat (experimental)" %></p>
