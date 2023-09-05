@@ -32,5 +32,6 @@
 
 # Ignore dotenv files
 .env
+keyfile.json
 
 app.yaml

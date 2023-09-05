@@ -9,13 +9,18 @@ class ChatsController < ApplicationController
 
   def create
     @chat = Chat.new(chat_params)
-    @chat.reply = chat_api(chat_params)
 
-    if @chat.save
-      redirect_to new_chat_path(chat_id: @chat.chat_id)
+    if @chat.valid?
+      @chat.reply = chat_api(chat_params)
+
+      if @chat.save
+        redirect_to new_chat_path(chat_id: @chat.chat_id)
+      end
+    else
+      redirect_to new_chat_path(chat_id: @chat.chat_id), notice: @chat.errors.first.type
     end
   end
-
+  
 private
 
   def chat_params

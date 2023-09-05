@@ -1,5 +1,21 @@
 <div class="govuk-grid-row govuk-chat-container">
   <div class="govuk-grid-column-two-thirds">
+    <% if flash.any? %>
+      <div class="govuk-error-summary" data-module="govuk-error-summary">
+        <div role="alert">
+          <h2 class="govuk-error-summary__title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <% flash.each do |type, msg| %>
+                <h3>
+                <%= msg %>
+                </h3>
+              <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
     <%= render "chat_header" %>
     <%= render("conversation", chats: @chats) if @chats.any? %>
   </div>

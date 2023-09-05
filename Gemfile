@@ -7,6 +7,7 @@ gem "rails", "7.0.5.1"
 
 gem "bootsnap", require: false
 gem "faraday"
+gem "google-cloud-dlp"
 gem "importmap-rails"
 gem "jbuilder"
 gem "pg"
