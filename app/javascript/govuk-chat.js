@@ -110,6 +110,7 @@ function checkInputForPII(string) {
 
 function addTurboSubmitListeners() {
     document.addEventListener("turbo:submit-start", function() {
+        document.querySelector(".govuk-chat-loading-indicator").hidden = false;
         document.querySelector(".govuk-chat-loading-indicator").style.display = "flex";
 
         scrollToBottom({
@@ -118,6 +119,6 @@ function addTurboSubmitListeners() {
     })
     
     document.addEventListener("turbo:submit-end", function() {
-        document.querySelector(".govuk-chat-loading-indicator").style.display = "none";
+        document.querySelector(".govuk-chat-loading-indicator").hidden = true;
     })
 }
