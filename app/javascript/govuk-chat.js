@@ -79,19 +79,27 @@ function detectPIIOnSubmit() {
     var labelFor = label.getAttribute('for');
     var input = document.querySelector('[id=' + labelFor + ']');
     var submitBtn = document.querySelector("input[type='submit']");
+    var errorDetected = false;
 
     submitBtn.addEventListener('click', function(e) {
         var chatInput = document.getElementById("govuk-chat-input");
-        var errorMessage = document.querySelector(".govuk-error-message");
+        var errorMessageContainer = document.querySelector(".govuk-error-message__container");
+        errorDetected = checkInputForPII(input.value).indexOf("[redacted]") !== -1 ? true : false;
 
-        if(checkInputForPII(input.value).indexOf("[redacted]") !== -1) {
-            chatInput.style.border = "2px solid #d4351c"
-            errorMessage.style.display = "block";
+        if(errorDetected) {
             e.preventDefault();
+
+            chatInput.style.border = "2px solid #d4351c";
+            errorMessageContainer.hidden = false;
+
+            var errorMessageEl = errorMessageContainer.querySelector(".govuk-error-message");
+            var errorMessageText = errorMessageEl.textContent;
+            errorMessageEl.textContent = "";
+            errorMessageEl.textContent = errorMessageText;
         }
         else {
-            errorMessage.style.display = "none";
-            chatInput.style.border = "2px solid #0b0c0c"
+            errorMessageContainer.hidden = true;
+            chatInput.style.border = "2px solid #0b0c0c";
         }
     })
 }

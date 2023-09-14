@@ -183,10 +183,6 @@ header.govuk-header--yellow .govuk-phase-banner {
   border: 0;
 }
 
-.govuk-chat-input-wrapper .govuk-error-message {
-  display: none;
-}
-
 .govuk-chat-loading-indicator { 
   display: none;
   align-items: baseline;
