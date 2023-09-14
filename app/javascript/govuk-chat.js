@@ -10,7 +10,8 @@
     var observer = new MutationObserver(function() {
         if(document.querySelectorAll(".govuk-chat-message").length > 1) {
             var chatContainer = document.querySelector(".govuk-chat-container");
-            var messageCount = document.querySelectorAll(".govuk-chat-message").length;
+            var messages = document.querySelectorAll(".govuk-chat-message");
+            var messageCount = messages.length;
             var latestMessage = document.querySelectorAll(".govuk-chat-message")[(messageCount - 2)];
             var newMessageReceived = hasReceivedNewMessage(messageCount);
 
@@ -24,6 +25,7 @@
                 detectPIIOnSubmit();
                 addTurboSubmitListeners();
                 setJSEnabled();
+                focusOnLatestMessage(messages);
             }
         } else if(document.querySelectorAll(".govuk-chat-message").length === 1) {
             detectPIIOnSubmit();
@@ -145,4 +147,10 @@ function hideNotificationMessage() {
     if(notificationMessage) {
         notificationMessage.hidden = true;
     }
+}
+
+function focusOnLatestMessage(messages) {
+    var latestMessage = messages[messages.length - 1];
+    latestMessage.setAttribute("tabindex", -1);
+    latestMessage.focus();
 }
