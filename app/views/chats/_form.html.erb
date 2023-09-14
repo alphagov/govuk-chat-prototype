@@ -1,7 +1,7 @@
 <%= form_with(model: chat, class: "govuk-form govuk-chat-form") do |form| %>
   <%= form.hidden_field :chat_id %>
   <%= hidden_field_tag :js_enabled, value: false %>
-  <%= form.label "Enter your question", for: "govuk-chat-input", class: "sr-only" %>
+  <%= form.label "Enter your question (please do not share personal or sensitive information in your conversations with GOV UK Chat)", for: "govuk-chat-input", class: "sr-only" %>
   <%= form.text_field :prompt, id: "govuk-chat-input", value: "", rows: 4, class: "gem-c-input govuk-input" %>
   <%= form.submit "Send", class: "govuk-button govuk-button--start" %>
 <% end %>
@@ -10,4 +10,4 @@
 <div class="govuk-error-message__container" role="alert" aria-relevant="all" hidden>
   <p class="govuk-error-message"><span class="govuk-visually-hidden">Error: </span>Personally identifiable information has been detected in your query - please remove any personally identifiable information and try again.</p>
 </div>
-<p class="govuk-body govuk-!-margin-0">Do not share personal or sensitive information in your conversations with GOV.UK Chat.</p>
+<p class="govuk-body govuk-!-margin-0" aria-hidden="true">Do not share personal or sensitive information in your conversations with GOV.UK Chat.</p>
