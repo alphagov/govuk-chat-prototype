@@ -9,6 +9,7 @@ gem "bootsnap", require: false
 gem "faraday"
 gem "importmap-rails"
 gem "jbuilder"
+gem "passwordless", "~> 0.12.0"
 gem "pg"
 gem "puma"
 gem "redis"
@@ -21,6 +22,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "dotenv-rails"
+  gem "letter_opener"
 end
 
 group :development do

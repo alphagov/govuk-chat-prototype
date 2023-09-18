@@ -1,4 +1,5 @@
 class FeedbacksController < ApplicationController
+  before_action :require_user!
   def new
     @feedback = Feedback.new(chat_id: params[:chat_id])
   end

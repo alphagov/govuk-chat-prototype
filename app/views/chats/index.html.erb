@@ -1,6 +1,10 @@
 <div class="govuk-grid-row govuk-chat-landing-page">
   <div class="govuk-grid-column-two-thirds">
     <div class="gem-c-title govuk-!-margin-top-8 govuk-!-margin-bottom-8">
+      <% if current_user.present? %>
+        <%= button_to 'Sign out', auth.sign_out_path, method: :delete %>
+        <%= current_user.email %>
+      <% end %>
       <h1 class="govuk-heading-l">Welcome to GOV.UK Chat</h1>
     </div>
 
