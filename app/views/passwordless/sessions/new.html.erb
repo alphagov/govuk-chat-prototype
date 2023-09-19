@@ -1,0 +1,8 @@
+<p>Enter your email address to use GOV.UK chat</p>
+
+<p>If your email is recognised in our system, you will receive a link to enter GOV.UK Chat.</p>
+<%= form_with model: @session, url: send(Passwordless.mounted_as).sign_in_path, data: { turbo: 'false' } do |f| %>
+  <% email_field_name = :"passwordless[#{@email_field}]" %>
+  <%= text_field_tag email_field_name, params.fetch(email_field_name, nil), required: true %>
+  <%= f.submit I18n.t('passwordless.sessions.new.submit') %>
+<% end %>
