@@ -14,7 +14,5 @@
  *= require_self
  */
 
- @import "./govuk_styles//app.css";
- @import "./govuk_styles//govspeak.css";
- @import "./govuk_styles//related_navigation.css";
+ @import "./govuk_styles/app.css";
  @import "./govuk_chat.css";

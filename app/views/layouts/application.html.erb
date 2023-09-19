@@ -18,20 +18,16 @@
     <meta property="og:image" content="/assets/images/govuk-opengraph-image.png">
   </head>
 
-  <body class="gem-c-layout-for-public govuk-template__body <% unless current_page?(:controller => 'govuk_page') %>govuk-chat<% end %>">
+  <body class="gem-c-layout-for-public govuk-template__body govuk-chat">
     <script>
       document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
     </script>
 
-    <a href="#main-content" class="govuk-skip-link <% if !current_page?(:controller => 'govuk_page') %>govuk-skip-link--black<% end %>" data-module="govuk-skip-link">Skip to main content</a>
+    <a href="#main-content" class="govuk-skip-link govuk-skip-link--black" data-module="govuk-skip-link">Skip to main content</a>
 
-    <% if current_page?(:controller => 'govuk_page') %>
-      <%= render "shared/header", { new_header: false } %>
-    <% else %>
-      <%= render "shared/header", { new_header: true } %>
-    <% end %>
+    <%= render "shared/header", { new_header: true } %>
 
-    <div class="govuk-width-container <% unless current_page?(:controller => 'govuk_page') %>govuk-chat-container-wrapper<% end %>">
+    <div class="govuk-width-container govuk-chat-container-wrapper">
       <%= yield %>
     </div>
 
