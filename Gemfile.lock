@@ -111,6 +111,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jwt (2.7.1)
     launchy (2.5.2)
       addressable (~> 2.8)
     letter_opener (1.8.1)
@@ -145,6 +146,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.15.2-x86_64-linux)
       racc (~> 1.4)
+    notifications-ruby-client (5.4.0)
+      jwt (>= 1.5, < 3)
     passwordless (0.12.0)
       bcrypt (~> 3.1.11)
       rails (>= 5.1.4)
@@ -250,6 +253,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   letter_opener
+  notifications-ruby-client
   passwordless (~> 0.12.0)
   pg
   puma

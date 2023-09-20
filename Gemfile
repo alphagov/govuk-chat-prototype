@@ -9,6 +9,7 @@ gem "bootsnap", require: false
 gem "faraday"
 gem "importmap-rails"
 gem "jbuilder"
+gem 'notifications-ruby-client'
 gem "passwordless", "~> 0.12.0"
 gem "pg"
 gem "puma"
