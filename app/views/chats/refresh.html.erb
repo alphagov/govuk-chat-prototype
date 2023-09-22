@@ -1,0 +1,10 @@
+<div>
+    <h1>
+        GOV.UK Chat is generating an answer to your query. Please refresh the page using the button below to check if an answer has been 
+        generated.
+    </h1>
+
+    <h2><%= current_chat_record_count %></h2>
+
+    <%= link_to "Refresh", "/chats/refresh?chat_id=" + chat_id + "&count=" + current_chat_record_count.to_s, class: "govuk-link" %>
+</div>
