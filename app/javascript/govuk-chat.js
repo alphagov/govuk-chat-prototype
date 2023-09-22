@@ -23,10 +23,12 @@
             if(document.querySelector(".govuk-chat-form") && newMessageReceived) {
                 detectPIIOnSubmit();
                 addTurboSubmitListeners();
+                setJSEnabled();
             }
         } else if(document.querySelectorAll(".govuk-chat-message").length === 1) {
             detectPIIOnSubmit();
             addTurboSubmitListeners();
+            setJSEnabled();
         }
     });
 
@@ -121,3 +123,10 @@ function addTurboSubmitListeners() {
         document.querySelector(".govuk-chat-loading-indicator").style.display = "none";
     })
 }
+
+function setJSEnabled() {
+    var jsEnabled = document.querySelector("#js_enabled");
+    if(jsEnabled) {
+        jsEnabled.value = true;
+    }
+};
