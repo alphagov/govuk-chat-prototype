@@ -1,5 +1,8 @@
 <div class="govuk-grid-row govuk-chat-container">
   <div class="govuk-grid-column-two-thirds">
+    <% if @chats.any? %>
+      <p>You have a new message. Click this <a href="#<%= @chats.last.id %>">link</a> to view</p>
+    <% end %>
     <%= render "chat_header" %>
     <%= render("conversation", chats: @chats) if @chats.any? %>
     <div class="govuk-chat-loading-indicator">
