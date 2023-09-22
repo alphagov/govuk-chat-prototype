@@ -128,5 +128,13 @@ function setJSEnabled() {
     var jsEnabled = document.querySelector("#js_enabled");
     if(jsEnabled) {
         jsEnabled.value = true;
+        hideNotificationMessage();
     }
 };
+
+function hideNotificationMessage() {
+    var notificationMessage = document.querySelector(".govuk-notification-banner--success");
+    if(notificationMessage) {
+        notificationMessage.hidden = true;
+    }
+}
