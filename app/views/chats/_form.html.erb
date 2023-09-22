@@ -1,5 +1,6 @@
 <%= form_with(model: chat, class: "govuk-form govuk-chat-form") do |form| %>
   <%= form.hidden_field :chat_id %>
+  <%= hidden_field_tag :js_enabled, value: false %>
   <%= form.label "Enter your question", for: "govuk-chat-input", class: "sr-only" %>
   <%= form.text_field :prompt, id: "govuk-chat-input", value: "", rows: 4, class: "gem-c-input govuk-input" %>
   <%= form.submit "Send", class: "govuk-button govuk-button--start" %>
