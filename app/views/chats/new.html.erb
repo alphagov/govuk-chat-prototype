@@ -1,7 +1,20 @@
 <div class="govuk-grid-row govuk-chat-container">
   <div class="govuk-grid-column-two-thirds">
     <% if @chats.any? %>
-      <p>You have a new message. Click this <a href="#<%= @chats.last.id %>">link</a> to view</p>
+      <div class="govuk-notification-banner govuk-notification-banner--success govuk-!-margin-top-6" role="alert"
+        aria-labelledby="govuk-notification-banner-title"
+      >
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            New message received
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <h3 class="govuk-notification-banner__heading">You have received a new message.</h3>
+          <p class="govuk-body">Click the button below to read your message.</p>
+          <%= link_to "View your message", "#" + @chats.last.id.to_s, class: "govuk-button" %>
+        </div>
+      </div>
     <% end %>
     <%= render "chat_header" %>
     <%= render("conversation", chats: @chats) if @chats.any? %>

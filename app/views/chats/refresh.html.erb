@@ -1,10 +1,14 @@
-<div>
-    <h1>
-        GOV.UK Chat is generating an answer to your query. Please refresh the page using the button below to check if an answer has been 
-        generated.
-    </h1>
-
-    <h2><%= current_chat_record_count %></h2>
-
-    <%= link_to "Refresh", "/chats/refresh?chat_id=" + chat_id + "&count=" + current_chat_record_count.to_s, class: "govuk-link" %>
+<div class="govuk-notification-banner govuk-!-margin-top-6 " role="region"
+  aria-labelledby="govuk-notification-banner-title"
+  data-module="govuk-notification-banner">
+  <div class="govuk-notification-banner__header">
+    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+        Your query has been received
+    </h2>
+  </div>
+  <div class="govuk-notification-banner__content">
+    <h3 class="govuk-notification-banner__heading">GOV.UK Chat is generating an answer to your query.</h3>
+    <p class="govuk-body">Please click the button below to refresh the page to check if an answer has been generated.</p>
+    <%= link_to "Refresh", "/chats/refresh?chat_id=" + chat_id + "&count=" + current_chat_record_count.to_s, class: "govuk-button" %>
+  </div>
 </div>
