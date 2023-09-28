@@ -18,7 +18,7 @@
     <% end %>
     <%= render "chat_header" %>
     <%= render("conversation", chats: @chats) if @chats.any? %>
-    <div class="govuk-chat-loading-indicator">
+    <div class="govuk-chat-loading-indicator" role="region" aria-live="polite">
       <%= render "chat_icon", { is_prompt: false, text: "GOV.UK chat (experimental) is generating an answer", includeLoadingIcon: true } %>
     </div>
   </div>
