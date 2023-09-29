@@ -1,6 +1,6 @@
 namespace :magic_link do
-  task create_users: [:environment] do
-    create_users
+  task :create_users, [:emails] => [:environment] do |t, args|
+    create_users(args.emails)
   end
 
   task create_auth: [:environment] do
@@ -11,14 +11,17 @@ namespace :magic_link do
     send_emails
   end
 
-  def create_users
+  def create_users(emails)
     #create users using a list of email addresses
     #will need to pass these as an argument from the CLI or connect
     #to a private google sheet
-    emails = %w[test@test.com]
-    emails.each do |email|
+    #emails = %w[rosa.fox@digital.cabinet-office.gov.uk]
+
+    #bundle exec rake "magic_link:create_users[test@test.com rosa.fox@digital.cabinet-office.gov.uk]
+    emails.split(" ").each do |email|
       unless User.find_by_email(email)
         User.create(email: email)
+        puts "Created user: #{email}"
       end
     end
   end
