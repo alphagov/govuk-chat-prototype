@@ -14,6 +14,6 @@ class ApplicationController < ActionController::Base
   def require_user!
     return if current_user
     save_passwordless_redirect_location!(User) # <-- optional, see below
-    redirect_to root_path, flash: { error: 'Access denied.' }
+    redirect_to access_denied_path, flash: { error: 'Access denied.' }
   end
 end
