@@ -1,3 +1,16 @@
 class ApplicationController < ActionController::Base
-  http_basic_authenticate_with name: ENV["USERNAME"], password: ENV["PASSWORD"]
+  include Passwordless::ControllerHelpers
+
+  helper_method :current_user
+
+  private
+
+  def current_user
+    @current_user ||= authenticate_by_session(User)
+  end
+
+  def require_user!
+    return if current_user
+    redirect_to access_denied_path
+  end
 end

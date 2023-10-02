@@ -1,4 +1,6 @@
 class FeedbacksController < ApplicationController
+  before_action :require_user!
+
   def new
     @feedback = Feedback.new(level: "conversation", uuid: params[:uuid], version: ENV["CONVERSATION_FEEDBACK_VERSION"])
     @groups = Feedback.conversation_questions['groups']
