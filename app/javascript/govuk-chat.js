@@ -35,7 +35,17 @@
     });
 
     observer.observe(target, config);
+    triggerMutation();
 })();
+
+function triggerMutation() {
+    var htmlEl = document.querySelector("html");
+    var el = document.createElement("div");
+    el.id = "toBeRemoved";
+
+    htmlEl.appendChild(el);
+    htmlEl.removeChild(document.getElementById("toBeRemoved"));
+}
 
 function scrollToLatestMessage(params) {
     var headerHeight = getOuterHeight(document.querySelector(".govuk-header"));
