@@ -180,6 +180,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.15.2-x86_64-linux)
       racc (~> 1.4)
+    notifications-ruby-client (5.4.0)
+      jwt (>= 1.5, < 3)
     passwordless (0.12.0)
       bcrypt (~> 3.1.11)
       rails (>= 5.1.4)
@@ -298,6 +300,7 @@ DEPENDENCIES
   google-cloud-storage
   importmap-rails
   jbuilder
+  notifications-ruby-client
   passwordless (~> 0.12.0)
   pg
   puma

@@ -10,6 +10,7 @@ gem "faraday"
 gem "google-cloud-storage"
 gem "importmap-rails"
 gem "jbuilder"
+gem 'notifications-ruby-client'
 gem "passwordless", "~> 0.12.0"
 gem "pg"
 gem "puma"
