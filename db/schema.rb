@@ -46,4 +46,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_18_145304) do
     t.datetime "updated_at", precision: nil, null: false
     t.index ["authenticatable_type", "authenticatable_id"], name: "authenticatable"
   end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 end
