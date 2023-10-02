@@ -11,6 +11,10 @@ namespace :magic_link do
     send_emails
   end
 
+  task :update_magic_link, [:emails] => [:environment] do |t, args|
+    update_magic_link(args.emails)
+  end
+
   def create_users(emails)
     #create users using a list of email addresses
     #will need to pass these as an argument from the CLI or connect
@@ -29,7 +33,7 @@ namespace :magic_link do
   def create_passwordless_session
     #TODO figure out how to update if already exists?
     User.all.each do |user|
-      Passwordless::Session.create(authenticatable_type: "User", authenticatable_id: user.id, timeout_at: Time.now + 10.minutes, expires_at: Time.now + 10.minutes, user_agent: "na", remote_addr: "na", token: create_token)
+      Passwordless::Session.create(authenticatable_type: "User", authenticatable_id: user.id, timeout_at: Time.now + 20.minutes, expires_at: Time.now + 10.minutes, user_agent: "na", remote_addr: "na", token: create_token)
       puts "created"
     end
   end
@@ -43,6 +47,21 @@ namespace :magic_link do
     key = ActiveSupport::KeyGenerator.new(Rails.application.secret_key_base).generate_key("passwordless")
     OpenSSL::HMAC.hexdigest(algorithm, key, str)
   end
+
+
+  def update_magic_link(emails)
+    emails.split(" ").each do |email|
+      user = User.find_by_email(email)
+      user_id = user.id
+      session = Passwordless::Session.find_by_authenticatable_id(user_id)
+      puts "original token #{session.token}"
+      session.claimed_at = nil
+      session.token = create_token
+      session.save
+      puts "new token #{session.token}"
+    end
+  end
+
 
   def send_emails
     Passwordless::Session.all.each do |session|
