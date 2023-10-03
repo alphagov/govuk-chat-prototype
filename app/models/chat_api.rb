@@ -1,6 +1,6 @@
 class ChatApi
-  def self.fetch(chat_id, chat_prompt)
-    body = { chat_id: chat_id, user_query: chat_prompt }.to_json
+  def self.fetch(uuid, chat_prompt)
+    body = { chat_id: uuid, user_query: chat_prompt }.to_json
     conn = Faraday.new(
       url: ENV["CHAT_API_URL"],
       headers: {
