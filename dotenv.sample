@@ -3,3 +3,5 @@ PASSWORD=<your-password>
 CHAT_API_URL=<your-chat-api-url>
 API_AUTH_USERNAME=<the-api-basic-auth-username>
 API_AUTH_PASSWORD=<the-api-basic-auth-password>
+MESSAGE_FEEDBACK_VERSION=<message_version>
+CONVERSATION_FEEDBACK_VERSION=<conversation_version>
