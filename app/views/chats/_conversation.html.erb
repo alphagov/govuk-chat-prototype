@@ -5,6 +5,7 @@
         <%= render "chat_icon", { is_prompt: true, text: "You", timestamp: chat.created_at.strftime("%A %d %B %Y at %H:%M:%S"), includeLoadingIcon: false } %>
         <p class="govuk-body govuk-chat-prompt"><%= chat.prompt %></p>
       </div>
+
       <div class="govuk-chat-message">
         <%= render "chat_icon", { is_prompt: false, text: "GOV.UK chat (experimental)", includeLoadingIcon: false } %>
         <div class="govuk-body govuk-chat-answer"><%= apply_govuk_styles(chat.answer) %>
@@ -28,6 +29,22 @@
           <% end %>
         </div>
       </div>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Message feedback
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <%= render "feedbacks/form", feedback: Feedback.new(
+                                                  chat: chat,
+                                                  level: "message",
+                                                  uuid: chat.uuid,
+                                                  version: ENV["MESSAGE_FEEDBACK_VERSION"]),
+                                        questions: Feedback.message_questions["questions"] %>
+        </div>
+      </details>
     </li>
   <% end %>
 </ul>
