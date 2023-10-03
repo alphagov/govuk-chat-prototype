@@ -11,6 +11,6 @@
     <% if page_refreshed %>
       <p class="govuk-body">Thanks for your patience. Check again to find out if your answer is ready.</p>
     <% end %>
-    <%= link_to "Check if an answer has been generated", "/chats/refresh?chat_id=" + chat_id + "&count=" + current_chat_record_count.to_s, class: "govuk-button" %>
+    <%= link_to "Check if an answer has been generated", "/chats/refresh?uuid=" + uuid + "&count=" + current_chat_record_count.to_s, class: "govuk-button" %>
   </div>
 </div>
