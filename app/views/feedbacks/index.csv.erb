@@ -1,0 +1,4 @@
+<%= CSV.generate_line(Feedback.csv_headers) %>
+<% @feedbacks.each do |feedback| %>
+<%= CSV.generate_line(feedback.csv_line) %>
+<% end %>
