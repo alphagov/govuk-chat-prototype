@@ -10,6 +10,19 @@
   margin-bottom: 10px;
 }
 
+.govuk-chat-answer {
+  background-color: #F3F2F1;
+}
+
+.govuk-chat-prompt {
+  background-color: #D2E2F1;
+  width: 75%;
+}
+
+.govuk-chat-answer, .govuk-chat-prompt {
+  padding: 10px 20px;
+}
+
 .turbo-progress-bar {
   visibility: hidden;
 }
@@ -170,6 +183,10 @@ header.govuk-header--yellow .govuk-phase-banner {
 
 .govuk-footer .govuk-footer__meta-item {
   margin-bottom: 0;
+}
+
+.govuk-details {
+  margin-top: 20px;
 }
 
 .sr-only {
