@@ -1,0 +1,27 @@
+survey:
+  title: Conversation survey
+  description: Please fill this out...
+  questions:
+    - id: 7040d89e-c427-458b-945a-46961ef2f15c
+      title: First question?
+      datatype: checkbox
+      mandatory: true
+      options:
+        - Something
+        - Something else
+        - All of the above
+    - id: fa6bc24e-b91c-4289-9cbb-3ffbb23fdc6b
+      title: Second question?
+      datatype: text
+      mandatory: false
+    - id: fbda4342-a7a4-4ef3-86f5-522f77b7b27a
+      title: Third question?
+      datatype: radio
+      mandatory: true
+      options:
+        - One
+        - Two
+        - Three
+    - id: 7d508ee6-c715-474e-b50b-9c039a1ca818
+      title: Fourth question?
+      datatype: text
