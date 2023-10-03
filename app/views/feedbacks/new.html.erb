@@ -11,7 +11,8 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-l">❤️‍🩹 Send us feedback</h1>
-    <%= render "form", feedback: @feedback %>
+    <h1 class="govuk-heading-l"><%= @feedback.conversation_questions["title"] %></h1>
+    <p class="govuk-body"><%= @feedback.conversation_questions["description"] %></p>
+    <%= render "form", feedback: @feedback, questions: @feedback.conversation_questions["questions"] %>
   </div>
 </div>

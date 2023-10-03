@@ -11,3 +11,7 @@
   <p class="govuk-error-message"><span class="govuk-visually-hidden">Error: </span>Personal data has been detected in your question. Please remove it. You can ask another question. But please don’t include personal data in it or in any future questions.</p>
 </div>
 <p class="govuk-body govuk-!-margin-0" aria-hidden="true">Do not share personal or sensitive information in your conversations with GOV.UK Chat.</p>
+
+<p class="govuk-body govuk-!-margin-0">
+  <%= link_to "Conversation Feedback", new_feedback_path(uuid: chat.uuid) %>
+</p>

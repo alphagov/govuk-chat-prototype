@@ -4,6 +4,7 @@ survey:
   questions:
     - id: 7040d89e-c427-458b-945a-46961ef2f15c
       title: First question?
+      hint: Answer the first question
       datatype: checkbox
       mandatory: true
       options:
@@ -12,10 +13,12 @@ survey:
         - All of the above
     - id: fa6bc24e-b91c-4289-9cbb-3ffbb23fdc6b
       title: Second question?
+      hint: Answer the second question
       datatype: text
       mandatory: false
     - id: fbda4342-a7a4-4ef3-86f5-522f77b7b27a
       title: Third question?
+      hint: Answer the third question
       datatype: radio
       mandatory: true
       options:
@@ -24,4 +27,14 @@ survey:
         - Three
     - id: 7d508ee6-c715-474e-b50b-9c039a1ca818
       title: Fourth question?
+      hint: Answer the fourth question
       datatype: text
+    - id: 5df267e5-529d-45b8-bc09-567b0a982aa4
+      title: Fifth question?
+      hint: Answer the fifth question
+      datatype: select
+      mandatory: true
+      options:
+        - One
+        - Two
+        - Three
