@@ -1,5 +1,12 @@
 <%= form_with(model: feedback, class: "govuk-form") do |form| %>
+  <%= form.hidden_field :chat_id %>
   <%= form.hidden_field :uuid %>
+  <%= form.hidden_field :version %>
+  <%= form.hidden_field :level %>
+
+  <% questions.each do |question| %>
+    <%= render "feedbacks/#{question['datatype']}", question: question %>
+  <% end %>
 
   <%= form.submit "Send", class: "govuk-button govuk-button--start" %>
 <% end %>
