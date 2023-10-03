@@ -1,5 +1,13 @@
 class ChatsController < ApplicationController
   def index
+    respond_to do |format|
+      format.html
+      format.csv do
+        @chats = Chat.all
+        response.headers["Content-Type"] = "text/csv"
+        response.headers["Content-Disposition"] = "attachment; filename=chat.csv"
+      end
+    end
   end
 
   def new
