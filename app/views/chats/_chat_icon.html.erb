@@ -28,7 +28,9 @@
     <% end %>
     <p class="govuk-body govuk-body--bold"><%= text %>
         <% if includeLoadingIcon %>
-            <span class="govuk-chat-loading-indicator__dots"></span>
+            <div class="govuk-chat-loading-indicator__wrapper">
+                <span class="govuk-chat-loading-indicator__dots"></span>
+            </div>
         <% end %>
     </p>
 </div>
