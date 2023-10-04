@@ -9,6 +9,17 @@ class PopulatePasswordlessSessions
     end
   end
 
+  def self.update(user_id)
+    session = Passwordless::Session.find_by_authenticatable_id(user_id)
+    session.update(token: create_token,
+      timeout_at: Time.now + 2.days,
+      expires_at: Time.now + 2.days,
+      claimed_at: nil,
+      email_sent: false
+    )
+    puts "Updated!"
+  end
+
 private
 
   def self.create_passwordless_session(user)

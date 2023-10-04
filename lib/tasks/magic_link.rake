@@ -32,4 +32,16 @@ namespace :magic_link do
     MagicLinkEmails.send_batch(args.emails)
   end
 
+  #Additional ways to send emails
+
+  #Regenerate magic link and send email to existing user
+  task :resend_magic_links, [:emails] => [:environment] do |t, args|
+    args.emails.split(" ").each do |email|
+      user = User.find_by_email(email)
+      PopulatePasswordlessSessions.update(user.id)
+      session = Passwordless::Session.find_by_authenticatable_id(user.id)
+      MagicLinkEmails.notify(session.token, user.email)
+      MagicLinkEmails.record_email_sent(session)
+    end
+  end
 end
