@@ -1,3 +1,5 @@
+require "csv"
+
 class ChatsController < ApplicationController
   def index
     respond_to do |format|
