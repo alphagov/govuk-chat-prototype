@@ -3,6 +3,7 @@
   <%= form.hidden_field :uuid %>
   <%= form.hidden_field :version %>
   <%= form.hidden_field :level %>
+  <%= hidden_field_tag :js_enabled, false %>
 
   <% questions.each do |question| %>
     <%= render "feedbacks/#{question['datatype']}", question: question %>
