@@ -1,3 +1,5 @@
+require "csv"
+
 class FeedbacksController < ApplicationController
   def index
     respond_to do |format|
