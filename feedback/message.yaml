@@ -1,3 +1,14 @@
+v1:
+  questions:
+    - id: 025db43c-4e22-4371-99d7-e1a0f9cfe80f
+      title: Was this answer useful?
+      hint:
+      datatype: radio
+      mandatory: true
+      options:
+        - "Yes"
+        - "No"
+
 simple:
   title: Simple message survey
   description: Please fill this out...
@@ -8,8 +19,8 @@ simple:
       datatype: radio
       mandatory: true
       options:
-        - Yes
-        - No
+        - "Yes"
+        - "No"
 
 complex:
   title: Simple message survey
