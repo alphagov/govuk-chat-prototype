@@ -12,6 +12,7 @@
 
 
 ActiveRecord::Schema[7.0].define(version: 2023_09_18_145304) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_03_153827) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,6 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_18_145304) do
     t.string "token", null: false
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.boolean "email_sent", default: false
     t.index ["authenticatable_type", "authenticatable_id"], name: "authenticatable"
   end
 
