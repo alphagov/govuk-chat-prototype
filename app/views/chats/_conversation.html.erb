@@ -6,7 +6,7 @@
         <p class="govuk-body govuk-chat-prompt"><%= chat.prompt %></p>
       </div>
       <div class="govuk-chat-message">
-        <%= render "chat_icon", { is_prompt: false, text: "GOV.UK chat (experimental)", includeLoadingIcon: false } %>
+        <%= render "chat_icon", { is_prompt: false, text: "GOV.UK Chat (experimental)", includeLoadingIcon: false } %>
         <div class="govuk-body govuk-chat-answer"><%= apply_govuk_styles(chat.answer) %></div>
         <% if chat.sources.any? %>
           <div class="govuk-body">
