@@ -1,0 +1,13 @@
+<%= form_with(model: feedback, class: "govuk-form") do |form| %>
+  <%= form.hidden_field :chat_id %>
+  <%= form.hidden_field :uuid %>
+  <%= form.hidden_field :version %>
+  <%= form.hidden_field :level %>
+  <%= hidden_field_tag :js_enabled, false %>
+
+  <p class="govuk-fieldset__heading"><%= question["title"] %></p>
+
+  <% question["options"].each do |option| %>
+    <%= form.submit option, name: "answers[#{question['id']}]", value: option, class: "govuk-button govuk-button--start" %>
+  <% end %>
+<% end %>
