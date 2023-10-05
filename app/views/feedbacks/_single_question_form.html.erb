@@ -1,13 +1,21 @@
-<%= form_with(model: feedback, class: "govuk-form") do |form| %>
+<%= form_with(model: feedback, class: "govuk-form govuk-chat__feedback-form") do |form| %>
   <%= form.hidden_field :chat_id %>
   <%= form.hidden_field :uuid %>
   <%= form.hidden_field :version %>
   <%= form.hidden_field :level %>
   <%= hidden_field_tag :js_enabled, false %>
 
-  <p class="govuk-fieldset__heading"><%= question["title"] %></p>
+  <p class="govuk-body"><%= question["title"] %></p>
 
-  <% question["options"].each do |option| %>
-    <%= form.submit option, name: "answers[#{question['id']}]", value: option, class: "govuk-button govuk-button--start" %>
-  <% end %>
+  <div class="govuk-chat__feedback-buttons">
+    <div class="govuk-chat__feedback-button-group">
+      <%= form.submit question["options"][0], name: "answers[#{question['id']}]", value: question["options"][0], class: "govuk-link govuk-chat__feedback-button" %>
+      <span class="sr-only">this answer was useful</span>
+    </div>
+    <span>or</span>
+    <div class="govuk-chat__feedback-button-group">
+      <%= form.submit question["options"][1], name: "answers[#{question['id']}]", value: question["options"][1], class: "govuk-link govuk-chat__feedback-button" %>
+      <span class="sr-only">this answer was not useful</span>
+    </div>
+  </div>
 <% end %>

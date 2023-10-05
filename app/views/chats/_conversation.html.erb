@@ -31,17 +31,8 @@
       </div>
 
       <% if chat.feedbacks.any? %>
-        <div class="govuk-notification-banner govuk-notification-banner--success" role="alert"
-          aria-labelledby="govuk-notification-banner-title"
-          data-module="govuk-notification-banner">
-          <div class="govuk-notification-banner__header">
-            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-              Thank you
-            </h2>
-          </div>
-          <div class="govuk-notification-banner__content">
-            <p class="govuk-body">Your feedback has been submitted</p>
-          </div>
+        <div class="govuk-chat__feedback-confirmation">
+          <p class="govuk-body">Thank you, your feedback has been submitted.</p>
         </div>
       <% else %>
         <% feedback = Feedback.new(chat: chat, level: "message", uuid: chat.uuid, version: ENV["MESSAGE_FEEDBACK_VERSION"]) %>
