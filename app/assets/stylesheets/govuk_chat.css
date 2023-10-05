@@ -276,6 +276,44 @@ header.govuk-header--yellow .govuk-phase-banner {
   }
 }
 
+.govuk-chat__feedback-form {
+  display: flex;
+  margin-top: -20px;
+}
+
+.govuk-chat__feedback-buttons {
+  position: relative;
+  margin-left: 10px;
+}
+
+.govuk-chat__feedback-button-group {
+  display: inline;
+}
+
+.govuk-chat__feedback-button {
+  background-color: transparent;
+  border: none;
+  font-size: inherit;
+  color: #1d70b8;
+}
+
+.govuk-chat__feedback-button:hover {
+  cursor: pointer;
+  color: #003078;
+}
+
+.govuk-chat__feedback-button:visited {
+  color: #4c2c92;;
+}
+
+.govuk-chat__feedback-confirmation {
+  margin-top: -20px;
+}
+
+.govuk-chat__feedback-confirmation p {
+  display: inline-block;
+}
+
 @media (max-width: 504px) {
   footer.govuk-footer .govuk-footer__meta {
     justify-content: flex-start;
