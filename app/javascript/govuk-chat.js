@@ -9,19 +9,13 @@
     var config = { childList: true }
     var observer = new MutationObserver(function() {
         if(document.querySelectorAll(".govuk-chat-message").length > 1) {
-            var chatContainer = document.querySelector(".govuk-chat-container");
             var messages = document.querySelectorAll(".govuk-chat-message");
             var messageCount = messages.length;
             var latestMessage = document.querySelectorAll(".govuk-chat-message")[(messageCount - 2)];
             var newMessageReceived = hasReceivedNewMessage(messageCount);
 
-            scrollToLatestMessage({
-                chatContainer: chatContainer,
-                latestMessage:latestMessage,
-                newMessageReceived: newMessageReceived
-            })
-
             if(document.querySelector(".govuk-chat-form") && newMessageReceived) {
+                scrollToLatestMessage(latestMessage);
                 detectPIIOnSubmit();
                 addTurboSubmitListeners();
                 setJSEnabled();
@@ -47,11 +41,8 @@ function triggerMutation() {
     htmlEl.removeChild(document.getElementById("toBeRemoved"));
 }
 
-function scrollToLatestMessage(params) {
-    var headerHeight = getOuterHeight(document.querySelector(".govuk-header"));
-    if(params.latestMessage.getBoundingClientRect().y - headerHeight > 0 && params.newMessageReceived) {
-        params.chatContainer.scrollTop = params.latestMessage.getBoundingClientRect().y - headerHeight;
-    }
+function scrollToLatestMessage(latestMessage) {
+    latestMessage.scrollIntoView();
 }
 
 function scrollToBottom(params) {
@@ -162,5 +153,5 @@ function hideNotificationMessage() {
 function focusOnLatestMessage(messages) {
     var latestMessage = messages[messages.length - 1];
     latestMessage.setAttribute("tabindex", -1);
-    latestMessage.focus();
+    latestMessage.focus({preventScroll: true});
 }
