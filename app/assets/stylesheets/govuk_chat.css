@@ -88,7 +88,7 @@ header.govuk-header--yellow .govuk-phase-banner {
 }
 
 .govuk-chat-input-wrapper {
-  box-shadow: 0px -2px 10px 1px rgba(151, 151, 151, 0.50);
+  border-top: 1px solid #B1B4B6;
   padding: 30px 0;
   width: 100vw;
   position: relative;
