@@ -173,7 +173,7 @@ header.govuk-header--yellow .govuk-phase-banner {
 }
 
 .govuk-chat-container .govuk-chat-message {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 .govuk-chat-answer p {
   margin-top: 0;
@@ -316,7 +316,7 @@ header.govuk-header--yellow .govuk-phase-banner {
     padding-bottom: 15px;
   }
   .govuk-chat-container .govuk-chat-message {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
   }
 }
 
