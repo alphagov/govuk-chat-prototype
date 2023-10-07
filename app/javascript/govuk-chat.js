@@ -19,7 +19,7 @@
             if(document.querySelector(".govuk-chat-form") && newMessageReceived) {
                 scrollToLatestMessage(latestMessage);
                 detectPIIOnSubmit();
-                addTurboSubmitListeners();
+                addTurboSubmitListeners(newMessageReceived, latestMessage);
                 setJSEnabled();
                 focusOnLatestMessage(messages);
             }
@@ -125,18 +125,42 @@ function checkInputForPII(string) {
     return stripped
 }
 
-function addTurboSubmitListeners() {
-    document.addEventListener("turbo:submit-start", function() {
-        document.querySelector(".govuk-chat-loading-indicator").style.display = "flex";
+function addTurboSubmitListeners(newMessageReceived, latestMessage) {
+    document.addEventListener("turbo:submit-start", function(e) {
+        if(e.target.className === "govuk-form govuk-chat-form") {
+            document.querySelector(".govuk-chat-loading-indicator").style.display = "flex";
 
-        scrollToBottom({
-            loadingIndicator: document.querySelector(".govuk-chat-loading-indicator")
-        })
+            scrollToBottom({
+                loadingIndicator: document.querySelector(".govuk-chat-loading-indicator")
+            })
+        }
+        else if(e.target.className === "govuk-form govuk-chat__feedback-form") {
+            var chat = document.querySelector(".govuk-chat-container");
+            window.scrollPosition = chat.scrollTop;
+        }
     })
     
-    document.addEventListener("turbo:submit-end", function() {
+    document.addEventListener("turbo:submit-end", function(e) {
         document.querySelector(".govuk-chat-loading-indicator").style.display = "none";
     })
+
+    document.addEventListener("turbo:render", function(e) {
+        if(newMessageReceived) {
+            scrollToLatestMessage(latestMessage);
+        }
+        else {
+            scrollToPrevPosition();
+        }
+    })
+}
+
+function scrollToPrevPosition() {
+    var chat = document.querySelector(".govuk-chat-container");
+    var top = window.scrollPosition;
+
+    if (top) {
+        chat.scrollTop = parseInt(top, 10);
+    }
 }
 
 function setJSEnabled() {
