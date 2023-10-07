@@ -10,8 +10,15 @@
 <div class="govuk-error-message__container" role="alert" aria-relevant="all" hidden>
   <p class="govuk-error-message"><span class="govuk-visually-hidden">Error: </span>Personal data has been detected in your question. Please remove it. You can ask another question. But please don’t include personal data in it or in any future questions.</p>
 </div>
-<p class="govuk-body govuk-!-margin-0" aria-hidden="true">Do not share personal or sensitive information in your conversations with GOV.UK Chat.</p>
 
-<p class="govuk-body govuk-!-margin-0">
-  <%= link_to "Conversation Feedback", new_feedback_path(uuid: chat.uuid) %>
-</p>
+<div class="govuk-conversational-feedback-wrapper">
+  <svg class="govuk-chat__action-link-icon" width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="11.5" cy="11.5" r="11.5" fill="#272828"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M14.9429 11.7949L10.4402 7.29222L11.7327 5.99967L17.528 11.7949L11.7327 17.5902L10.4402 16.2976L14.9429 11.7949Z" fill="#ffffff"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.95631 10.881L15.4414 10.881L15.4414 12.709L3.95631 12.709L3.95631 10.881Z" fill="#ffffff"/>
+  </svg>
+  <p class="govuk-body">
+    <%= link_to "Tell us how you found your conversation today", new_feedback_path(uuid: chat.uuid), class: "govuk-link", target: "_blank" %>
+    (Opens in a new tab)
+  </p>
+</div>

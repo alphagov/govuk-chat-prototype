@@ -314,6 +314,20 @@ header.govuk-header--yellow .govuk-phase-banner {
   display: inline-block;
 }
 
+.govuk-conversational-feedback-wrapper * {
+  display: inline-block;
+}
+
+.govuk-conversational-feedback-wrapper a {
+  display: inline;
+}
+
+.govuk-chat__action-link-icon {
+  position: relative;
+  top: 4px;
+}
+
+
 @media (max-width: 504px) {
   footer.govuk-footer .govuk-footer__meta {
     justify-content: flex-start;
