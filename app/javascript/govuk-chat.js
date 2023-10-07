@@ -14,6 +14,8 @@
             var latestMessage = document.querySelectorAll(".govuk-chat-message")[(messageCount - 2)];
             var newMessageReceived = hasReceivedNewMessage(messageCount);
 
+            setJSEnabled();
+            
             if(document.querySelector(".govuk-chat-form") && newMessageReceived) {
                 scrollToLatestMessage(latestMessage);
                 detectPIIOnSubmit();
@@ -138,10 +140,13 @@ function addTurboSubmitListeners() {
 }
 
 function setJSEnabled() {
-    var jsEnabled = document.querySelector("#js_enabled");
-    if(jsEnabled) {
-        jsEnabled.value = true;
+    var jsEnabled = document.querySelectorAll("#js_enabled");
+    if(jsEnabled.length > 0) {
         hideNotificationMessage();
+
+        for(var i = 0; i < jsEnabled.length; i++) {
+            jsEnabled[i].value = true;
+        }
     }
 };
 
