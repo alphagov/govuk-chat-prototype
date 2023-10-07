@@ -28,8 +28,10 @@
         }
     });
 
-    observer.observe(target, config);
-    triggerMutation();
+    window.addEventListener("DOMContentLoaded", function() {
+        observer.observe(target, config);
+        triggerMutation();
+    })
 })();
 
 function triggerMutation() {
