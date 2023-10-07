@@ -39,7 +39,7 @@ class ChatsController < ApplicationController
     current_chat_record_count = record_count(@uuid)
 
     if current_chat_record_count > @count.to_i
-      redirect_to new_chat_path(chat_id: @uuid)
+      redirect_to new_chat_path(uuid: @uuid)
     else
       render "refresh", locals: { uuid: @uuid, current_chat_record_count: current_chat_record_count, page_refreshed: true }
     end
