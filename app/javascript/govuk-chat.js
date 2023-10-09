@@ -17,7 +17,7 @@
             setJSEnabled();
             
             if(document.querySelector(".govuk-chat-form") && newMessageReceived) {
-                scrollToLatestMessage(latestMessage);
+                scrollToLatestMessage();
                 detectPIIOnSubmit();
                 addTurboSubmitListeners(newMessageReceived, latestMessage);
                 setJSEnabled();
@@ -45,8 +45,14 @@ function triggerMutation() {
     htmlEl.removeChild(document.getElementById("toBeRemoved"));
 }
 
-function scrollToLatestMessage(latestMessage) {
-    latestMessage.scrollIntoView();
+function scrollToLatestMessage() {
+    var messages = document.querySelectorAll(".govuk-chat-message")
+    if(messages.length) {
+        var latestMessage = messages[messages.length - 1]
+        if(latestMessage) {
+            latestMessage.scrollIntoView();
+        }
+    }
 }
 
 function scrollToBottom(params) {
@@ -146,7 +152,7 @@ function addTurboSubmitListeners(newMessageReceived, latestMessage) {
 
     document.addEventListener("turbo:render", function(e) {
         if(newMessageReceived) {
-            scrollToLatestMessage(latestMessage);
+            scrollToLatestMessage();
         }
         else {
             scrollToPrevPosition();
