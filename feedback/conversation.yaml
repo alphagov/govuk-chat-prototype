@@ -17,11 +17,11 @@ v1:
       datatype: radio
       mandatory: true
       options:
-        - Very dissatisfied
-        - Dissatisfied
-        - Neutral
-        - Satisfied
         - Very satisfied
+        - Satisfied
+        - Neutral
+        - Dissatisfied
+        - Very dissatisfied
     - id: 155a397c-ebbf-4084-b617-5a30210ef1e4
       title: "To what extent do you agree with the following statement:"
       title_statement: "I trusted the answers given by GOV.UK Chat"
@@ -43,29 +43,29 @@ v1:
         - About right
         - I'm not sure
     - id: 15c24a00-5926-4f2b-853e-33caf367069b
-      title: "Did you read the following information in the chat?"
-      title_statement: "GOV.UK Chat is an experimental service powered by OpenAI. It uses artificial intelligence to answer your questions. It may give inaccurate or inconsistent answers."
+      title: "How does the following statement make you feel about the responses given by GOV.UK Chat?"
+      title_statement: "Some of GOV.UK Chat's answers may be inaccurate or inconsistent."
       datatype: radio
       mandatory: true
       options:
-        - Yes, all of it
-        - Yes, some of it
-        - "No"
-        - Can't remember
-    - id: b351d5f9-38f9-498d-a120-65a6b30b95b8
-      title: "How does the following information make you feel about using GOV.UK Chat?"
-      title_statement: "GOV.UK Chat is an experimental service powered by OpenAI. It uses artificial intelligence to answer your questions. It may give inaccurate or inconsistent answers."
+        - Not at all concerned
+        - Slightly concerned
+        - Neutral
+        - Moderately concerned
+        - Extremely concerned
+    - id: a91abb68-7f9d-4f47-93e6-76eb9d1672fd
+      title: Which of the following best describes you?
       datatype: radio
       mandatory: true
       options:
-        - Strongly agree
-        - Agree
-        - Undecided
-        - Disagree
-        - Strongly disagree
+        - I'm thinking of starting a business
+        - I am a sole trader / self-employed
+        - I own a limited company
+        - I am in a partnership
+        - None of the above / other
     - id: 082dcc43-d07e-42a9-a0ab-09be1c41aa84
       title: How old are you?
-      datatype: select
+      datatype: radio
       mandatory: true
       options:
         - 18 - 24
@@ -77,58 +77,14 @@ v1:
         - 75+
     - id: 2a565526-a7ae-4957-90c9-262628aaebc1
       title: How would you rate your skills using the internet? (For example, online shopping, banking, email)
-      datatype: select
+      datatype: radio
       mandatory: true
       options:
-        - Very confident
-        - Confident
+        - I find all tasks easy online
+        - I find most tasks easy online
         - Neutral
         - I find some things difficult
         - I often have difficulty using the internet
-    - id: 5b706cc9-6266-4b03-b8d2-85fd48219ef2
-      title: If you own a business, how many people do you employ?
-      datatype: select
-      mandatory: true
-      options:
-        - 0 (Self-employed/Sole trader)
-        - 1 - 49
-        - 50 - 249
-        - 250+
-        - N/A
-    - id: a85067a2-fd83-46f6-8cd0-bfbff2b64b91
-      title: In what sector are you currently operating or are thinking about starting a business in?
-      datatype: select
-      mandatory: true
-      options:
-        - Utilities or production (including manufacturing)
-        - Construction
-        - Retail or Wholesale (including vehicle sales and repairs)
-        - Transport or storage
-        - Food or hospitality
-        - Personal Care
-        - Media or marketing
-        - Finance or insurance
-        - Scientific or technical
-        - Education
-        - Health, social care or social work
-        - Entertainment, service or membership organisations
-        - Information technology and software
-        - Other
-        - N/A
-    - id: a91abb68-7f9d-4f47-93e6-76eb9d1672fd
-      title: Which of the following best describes you?
-      datatype: select
-      mandatory: true
-      options:
-        - I'm thinking of starting a business
-        - I am a sole trader / self-employed
-        - I own a limited company
-        - I am in a partnership
-        - None of the above
-    - id: d433313b-de09-4da9-9c30-6d0c086f968d
-      datatype: text
-      mandatory: false
-      title: Finally, what, if anything, would you consider using GOV.UK Chat for in the next month?
 
 survey:
   title: Conversation survey
