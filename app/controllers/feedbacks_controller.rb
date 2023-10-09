@@ -1,16 +1,4 @@
-require "csv"
-
 class FeedbacksController < ApplicationController
-  def index
-    respond_to do |format|
-      format.csv do
-        @feedbacks = Feedback.where(version: [ENV["CONVERSATION_FEEDBACK_VERSION"], ENV["MESSAGE_FEEDBACK_VERSION"]])
-        response.headers["Content-Type"] = "text/csv"
-        response.headers["Content-Disposition"] = "attachment; filename=feedback.csv"
-      end
-    end
-  end
-
   def new
     @feedback = Feedback.new(level: "conversation", uuid: params[:uuid], version: ENV["CONVERSATION_FEEDBACK_VERSION"])
   end
