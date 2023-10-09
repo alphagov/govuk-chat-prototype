@@ -11,7 +11,7 @@ v1:
         - Agree
         - Undecided
         - Disagree
-        - Strongly disagre
+        - Strongly disagree
     - id: d1030512-9b97-4d64-8b88-1c388fe8737e
       title: Overall, how did you feel about your experience with GOV.UK chat?
       datatype: radio
@@ -32,7 +32,7 @@ v1:
         - Agree
         - Undecided
         - Disagree
-        - Strongly disagre
+        - Strongly disagree
     - id: 8f59c6da-7f75-4bbe-adf7-f25ef3521cca
       title: How would you describe the waiting time for responses from GOV.UK chat?
       datatype: radio
@@ -62,7 +62,7 @@ v1:
         - Agree
         - Undecided
         - Disagree
-        - Strongly disagre
+        - Strongly disagree
     - id: 082dcc43-d07e-42a9-a0ab-09be1c41aa84
       title: How old are you?
       datatype: select
