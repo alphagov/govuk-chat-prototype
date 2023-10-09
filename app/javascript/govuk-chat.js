@@ -153,6 +153,7 @@ function addTurboSubmitListeners(newMessageReceived, latestMessage) {
     document.addEventListener("turbo:render", function(e) {
         if(newMessageReceived) {
             scrollToLatestMessage();
+            newMessageReceived = false
         }
         else {
             scrollToPrevPosition();
