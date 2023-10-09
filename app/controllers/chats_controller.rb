@@ -1,4 +1,5 @@
 class ChatsController < ApplicationController
+  skip_forgery_protection
   def index
   end
 
