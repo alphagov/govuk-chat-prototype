@@ -399,3 +399,7 @@ header.govuk-header--yellow .govuk-phase-banner {
     width: 100%;
   }
 }
+
+.js-enabled .govuk-notification-banner--success {
+  display: none;
+}

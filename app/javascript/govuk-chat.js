@@ -173,20 +173,11 @@ function scrollToPrevPosition() {
 function setJSEnabled() {
     var jsEnabled = document.querySelectorAll("#js_enabled");
     if(jsEnabled.length > 0) {
-        hideNotificationMessage();
-
         for(var i = 0; i < jsEnabled.length; i++) {
             jsEnabled[i].value = true;
         }
     }
 };
-
-function hideNotificationMessage() {
-    var notificationMessage = document.querySelector(".govuk-notification-banner--success");
-    if(notificationMessage) {
-        notificationMessage.hidden = true;
-    }
-}
 
 function focusOnLatestMessage(messages) {
     var latestMessage = messages[messages.length - 1];
