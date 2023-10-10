@@ -407,6 +407,10 @@ header.govuk-header--yellow .govuk-phase-banner {
   }
 }
 
+.govuk-chat-landing-page > .govuk-grid-column-two-thirds, .govuk-chat-container > .govuk-grid-column-two-thirds {
+  padding-left: 0;
+}
+
 .js-enabled .govuk-notification-banner--success {
   display: none;
 }
