@@ -139,7 +139,7 @@ header.govuk-header--yellow .govuk-phase-banner {
   font-weight: bold;
 }
 
-.govuk-width-container.govuk-chat-container-wrapper {
+.govuk-chat-container-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
