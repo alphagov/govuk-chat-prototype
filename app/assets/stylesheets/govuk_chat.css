@@ -73,6 +73,10 @@ header.govuk-header--yellow .govuk-phase-banner {
   margin-top: 3px;
 }
 
+.govuk-chat-landing-page .govuk-warning-text {
+  margin-bottom: 20px;
+}
+
 #chat-pane-small .govuk-body--grey {
   color: #757272;
 }
