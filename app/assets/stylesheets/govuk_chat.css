@@ -406,12 +406,6 @@ header.govuk-header--yellow .govuk-phase-banner {
   display: none;
 }
 
-.govuk-grid-row.govuk-chat-onboarding-page {
-  @media (min-width: 640px) {
-    margin-right: 200px;
-  }
-}
-
 .govuk-chat-lowercase {
   text-transform: lowercase;
 }
