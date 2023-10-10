@@ -155,7 +155,7 @@ header.govuk-header--yellow .govuk-phase-banner {
   margin-bottom: 10px;
 }
 .govuk-chat-icon *{
-  display: inline-block;
+  display: inline;
 }
 
 .govuk-chat-icon svg{
