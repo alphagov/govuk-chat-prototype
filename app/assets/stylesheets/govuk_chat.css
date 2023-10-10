@@ -73,10 +73,6 @@ header.govuk-header--yellow .govuk-phase-banner {
   margin-top: 3px;
 }
 
-.govuk-chat-landing-page .govuk-warning-text {
-  margin-bottom: 20px;
-}
-
 #chat-pane-small .govuk-body--grey {
   color: #757272;
 }
@@ -159,6 +155,10 @@ header.govuk-header--yellow .govuk-phase-banner {
   margin-bottom: 10px;
 }
 .govuk-chat-icon *{
+  display: inline-block;
+}
+
+.govuk-chat-icon > .govuk-body {
   display: inline;
 }
 
@@ -174,6 +174,11 @@ header.govuk-header--yellow .govuk-phase-banner {
   border-top: 3px solid #FFDD00;
   background-color: #f3f2f1;
   padding: 15px;
+}
+
+.govuk-chat-container {
+  display: block;
+  width: 100%;
 }
 
 .govuk-chat-container .govuk-chat-message {
@@ -331,7 +336,6 @@ header.govuk-header--yellow .govuk-phase-banner {
 .govuk-chat__action-link-icon {
   position: relative;
   top: 4px;
-  margin-right: 3px;
 }
 
 
@@ -406,6 +410,7 @@ header.govuk-header--yellow .govuk-phase-banner {
     width: 100%;
   }
 }
+
 
 .govuk-chat-landing-page > .govuk-grid-column-two-thirds, .govuk-chat-container > .govuk-grid-column-two-thirds {
   padding-left: 0;
