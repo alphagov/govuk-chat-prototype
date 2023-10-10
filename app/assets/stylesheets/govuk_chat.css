@@ -41,7 +41,7 @@ header.govuk-header--yellow {
   background: #FFDD00;
 }
 
-header.govuk-header--yellow .govuk-header__container {
+header.govuk-header, header.govuk-header--yellow .govuk-header__container {
   border-bottom: none;
 }
 
