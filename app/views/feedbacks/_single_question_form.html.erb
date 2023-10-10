@@ -5,9 +5,9 @@
   <%= form.hidden_field :level %>
   <%= hidden_field_tag :js_enabled, false %>
 
-  <% questions.each do |question| %>
-    <%= render "feedbacks/#{question['datatype']}", question: question %>
-  <% end %>
+  <p class="govuk-fieldset__heading"><%= question["title"] %></p>
 
-  <%= form.submit "Send", class: "govuk-button govuk-button--start" %>
+  <% question["options"].each do |option| %>
+    <%= form.submit option, name: "answers[#{question['id']}]", value: option, class: "govuk-button govuk-button--start" %>
+  <% end %>
 <% end %>

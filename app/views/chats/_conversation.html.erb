@@ -5,6 +5,7 @@
         <%= render "chat_icon", { is_prompt: true, text: "You", timestamp: chat.created_at.strftime("%A %d %B %Y at %H:%M:%S"), includeLoadingIcon: false } %>
         <p class="govuk-body govuk-chat-prompt"><%= chat.prompt %></p>
       </div>
+
       <div class="govuk-chat-message">
         <%= render "chat_icon", { is_prompt: false, text: "GOV.UK chat (experimental)", includeLoadingIcon: false } %>
         <div class="govuk-body govuk-chat-answer"><%= apply_govuk_styles(chat.answer) %>
@@ -28,6 +29,25 @@
           <% end %>
         </div>
       </div>
+
+      <% if chat.feedbacks.any? %>
+        <div class="govuk-notification-banner govuk-notification-banner--success" role="alert"
+          aria-labelledby="govuk-notification-banner-title"
+          data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+              Thank you
+            </h2>
+          </div>
+          <div class="govuk-notification-banner__content">
+            <p class="govuk-body">Your feedback has been submitted</p>
+          </div>
+        </div>
+      <% else %>
+        <% feedback = Feedback.new(chat: chat, level: "message", uuid: chat.uuid, version: ENV["MESSAGE_FEEDBACK_VERSION"]) %>
+        <% question = Feedback.message_questions["questions"].first %>
+        <%= render "feedbacks/single_question_form", feedback: feedback, question: question %>
+      <% end %>
     </li>
   <% end %>
 </ul>

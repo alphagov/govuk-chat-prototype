@@ -1,19 +1,20 @@
 class FeedbacksController < ApplicationController
   def new
-    @feedback = Feedback.new(chat_id: params[:chat_id])
+    @feedback = Feedback.new(level: "conversation", uuid: params[:uuid], version: ENV["CONVERSATION_FEEDBACK_VERSION"])
   end
 
   def create
     @feedback = Feedback.new(feedback_params)
+    @feedback.response = params["answers"].to_json
 
     if @feedback.save
-      redirect_to new_chat_url(chat_id: @feedback.chat_id), notice: "Thanks for your feedback."
+      redirect_to new_chat_url(uuid: @feedback.uuid), notice: "Thanks for your feedback."
     end
   end
 
 private
 
   def feedback_params
-    params.require(:feedback).permit(:chat_id, :rating, :content)
+    params.require(:feedback).permit(:chat_id, :uuid, :version, :level, :response)
   end
 end
