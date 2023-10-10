@@ -327,6 +327,7 @@ header.govuk-header--yellow .govuk-phase-banner {
 .govuk-chat__action-link-icon {
   position: relative;
   top: 4px;
+  margin-right: 3px;
 }
 
 
