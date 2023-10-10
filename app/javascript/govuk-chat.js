@@ -15,19 +15,18 @@
             var newMessageReceived = hasReceivedNewMessage(messageCount);
 
             setJSEnabled();
-            
+            detectPIIOnSubmit();
+
             if(document.querySelector(".govuk-chat-form") && newMessageReceived) {
                 scrollToLatestMessage();
-                detectPIIOnSubmit();
                 addTurboSubmitListeners(newMessageReceived, latestMessage);
                 setJSEnabled();
                 focusOnLatestMessage(messages);
             }
-        } else if(document.querySelectorAll(".govuk-chat-message").length === 1) {
-            detectPIIOnSubmit();
-            addTurboSubmitListeners();
-            setJSEnabled();
-        }
+            } else if(document.querySelectorAll(".govuk-chat-message").length === 1) {
+                addTurboSubmitListeners();
+                setJSEnabled();
+            }
     });
 
     window.addEventListener("DOMContentLoaded", function() {
@@ -88,16 +87,17 @@ function getOuterHeight(element) {
 }
 
 function detectPIIOnSubmit() {
-    var label = document.querySelector('.govuk-chat-form label');
-    var labelFor = label.getAttribute('for');
-    var input = document.querySelector('[id=' + labelFor + ']');
-    var submitBtn = document.querySelector("input[type='submit']");
-    var errorDetected = false;
+    var submitBtn = document.querySelector("[data-govuk-chat-send-button]");
+
+    // Prevents the listener being added more than once, as this attribute only exists once the listener is attached.
+    if(submitBtn.getAttribute('data-govuk-chat-pii-listener-added')) {
+        return
+    }
 
     submitBtn.addEventListener('click', function(e) {
         var chatInput = document.getElementById("govuk-chat-input");
         var errorMessageContainer = document.querySelector(".govuk-error-message__container");
-        errorDetected = checkInputForPII(input.value).indexOf("[redacted]") !== -1 ? true : false;
+        var errorDetected = checkInputForPII(chatInput.value).indexOf("[redacted]") !== -1 ? true : false;
 
         if(errorDetected) {
             e.preventDefault();
@@ -115,6 +115,8 @@ function detectPIIOnSubmit() {
             chatInput.style.border = "2px solid #0b0c0c";
         }
     })
+
+    submitBtn.setAttribute('data-govuk-chat-pii-listener-added', 'true')
 }
 
 function checkInputForPII(string) {
@@ -139,24 +141,25 @@ function addTurboSubmitListeners(newMessageReceived, latestMessage) {
             scrollToBottom({
                 loadingIndicator: document.querySelector(".govuk-chat-loading-indicator")
             })
+            window.lastSubmitType = 'chat';
         }
         else if(e.target.className === "govuk-form govuk-chat__feedback-form") {
             var chat = document.querySelector(".govuk-chat-container");
             window.scrollPosition = chat.scrollTop;
+            window.lastSubmitType = 'feedback';
         }
     })
-    
+
     document.addEventListener("turbo:submit-end", function(e) {
         document.querySelector(".govuk-chat-loading-indicator").style.display = "none";
     })
 
     document.addEventListener("turbo:render", function(e) {
-        if(newMessageReceived) {
-            scrollToLatestMessage();
-            newMessageReceived = false
+        if(window.lastSubmitType === 'feedback') {
+            scrollToPrevPosition();
         }
         else {
-            scrollToPrevPosition();
+            scrollToLatestMessage();
         }
     })
 }
