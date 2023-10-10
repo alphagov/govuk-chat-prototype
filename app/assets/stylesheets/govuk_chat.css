@@ -283,7 +283,7 @@ header.govuk-header--yellow .govuk-phase-banner {
 
 .govuk-chat__feedback-buttons {
   position: relative;
-  margin-left: 10px;
+  margin-left: 4px;
 }
 
 .govuk-chat__feedback-button-group {
@@ -295,6 +295,8 @@ header.govuk-header--yellow .govuk-phase-banner {
   border: none;
   font-size: inherit;
   color: #1d70b8;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .govuk-chat__feedback-button:hover {
@@ -408,4 +410,8 @@ header.govuk-header--yellow .govuk-phase-banner {
   @media (min-width: 640px) {
     margin-right: 200px;
   }
+}
+
+.govuk-chat-lowercase {
+  text-transform: lowercase;
 }
