@@ -13,7 +13,7 @@
             var messageCount = messages.length;
             var latestMessage = document.querySelectorAll(".govuk-chat-message")[(messageCount - 2)];
             var newMessageReceived = hasReceivedNewMessage(messageCount);
-
+            addDismissListeners();
             setJSEnabled();
             
             if(document.querySelector(".govuk-chat-form") && newMessageReceived) {
@@ -76,6 +76,41 @@ function initialiseMessageState() {
         }
 
         return newMessageReceived
+    }
+}
+
+function addDismissListeners() {
+    var dismissButtons = document.querySelectorAll('[data-govuk-chat-feedback-dismiss-button]')
+    for(var i = 0; i < dismissButtons.length; i++) {
+        var button = dismissButtons[i]
+
+        // Check if this function has already been run on the button, and skip if so.
+        if(button.getAttribute('data-govuk-chat-dismiss-listener-added')) {
+            continue
+        }
+
+        // Check if the feedback message was hidden on a previous DOM load, and hide it if so.
+        var parentElement = button.closest('[data-govuk-chat-id]')
+        var feedbackId = parentElement.getAttribute('data-govuk-chat-id')
+        window.hiddenFeedbacks = window.hiddenFeedbacks || []
+        if(window.hiddenFeedbacks.indexOf(feedbackId) !== -1) {
+            parentElement.hidden = true
+            button.hidden = true
+            continue
+        }
+
+        button.addEventListener('click', function(e) {
+            var btn = e.target
+            var parentElement = btn.closest('[data-govuk-chat-id]')
+            parentElement.hidden = true
+            btn.hidden = true
+
+            var feedbackId = parentElement.getAttribute('data-govuk-chat-id')
+            window.hiddenFeedbacks = window.hiddenFeedbacks || []
+            window.hiddenFeedbacks.push(feedbackId)
+        })
+
+        button.setAttribute('data-govuk-chat-dismiss-listener-added', 'true')
     }
 }
 

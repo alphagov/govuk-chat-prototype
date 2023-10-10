@@ -31,8 +31,8 @@
       </div>
 
       <% if chat.feedbacks.any? %>
-        <div class="govuk-chat__feedback-confirmation">
-          <p class="govuk-body">Thank you, your feedback has been submitted.</p>
+        <div class="govuk-chat__feedback-confirmation" data-govuk-chat-id="<%= chat.id %>">
+          <p class="govuk-body">Thank you, your feedback has been submitted. <button class="govuk-link govuk-chat__feedback-button" data-govuk-chat-feedback-dismiss-button>Dismiss</button></p>
         </div>
       <% else %>
         <% feedback = Feedback.new(chat: chat, level: "message", uuid: chat.uuid, version: ENV["MESSAGE_FEEDBACK_VERSION"]) %>
