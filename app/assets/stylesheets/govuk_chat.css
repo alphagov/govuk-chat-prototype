@@ -10,7 +10,7 @@
   margin-bottom: 10px;
 }
 .govuk-chat-message .govuk-body:last-child {
-  margin-bottom: 0; 
+  margin-bottom: 0;
 }
 
 .govuk-chat-answer {
@@ -414,4 +414,26 @@ header.govuk-header--yellow .govuk-phase-banner {
 
 .govuk-chat-lowercase {
   text-transform: lowercase;
+}
+
+/*
+  The floating address bar on mobile browers overlap the sticky chat input section.
+  This CSS accounts for that by modifying the page height.
+  Initially thought this applied to iOS/Safari only, but the issue also exists on others e.g. Galaxy S23/Chrome
+  https://opuszine.us/posts/fixing-ios-safaris-menu-bar-overlap-css-viewport-units
+  https://stackoverflow.com/questions/75774915/the-buttons-are-overlapped-by-the-iphone-navigation-bar-in-safari
+*/
+@media screen and (max-width: 767px) {
+    .govuk-chat {
+      max-height: calc(100vh - 6rem) !important;
+      min-height: calc(100vh - 6rem) !important;
+    }
+
+    /* For newer versions of browsers that support dynamic view height */
+    @supports (height: 100dvh) {
+      .govuk-chat {
+        min-height: 100dvh !important;
+        max-height: 100dvh !important;
+      }
+    }
 }
