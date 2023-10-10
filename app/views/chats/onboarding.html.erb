@@ -1,0 +1,37 @@
+<div class="govuk-grid-row govuk-chat-landing-page govuk-chat-onboarding-page">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/chats/new" method="GET">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="onboarding-hint">
+          <legend class="govuk-fieldset__legend">
+            <div class="gem-c-title govuk-!-margin-top-4">
+              <h1 class="govuk-heading-l">Before you begin</h1>
+            </div>
+          </legend>
+          <div id="onboarding-hint" class="govuk-hint">
+            You must accept both statements before continuing.
+          </div>
+          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+            <div class="govuk-checkboxes__item">
+              <input required class="govuk-checkboxes__input" id="inaccuracies" name="inaccuracies" type="checkbox" value="inaccuracies">
+              <label class="govuk-label govuk-checkboxes__label" for="inaccuracies">
+                I understand that the chat may provide inaccurate information or incorrect answers.
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input required class="govuk-checkboxes__input" id="pii" name="pii" type="checkbox" value="pii">
+              <label class="govuk-label govuk-checkboxes__label" for="pii">
+                I will not enter personal or sensitive information in my conversations with GOV.UK Chat.
+              </label>
+            </div>
+        </fieldset>
+      </div>
+      <button type="submit" class="govuk-button govuk-button--start" data-module="govuk-button">
+        Start chatting
+        <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+        </svg>
+      </button>
+    </form>
+  </div>
+</div>
