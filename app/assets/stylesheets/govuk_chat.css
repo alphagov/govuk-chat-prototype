@@ -10,7 +10,7 @@
   margin-bottom: 10px;
 }
 .govuk-chat-message .govuk-body:last-child {
-  margin-bottom: 0; 
+  margin-bottom: 0;
 }
 
 .govuk-chat-answer {
@@ -41,7 +41,7 @@ header.govuk-header--yellow {
   background: #FFDD00;
 }
 
-header.govuk-header--yellow .govuk-header__container {
+header.govuk-header, header.govuk-header--yellow .govuk-header__container {
   border-bottom: none;
 }
 
@@ -139,7 +139,7 @@ header.govuk-header--yellow .govuk-phase-banner {
   font-weight: bold;
 }
 
-.govuk-width-container.govuk-chat-container-wrapper {
+.govuk-chat-container-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -158,6 +158,10 @@ header.govuk-header--yellow .govuk-phase-banner {
   display: inline-block;
 }
 
+.govuk-chat-icon > .govuk-body {
+  display: inline;
+}
+
 .govuk-chat-icon svg{
   vertical-align: text-bottom;
   margin-right: 5px;
@@ -170,6 +174,11 @@ header.govuk-header--yellow .govuk-phase-banner {
   border-top: 3px solid #FFDD00;
   background-color: #f3f2f1;
   padding: 15px;
+}
+
+.govuk-chat-container {
+  display: block;
+  width: 100%;
 }
 
 .govuk-chat-container .govuk-chat-message {
@@ -283,7 +292,7 @@ header.govuk-header--yellow .govuk-phase-banner {
 
 .govuk-chat__feedback-buttons {
   position: relative;
-  margin-left: 10px;
+  margin-left: 4px;
 }
 
 .govuk-chat__feedback-button-group {
@@ -295,6 +304,8 @@ header.govuk-header--yellow .govuk-phase-banner {
   border: none;
   font-size: inherit;
   color: #1d70b8;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .govuk-chat__feedback-button:hover {
@@ -400,6 +411,37 @@ header.govuk-header--yellow .govuk-phase-banner {
   }
 }
 
+
+.govuk-chat-landing-page > .govuk-grid-column-two-thirds, .govuk-chat-container > .govuk-grid-column-two-thirds {
+  padding-left: 0;
+}
+
 .js-enabled .govuk-notification-banner--success {
   display: none;
+}
+
+.govuk-chat-lowercase {
+  text-transform: lowercase;
+}
+
+/*
+  The floating address bar on mobile browers overlap the sticky chat input section.
+  This CSS accounts for that by modifying the page height.
+  Initially thought this applied to iOS/Safari only, but the issue also exists on others e.g. Galaxy S23/Chrome
+  https://opuszine.us/posts/fixing-ios-safaris-menu-bar-overlap-css-viewport-units
+  https://stackoverflow.com/questions/75774915/the-buttons-are-overlapped-by-the-iphone-navigation-bar-in-safari
+*/
+@media screen and (max-width: 767px) {
+    .govuk-chat {
+      max-height: calc(100vh - 6rem) !important;
+      min-height: calc(100vh - 6rem) !important;
+    }
+
+    /* For newer versions of browsers that support dynamic view height */
+    @supports (height: 100dvh) {
+      .govuk-chat {
+        min-height: 100dvh !important;
+        max-height: 100dvh !important;
+      }
+    }
 }

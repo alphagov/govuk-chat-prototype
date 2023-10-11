@@ -2,6 +2,9 @@ class ChatsController < ApplicationController
   def index
   end
 
+  def onboarding
+  end
+
   def new
     @uuid = params[:uuid] || SecureRandom.uuid
     @chats = Chat.where(uuid: @uuid) || Chat.new(uuid: @uuid)

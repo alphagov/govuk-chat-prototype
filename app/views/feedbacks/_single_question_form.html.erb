@@ -14,7 +14,7 @@
     </div>
     <span>or</span>
     <div class="govuk-chat__feedback-button-group">
-      <%= form.submit question["options"][1], name: "answers[#{question['id']}]", value: question["options"][1], class: "govuk-link govuk-chat__feedback-button" %>
+      <%= form.submit question["options"][1], name: "answers[#{question['id']}]", value: question["options"][1], class: "govuk-link govuk-chat__feedback-button govuk-chat-lowercase" %>
       <span class="sr-only">this answer was not useful</span>
     </div>
   </div>
