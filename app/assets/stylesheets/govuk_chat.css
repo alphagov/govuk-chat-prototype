@@ -221,7 +221,7 @@ header.govuk-header--yellow .govuk-phase-banner {
   border: 0;
 }
 
-.govuk-chat-loading-indicator { 
+.govuk-chat-loading-indicator {
   display: none;
   align-items: baseline;
   margin-bottom: 10px;
@@ -338,6 +338,9 @@ header.govuk-header--yellow .govuk-phase-banner {
   top: 4px;
 }
 
+.govuk-chat__survey-group {
+  margin-bottom: 5rem;
+}
 
 @media (max-width: 504px) {
   footer.govuk-footer .govuk-footer__meta {
@@ -384,7 +387,7 @@ header.govuk-header--yellow .govuk-phase-banner {
 }
 
 @media (max-width: 480px) {
-  .govuk-chat-loading-indicator { 
+  .govuk-chat-loading-indicator {
     width: 90%;
   }
 }

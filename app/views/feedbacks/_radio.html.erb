@@ -1,15 +1,6 @@
 <div class="govuk-form-group">
   <fieldset class="govuk-fieldset" aria-describedby="<%= question['id'] %>-hint">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-      <h2 class="govuk-fieldset__heading">
-        <%= question["title"] %>
-      </h2>
-      <% if question["title_statement"] %>
-        <div class="govuk-inset-text govuk-!-margin-bottom-1">
-          <%= question["title_statement"] %>
-        </div>
-      <% end %>
-    </legend>
+    <%= render "legend", question: question  %>
     <div id="<%= question['id'] %>-hint" class="govuk-hint">
       <%= question["hint"] %>
     </div>
