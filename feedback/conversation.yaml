@@ -6,6 +6,7 @@ v1:
         - id: ad1eb7a0-4346-4494-9363-22f37559e646
           title: "To what extent do you agree with the following statement:"
           title_statement: "GOV.UK's Chat responses were useful"
+          header: responses_were_useful
           datatype: radio
           mandatory: true
           options:
@@ -16,6 +17,7 @@ v1:
             - Strongly disagree
         - id: d1030512-9b97-4d64-8b88-1c388fe8737e
           title: Overall, how did you feel about your experience with GOV.UK Chat?
+          header: experience_with_chat
           datatype: radio
           mandatory: true
           options:
@@ -27,6 +29,7 @@ v1:
         - id: 155a397c-ebbf-4084-b617-5a30210ef1e4
           title: "To what extent do you agree with the following statement:"
           title_statement: "I trusted the answers given by GOV.UK Chat"
+          header: trusted_the_answers
           datatype: radio
           mandatory: true
           options:
@@ -37,6 +40,7 @@ v1:
             - Strongly disagree
         - id: 8f59c6da-7f75-4bbe-adf7-f25ef3521cca
           title: How would you describe the waiting time for responses from GOV.UK Chat?
+          header: waiting_response_time
           datatype: radio
           mandatory: true
           options:
@@ -47,6 +51,7 @@ v1:
         - id: 15c24a00-5926-4f2b-853e-33caf367069b
           title: "How does the following statement make you feel about the responses given by GOV.UK Chat?"
           title_statement: "Some of GOV.UK Chat's answers may be inaccurate or inconsistent."
+          header: inaccurate_or_inconsistent
           datatype: radio
           mandatory: true
           options:
@@ -59,6 +64,7 @@ v1:
       questions:
         - id: a91abb68-7f9d-4f47-93e6-76eb9d1672fd
           title: Which of the following best describes you?
+          header: best_describes_you
           datatype: radio
           mandatory: true
           options:
@@ -69,6 +75,7 @@ v1:
             - None of the above / other
         - id: 082dcc43-d07e-42a9-a0ab-09be1c41aa84
           title: How old are you?
+          header: how_old_are_you
           datatype: radio
           mandatory: true
           options:
@@ -81,6 +88,7 @@ v1:
             - 75+
         - id: 2a565526-a7ae-4957-90c9-262628aaebc1
           title: How would you rate your skills using the internet? (For example, online shopping, banking, email)
+          header: internet_skill_rating
           datatype: radio
           mandatory: true
           options:
@@ -89,44 +97,3 @@ v1:
             - Neutral
             - I find some things difficult
             - I often have difficulty using the internet
-
-survey:
-  title: Conversation survey
-  description: Please fill this out...
-  questions:
-    - id: 7040d89e-c427-458b-945a-46961ef2f15c
-      title: First question?
-      hint: Answer the first question
-      datatype: checkbox
-      mandatory: true
-      options:
-        - Something
-        - Something else
-        - All of the above
-    - id: fa6bc24e-b91c-4289-9cbb-3ffbb23fdc6b
-      title: Second question?
-      hint: Answer the second question
-      datatype: text
-      mandatory: false
-    - id: fbda4342-a7a4-4ef3-86f5-522f77b7b27a
-      title: Third question?
-      hint: Answer the third question
-      datatype: radio
-      mandatory: true
-      options:
-        - One
-        - Two
-        - Three
-    - id: 7d508ee6-c715-474e-b50b-9c039a1ca818
-      title: Fourth question?
-      hint: Answer the fourth question
-      datatype: text
-    - id: 5df267e5-529d-45b8-bc09-567b0a982aa4
-      title: Fifth question?
-      hint: Answer the fifth question
-      datatype: select
-      mandatory: true
-      options:
-        - One
-        - Two
-        - Three

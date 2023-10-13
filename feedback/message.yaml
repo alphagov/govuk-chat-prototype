@@ -2,50 +2,9 @@ v1:
   questions:
     - id: 025db43c-4e22-4371-99d7-e1a0f9cfe80f
       title: Was this answer useful?
-      hint:
+      header: was_answer_useful
       datatype: radio
       mandatory: true
       options:
         - "Yes"
         - "No"
-
-simple:
-  title: Simple message survey
-  description: Please fill this out...
-  questions:
-    - id: fd6c8890-e175-4337-a301-d1fe065b1695
-      title: Is this correct?
-      hint:
-      datatype: radio
-      mandatory: true
-      options:
-        - "Yes"
-        - "No"
-
-complex:
-  title: Simple message survey
-  description: Please fill this out...
-  questions:
-    - id: fd73794b-1733-4ad2-8f34-1ac98b44d82a
-      title: First question?
-      hint:
-      datatype: checkbox
-      mandatory: true
-      options:
-        - Something
-        - Something else
-        - All of the above
-    - id: cba225d0-4702-422c-9c63-811b0ac94dd5
-      title: Second question?
-      hint:
-      datatype: text
-      mandatory: false
-    - id: 7a758911-b2f8-4659-8f0c-801f2ebb0a00
-      title: Third question?
-      hint:
-      datatype: radio
-      mandatory: true
-      options:
-        - One
-        - Two
-        - Three
