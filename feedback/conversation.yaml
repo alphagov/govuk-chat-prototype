@@ -5,7 +5,7 @@ v1:
       questions:
         - id: ad1eb7a0-4346-4494-9363-22f37559e646
           title: "To what extent do you agree with the following statement:"
-          title_statement: "GOV.UK's chat responses were useful"
+          title_statement: "GOV.UK's Chat responses were useful"
           datatype: radio
           mandatory: true
           options:
@@ -15,7 +15,7 @@ v1:
             - Disagree
             - Strongly disagree
         - id: d1030512-9b97-4d64-8b88-1c388fe8737e
-          title: Overall, how did you feel about your experience with GOV.UK chat?
+          title: Overall, how did you feel about your experience with GOV.UK Chat?
           datatype: radio
           mandatory: true
           options:
@@ -36,7 +36,7 @@ v1:
             - Disagree
             - Strongly disagree
         - id: 8f59c6da-7f75-4bbe-adf7-f25ef3521cca
-          title: How would you describe the waiting time for responses from GOV.UK chat?
+          title: How would you describe the waiting time for responses from GOV.UK Chat?
           datatype: radio
           mandatory: true
           options:
