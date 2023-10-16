@@ -9,10 +9,14 @@ class FeedbacksController < ApplicationController
     @feedback.response = params["answers"].to_json
 
     if @feedback.save
-      redirect_to new_chat_url(uuid: @feedback.uuid), notice: "Thanks for your feedback."
+      redirect_to complete_path(uuid: @feedback.uuid)
     end
   end
 
+  def complete
+    @uuid = params[:uuid]
+  end
+  
 private
 
   def feedback_params
