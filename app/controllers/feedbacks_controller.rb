@@ -1,6 +1,7 @@
 class FeedbacksController < ApplicationController
   def new
     @feedback = Feedback.new(level: "conversation", uuid: params[:uuid], version: ENV["CONVERSATION_FEEDBACK_VERSION"])
+    @groups = Feedback.conversation_questions['groups']
   end
 
   def create

@@ -1,0 +1,10 @@
+<legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+  <h3 class="govuk-fieldset__heading">
+    <%= question["title"]%>
+  </h3>
+  <% if question["title_statement"] %>
+    <div class="govuk-inset-text govuk-!-margin-bottom-1">
+      <%= question["title_statement"] %>
+    </div>
+  <% end %>
+</legend>

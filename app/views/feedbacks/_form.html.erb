@@ -5,9 +5,14 @@
   <%= form.hidden_field :level %>
   <%= hidden_field_tag :js_enabled, false %>
 
-  <% questions.each do |question| %>
-    <%= render "feedbacks/#{question['datatype']}", question: question %>
-  <% end %>
+ <% @groups.each do |group| %>
+    <div class="govuk-chat__survey-group">
+      <h2 class="govuk-heading-l"><%= "#{group['group_name']}" %></h2>
+      <% group['questions']&.each do |question| %>
+        <%= render "feedbacks/#{question['datatype']}", question: question %>
+      <% end %>
+    </div>
+<% end %>
 
-  <%= form.submit "Send", class: "govuk-button govuk-button--start" %>
+  <%= form.submit "Submit", class: "govuk-button govuk-button--start" %>
 <% end %>
