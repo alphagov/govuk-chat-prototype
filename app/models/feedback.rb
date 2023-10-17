@@ -36,7 +36,7 @@ class Feedback < ApplicationRecord
   end
 
   def self.conversation_headers
-    self.conversation_questions["questions"].pluck("header")
+    conversation_questions["groups"].flat_map { |group| group["questions"].pluck("header") }
   end
 
   def message_answers
@@ -44,7 +44,7 @@ class Feedback < ApplicationRecord
   end
 
   def conversation_answers
-    answers(conversation_questions["questions"])
+    conversation_questions["groups"].flat_map { |group| answers(group["questions"]) }
   end
 
 private
@@ -55,14 +55,9 @@ private
   end
 
   def answers(questions)
-    question_answers = []
-    questions.each do |question|
-      if response[question["id"]].is_a?(Hash)
-        question_answers << response[question["id"]].values.join(" | ")
-      else
-        question_answers << response[question["id"]]
-      end
+    questions.map do |question|
+      answer = response[question["id"]]
+      answer.is_a?(Hash) ? answer.values.join(" | ") : answer
     end
-    question_answers
   end
 end
