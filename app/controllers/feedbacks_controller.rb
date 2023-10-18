@@ -6,7 +6,7 @@ class FeedbacksController < ApplicationController
 
   def create
     @feedback = Feedback.new(feedback_params)
-    @feedback.response = params["answers"].to_json
+    @feedback.response = params["answers"]
 
     if @feedback.save
       redirect_to complete_path(uuid: @feedback.uuid)
