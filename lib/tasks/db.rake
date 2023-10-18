@@ -4,9 +4,18 @@ namespace :db do
   desc "Exports data from Chats as CSV"
   task export_chat: :environment do
     CSV.open("chat.csv", "w") do |csv|
-      csv << Chat.headers
+      csv << Chat.headers + [:answer, :sources]
       Chat.for_csv_export.each do |chat|
-        csv << [chat.id, chat.uuid, chat.prompt, chat.reply, chat.created_at_formatted]
+        chat_instance = Chat.find(chat.id)
+        csv << [
+                 chat.id,
+                 chat.uuid,
+                 chat.prompt,
+                 chat.created_at_formatted
+               ] + [
+                 chat_instance.answer_formatted,
+                 chat_instance.sources_formatted
+               ]
       end
     end
   end
