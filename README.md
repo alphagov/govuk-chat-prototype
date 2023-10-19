@@ -25,6 +25,22 @@ Currently, there are no tests for this application. However, the following will 
 bundle exec rake
 ```
 
+### Running the CSV exports locally
+
+First run this to login and create a local credentials file...
+
+```shell
+gcloud auth application-default login
+```
+
+Then you can run the exports like this...
+
+```shell
+rails db:export_chat
+rails db:export_feedback
+rails db:export # Exports both chat and feedback
+```
+
 ## Licence
 
 [MIT Licence](LICENCE.txt)
