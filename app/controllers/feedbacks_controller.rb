@@ -9,14 +9,18 @@ class FeedbacksController < ApplicationController
     @feedback.response = params["answers"]
 
     if @feedback.save
-      redirect_to complete_path(uuid: @feedback.uuid)
+      if @feedback.level == "conversation"
+        redirect_to complete_path(uuid: @feedback.uuid)
+      else
+        redirect_to new_chat_url(uuid: @feedback.uuid), notice: "Thanks for your feedback."
+      end
     end
   end
 
   def complete
     @uuid = params[:uuid]
   end
-  
+
 private
 
   def feedback_params
