@@ -11,6 +11,10 @@ class Feedback < ApplicationRecord
     created_at.strftime("%d/%m/%Y %H:%M:%S")
   end
 
+  def self.is_missing_conversation_feedback?(uuid)
+    where(uuid: uuid, level: "conversation").count.zero?
+  end
+
   def self.headers
     [:chat_id, :uuid, :version, :level, :created_at]
   end

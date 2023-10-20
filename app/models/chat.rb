@@ -9,6 +9,10 @@ class Chat < ApplicationRecord
     created_at.strftime("%d/%m/%Y %H:%M:%S")
   end
 
+  def self.has_at_least_one_question?(uuid)
+    where(uuid: uuid).any?
+  end
+
   def self.headers
     [:id, :uuid, :prompt, :created_at]
   end
