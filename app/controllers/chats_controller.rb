@@ -7,7 +7,7 @@ class ChatsController < ApplicationController
 
   def new
     @uuid = params[:uuid] || SecureRandom.uuid
-    @chats = Chat.where(uuid: @uuid) || Chat.new(uuid: @uuid)
+    @chats = Chat.where(uuid: @uuid).order(id: :asc) || Chat.new(uuid: @uuid)
   end
 
   def create
