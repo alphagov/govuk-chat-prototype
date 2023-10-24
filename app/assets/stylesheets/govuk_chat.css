@@ -300,6 +300,7 @@ header.govuk-header--yellow .govuk-phase-banner {
 }
 
 .govuk-chat__feedback-button {
+  position: relative;
   background-color: transparent;
   border: none;
   font-size: inherit;
