@@ -2,7 +2,7 @@ require "csv"
 require "google/cloud/storage"
 
 def write_file(filename, data)
-  storage = Google::Cloud::Storage.new project: ENV["GCP_PROJECT_NAME"]
+  storage = Google::Cloud::Storage.new project: ENV["GCP_UR_PROJECT_NAME"]
   bucket = storage.bucket(ENV["GCP_BUCKET_NAME"])
   filename = "#{filename}-#{Time.now.strftime('%Y%m%d-%H%M%S')}.csv"
   bucket.create_file StringIO.new(data), filename
