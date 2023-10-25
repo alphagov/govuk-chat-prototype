@@ -23,10 +23,11 @@
                 setJSEnabled();
                 focusOnLatestMessage(messages);
             }
-            } else if(document.querySelectorAll(".govuk-chat-message").length === 1) {
-                addTurboSubmitListeners();
-                setJSEnabled();
-            }
+        } else if(document.querySelectorAll(".govuk-chat-message").length === 1) {
+            addTurboSubmitListeners();
+            setJSEnabled();
+            detectPIIOnSubmit();
+        }
     });
 
     window.addEventListener("DOMContentLoaded", function() {
