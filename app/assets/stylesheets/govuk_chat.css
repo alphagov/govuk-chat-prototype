@@ -170,6 +170,10 @@ header.govuk-header--yellow .govuk-phase-banner {
   margin-bottom: 0;
 }
 
+.govuk-chat-icon .govuk-chat-icon__header {
+  display: inline;
+}
+
 .govuk-chat-link {
   border-top: 3px solid #FFDD00;
   background-color: #f3f2f1;
