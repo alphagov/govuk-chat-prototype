@@ -1,7 +1,7 @@
 <ul class="govuk-list">
   <% chats.each do |chat| %>
     <li>
-      <div id="<%= chat.id %>" class="govuk-chat-message">
+      <div id="message-<%= chat.id %>" class="govuk-chat-message">
         <%= render "chat_icon", { is_prompt: true, text: "You", timestamp: chat.created_at.strftime("%A %d %B %Y at %H:%M:%S"), includeLoadingIcon: false } %>
         <p class="govuk-body govuk-chat-prompt"><%= chat.prompt %></p>
       </div>

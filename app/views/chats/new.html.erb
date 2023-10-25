@@ -11,7 +11,7 @@
         </div>
         <div class="govuk-notification-banner__content">
           <h3 class="govuk-notification-banner__heading">GOV.UK Chat has answered your question</h3>
-          <%= link_to "Read the answer", "#" + @chats.last.id.to_s, class: "govuk-button" %>
+          <%= link_to "Read the answer", "#message-" + @chats.last.id.to_s, class: "govuk-button" %>
         </div>
       </div>
     <% end %>
