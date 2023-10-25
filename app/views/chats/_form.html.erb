@@ -2,13 +2,18 @@
   <%= form.hidden_field :uuid %>
   <%= hidden_field_tag :js_enabled, false %>
   <%= form.label "Enter your question (please do not share personal or sensitive information in your conversations with GOV UK Chat)", for: "govuk-chat-input", class: "sr-only" %>
-  <%= form.text_field :prompt, id: "govuk-chat-input", value: "", rows: 4, class: "gem-c-input govuk-input", required: "true" %>
+  <%= form.text_field :prompt, id: "govuk-chat-input", value: "", rows: 4, class: "gem-c-input govuk-input", required: "true", maxlength: 300 %>
   <%= form.submit "Send", class: "govuk-button govuk-button--start", data: { "govuk-chat-send-button": ""} %>
 <% end %>
 
-
 <div class="govuk-error-message__container" role="alert" aria-relevant="all" hidden>
   <p class="govuk-error-message"><span class="govuk-visually-hidden">Error: </span>Personal data has been detected in your question. Please remove it. You can ask another question. But please don’t include personal data in it or in any future questions.</p>
+</div>
+
+<div class="govuk-status-message__container">
+  <div class="govuk-hint govuk-character-count__message govuk-character-count__status" hidden aria-live="polite" aria-atomic="true">
+    You have <span id="govuk-chat__character_count"></span> characters remaining.
+  </div>
 </div>
 
 <div class="govuk-conversational-feedback-wrapper">

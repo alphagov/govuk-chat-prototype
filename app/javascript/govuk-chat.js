@@ -16,6 +16,7 @@
             addDismissListeners();
             setJSEnabled();
             detectPIIOnSubmit();
+            addCharacterCountListener();
 
             if(document.querySelector(".govuk-chat-form") && newMessageReceived) {
                 scrollToLatestMessage();
@@ -27,6 +28,7 @@
             addTurboSubmitListeners();
             setJSEnabled();
             detectPIIOnSubmit();
+            addCharacterCountListener();
         }
     });
 
@@ -222,4 +224,19 @@ function focusOnLatestMessage(messages) {
     var latestMessage = messages[messages.length - 1];
     latestMessage.setAttribute("tabindex", -1);
     latestMessage.focus({preventScroll: true});
+}
+
+function addCharacterCountListener() {
+    var input = document.getElementById("govuk-chat-input");
+    var characterCountMessage = document.querySelector(".govuk-character-count__message");
+    var characterLimit = 300;
+    var characterBoundary = 50;
+
+    input.addEventListener('keyup', function(e) {
+        var characterCount = e.target.value.length;
+        var charactersRemaining = characterLimit - characterCount;
+        characterCountMessage.textContent = "You have " + charactersRemaining + " characters remaining.";
+        
+        charactersRemaining <= characterBoundary ? characterCountMessage.hidden = false : characterCountMessage.hidden = true;
+    })
 }

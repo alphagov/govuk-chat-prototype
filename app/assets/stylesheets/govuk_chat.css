@@ -342,6 +342,10 @@ header.govuk-header--yellow .govuk-phase-banner {
   margin-bottom: 5rem;
 }
 
+.govuk-status-message__container {
+  margin-bottom: 10px;
+}
+
 @media (max-width: 504px) {
   footer.govuk-footer .govuk-footer__meta {
     justify-content: flex-start;
