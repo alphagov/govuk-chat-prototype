@@ -164,6 +164,7 @@ ul.govuk-chat__list {
 
 .govuk-chat-icon .govuk-chat-icon__header {
   display: inline;
+  position: relative;
 }
 
 .govuk-chat-link {
