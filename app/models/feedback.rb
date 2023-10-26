@@ -7,12 +7,8 @@ class Feedback < ApplicationRecord
     )
   }
 
-  def created_at_formatted
-    created_at.strftime("%d/%m/%Y %H:%M:%S")
-  end
-
   def self.headers
-    [:chat_id, :uuid, :version, :level, :created_at]
+    [:id, :chat_id, :uuid, :version, :level, :created_at, :updated_at]
   end
 
   def self.message_questions

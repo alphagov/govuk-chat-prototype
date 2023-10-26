@@ -41,6 +41,20 @@ rails db:export_feedback
 rails db:export # Exports both chat and feedback
 ```
 
+Alternatively, you can change the schedule (see [fugit](https://github.com/floraison/fugit) for ways to do this) in `config/schedule.yml` then start `sidekiq`...
+
+```bash
+bundle exec sidekiq
+```
+
+And wait! The `db:export` task will be queued and run automatically.
+
+## Deploying both `app.yaml` and `worker.yaml`
+
+```bash
+gcloud app deploy app.yaml worker.yaml
+```
+
 ## Licence
 
 [MIT Licence](LICENCE.txt)

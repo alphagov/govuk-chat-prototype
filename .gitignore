@@ -34,3 +34,6 @@
 .env
 
 app.yaml
+worker.yaml
+
+/exports

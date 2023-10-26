@@ -5,12 +5,8 @@ class Chat < ApplicationRecord
     select(self.headers).where(uuid: Feedback.for_csv_export.map(&:uuid))
   }
 
-  def created_at_formatted
-    created_at.strftime("%d/%m/%Y %H:%M:%S")
-  end
-
   def self.headers
-    [:id, :uuid, :prompt, :created_at]
+    [:id, :uuid, :prompt, :created_at, :updated_at]
   end
 
   def answer
