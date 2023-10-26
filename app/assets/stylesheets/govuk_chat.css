@@ -1,3 +1,7 @@
+html, body {
+  overflow-x: hidden;
+}
+
 .govuk-chat {
   display: flex;
   flex-direction: column;
@@ -386,6 +390,10 @@ ul.govuk-chat__list li {
 
   .govuk-chat-loading-indicator {
     align-items: center;
+  }
+
+  .govuk-chat-container .govuk-chat-message {
+    margin-right: 15px;
   }
 }
 
