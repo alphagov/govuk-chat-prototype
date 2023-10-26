@@ -185,6 +185,7 @@ function addTurboSubmitListeners(newMessageReceived, latestMessage) {
             var chat = document.querySelector(".govuk-chat-container");
             window.scrollPosition = chat.scrollTop;
             window.lastSubmitType = 'feedback';
+            window.feedbackId = e.target.id;
         }
     })
 
@@ -195,6 +196,7 @@ function addTurboSubmitListeners(newMessageReceived, latestMessage) {
     document.addEventListener("turbo:render", function(e) {
         if(window.lastSubmitType === 'feedback') {
             scrollToPrevPosition();
+            focusOnFeedbackMessage(window.feedbackId);
         }
         else {
             scrollToLatestMessage();
@@ -224,6 +226,12 @@ function focusOnLatestMessage(messages) {
     var latestMessage = messages[messages.length - 1];
     latestMessage.setAttribute("tabindex", -1);
     latestMessage.focus({preventScroll: true});
+}
+
+function focusOnFeedbackMessage(id) {
+    var feedbackId = document.getElementById(id)
+    feedbackId.setAttribute("tabindex", -1);
+    feedbackId.focus({preventScroll: true});
 }
 
 function addCharacterCountListener() {
