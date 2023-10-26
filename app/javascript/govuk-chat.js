@@ -91,7 +91,7 @@ function addDismissListeners() {
             continue
         }
 
-        // Check if the feedback message was hidden on a previous DOM load, and hide it if so.
+        // Check if the feedback message was hidden on a previous DOM load, and hide it if so. Otherwise, show it
         var parentElement = button.closest('[data-govuk-chat-id]')
         var feedbackId = parentElement.getAttribute('data-govuk-chat-id')
         window.hiddenFeedbacks = window.hiddenFeedbacks || []
@@ -99,6 +99,9 @@ function addDismissListeners() {
             parentElement.hidden = true
             button.hidden = true
             continue
+        }
+        else {
+            button.hidden = false;
         }
 
         button.addEventListener('click', function(e) {
