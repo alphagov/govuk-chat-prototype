@@ -5,19 +5,20 @@
   <%= form.hidden_field :level %>
   <%= hidden_field_tag :js_enabled, false %>
 
-  <p class="govuk-body"><%= question["title"] %></p>
-
-  <div class="govuk-chat__feedback-buttons">
-    <div class="govuk-chat__feedback-button-group">
-      <%= button_tag(type: 'submit', name: "answers[#{question['id']}]", value: question["options"][0], class: "govuk-link govuk-chat__feedback-button") do %>
-        <%= question["options"][0] %> <span class="sr-only">this answer was useful</span>
-      <% end %>
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend--s"><%= question["title"] %></legend>
+    <div class="govuk-chat__feedback-buttons">
+      <div class="govuk-chat__feedback-button-group">
+        <%= button_tag(type: 'submit', name: "answers[#{question['id']}]", value: question["options"][0], class: "govuk-link govuk-chat__feedback-button") do %>
+          <%= question["options"][0] %> <span class="sr-only">this answer was useful</span>
+        <% end %>
+      </div>
+      <span>or</span>
+      <div class="govuk-chat__feedback-button-group">
+        <%= button_tag(type: 'submit', name: "answers[#{question['id']}]", value: question["options"][1], class: "govuk-link govuk-chat__feedback-button") do %>
+          <%= question["options"][1] %> <span class="sr-only">this answer was not useful</span>
+        <% end %>
+      </div>
     </div>
-    <span>or</span>
-    <div class="govuk-chat__feedback-button-group">
-      <%= button_tag(type: 'submit', name: "answers[#{question['id']}]", value: question["options"][1], class: "govuk-link govuk-chat__feedback-button") do %>
-        <%= question["options"][1] %> <span class="sr-only">this answer was not useful</span>
-      <% end %>
-    </div>
-  </div>
+  </fieldset>
 <% end %>

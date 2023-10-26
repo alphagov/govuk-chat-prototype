@@ -282,8 +282,15 @@ ul.govuk-chat__list {
 }
 
 .govuk-chat__feedback-form {
-  display: flex;
   margin-top: -20px;
+}
+
+.govuk-chat__feedback-form legend, .govuk-chat__feedback-form .govuk-chat__feedback-buttons {
+  float: left;
+}
+
+.govuk-chat__feedback-form legend {
+  font-weight: normal;
 }
 
 .govuk-chat__feedback-buttons {
@@ -341,6 +348,10 @@ ul.govuk-chat__list {
 
 .govuk-status-message__container {
   margin-bottom: 10px;
+}
+
+ul.govuk-chat__list li {
+  margin-bottom: 40px;
 }
 
 @media (max-width: 504px) {
