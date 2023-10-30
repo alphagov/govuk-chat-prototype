@@ -60,6 +60,15 @@ v1:
             - Neutral
             - Moderately concerned
             - Extremely concerned
+        - id: ed58643a-70b0-4aa6-81e8-6adda08af2c4
+          title: Before you used GOV.UK Chat, how much did you know about the things you asked today?
+          header: did_you_know_answers
+          datatype: radio
+          mandatory: true
+          options:
+            - I knew answers to all the questions I asked
+            - I knew answers to some of the questions I asked
+            - I did not know any of the answers before using GOV.UK Chat
     - group_name: About you
       questions:
         - id: a91abb68-7f9d-4f47-93e6-76eb9d1672fd
@@ -97,3 +106,9 @@ v1:
             - Neutral
             - I find some things difficult
             - I often have difficulty using the internet
+        - id: 5ee250e8-0a50-46f8-96eb-ee354e1be407
+          title: Do you have any other comments about your experience with GOV.UK Chat?
+          sr_label: Please enter any other comments in the provided text area
+          header: any_other_comments
+          datatype: text
+          mandatory: false
