@@ -7,13 +7,15 @@ class FeedbacksController < ApplicationController
   def create
     @feedback = Feedback.new(feedback_params)
     @feedback.response = params["answers"]
-
+  
     if @feedback.save
       if @feedback.level == "conversation"
         redirect_to complete_path(uuid: @feedback.uuid)
       else
         redirect_to new_chat_url(uuid: @feedback.uuid), notice: "Thanks for your feedback."
       end
+  
+      send_feedback_to_api(@feedback)
     end
   end
 
@@ -24,6 +26,17 @@ class FeedbacksController < ApplicationController
 private
 
   def feedback_params
-    params.require(:feedback).permit(:chat_id, :uuid, :version, :level, :response)
+    params.require(:feedback).permit(:chat_id, :uuid, :version, :level, response: {})
+  end
+
+  def send_feedback_to_api(feedback)
+    api_url = 'http://localhost:5000/feedbacks'
+    payload = { feedback: feedback }
+    # binding.pry
+    conn = Faraday.new
+    response = conn.post(api_url) do |req|
+      req.headers['Content-Type'] = 'application/json'
+      req.body = payload.to_json
+    end
   end
 end
