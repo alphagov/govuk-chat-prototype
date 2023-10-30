@@ -26,11 +26,15 @@
             <circle cx="14.9018" cy="7.50682" r="3.5493" fill="#F47738"/>
         </svg>
     <% end %>
-    <p class="govuk-body govuk-body--bold"><%= text %>
+    <h2 class="govuk-chat-icon__header govuk-heading-s govuk-!-margin-bottom-2">
+    <% if !includeLoadingIcon %>
+        <span class="govuk-visually-hidden">Message <% if defined?(index) %> <%= index + 1 %> <% end %> from</span>
+    <% end %>
+    <%= text %>
         <% if includeLoadingIcon %>
             <div class="govuk-chat-loading-indicator__wrapper">
                 <span class="govuk-chat-loading-indicator__dots"></span>
             </div>
         <% end %>
-    </p>
+    </h2>
 </div>
