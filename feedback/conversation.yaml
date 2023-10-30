@@ -108,6 +108,7 @@ v1:
             - I often have difficulty using the internet
         - id: 5ee250e8-0a50-46f8-96eb-ee354e1be407
           title: Do you have any other comments about your experience with GOV.UK Chat?
+          sr_label: Please enter any other comments in the provided text area
           header: any_other_comments
           datatype: text
           mandatory: false
