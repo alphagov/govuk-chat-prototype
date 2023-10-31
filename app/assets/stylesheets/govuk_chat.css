@@ -355,6 +355,10 @@ ul.govuk-chat__list {
   margin-bottom: 0;
 }
 
+.govuk-chat__survey-group .govuk-inset-text {
+  margin-top: 10px;
+}
+
 .govuk-status-message__container {
   margin-bottom: 10px;
 }
