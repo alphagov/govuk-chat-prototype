@@ -1,0 +1,16 @@
+.dockerignore
+.git
+.github
+.gitignore
+Dockerfile
+Procfile
+README.md
+coverage
+docs
+features
+log
+node_modules
+spec
+test
+tmp
+uploads
