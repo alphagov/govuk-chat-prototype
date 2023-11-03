@@ -1,9 +1,11 @@
 <div class="govuk-form-group">
-  <fieldset class="govuk-fieldset" aria-describedby="<%= question['id'] %>-hint">
+  <fieldset class="govuk-fieldset" <% if question["hint"].present? %> aria-describedby="<%= question['id'] %>-hint" <% end %>>
     <%= render "legend", question: question %>
-    <div id="<%= question['id'] %>-hint" class="govuk-hint">
-      <%= question["hint"] %>
-    </div>
+    <% if question["hint"].present? %>
+      <div id="<%= question['id'] %>-hint" class="govuk-hint">
+        <%= question["hint"] %>
+      </div>
+    <% end %>
     <div class="govuk-checkboxes" data-module="govuk-checkboxes">
       <% question["options"].each_with_index do |option, index| %>
         <div class="govuk-checkboxes__item">
