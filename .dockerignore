@@ -14,3 +14,5 @@ spec
 test
 tmp
 uploads
+# Skip config/credentials.yml.enc - we prefer to pass all credentials as env vars
+config/credentials.yml.enc
