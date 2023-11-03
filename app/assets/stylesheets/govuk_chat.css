@@ -355,7 +355,7 @@ ul.govuk-chat__list {
   margin-bottom: 10px;
 }
 
-ul.govuk-chat__list li {
+ul.govuk-chat__list > li {
   margin-bottom: 40px;
 }
 
