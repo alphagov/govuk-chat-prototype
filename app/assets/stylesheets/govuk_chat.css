@@ -9,6 +9,11 @@ html, body {
   max-height: 100vh;
 }
 
+.govuk-chat-survey {
+  min-height: auto;
+  max-height: none;
+}
+
 .govuk-chat-message .govuk-chat-answer .govuk-chat-header {
   margin-top: 30px;
   margin-bottom: 10px;
@@ -475,5 +480,10 @@ ul.govuk-chat__list li {
         min-height: 100dvh !important;
         max-height: 100dvh !important;
       }
+    }
+
+    .govuk-chat-survey {
+      max-height: none !important;
+      min-height: auto !important;
     }
 }
