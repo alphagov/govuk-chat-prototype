@@ -2,6 +2,7 @@ class MagicLinkEmails
   #Sends batches of magic link emails
   def self.send_batch(emails)
     emails.split(" ").each do |email|
+      email = email.downcase
       user = User.find_by_email(email)
       session = Passwordless::Session.find_by_authenticatable_id(user.id)
       unless session.email_sent

@@ -43,6 +43,7 @@ namespace :magic_link do
   task :resend_magic_links, [:filename] => [:environment] do |t, args|
     emails = CloudStorage.read_file(args[:filename])
     emails.split(" ").each do |email|
+      email = email.downcase
       user = User.find_by_email(email)
 
       PopulatePasswordlessSessions.update(user.id)

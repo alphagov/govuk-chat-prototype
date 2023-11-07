@@ -1,6 +1,7 @@
 class PopulatePasswordlessSessions
   def self.create(emails)
     emails.split(" ").each do |email|
+      email = email.downcase
       user = User.find_by_email(email)
       #Help to prevent multiple passwordless sessions per user
       unless Passwordless::Session.find_by_authenticatable_id(user.id)
