@@ -17,4 +17,16 @@ class NotifyService
     )
     puts "Sent to: #{email}."
   end
+
+  def resend_magic_link_email(token, email)
+    client = Notifications::Client.new(notify_api_key)
+    client.send_email(
+      email_address: email,
+      template_id: ENV['RESEND_TEMPLATE_ID'],
+      personalisation: {
+        govuk_chat_magic_link: "#{ENV['HOST']}#{token}"
+      }
+    )
+    puts "Magic link email re-sent to: #{email}."
+  end
 end

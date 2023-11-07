@@ -47,7 +47,7 @@ namespace :magic_link do
 
       PopulatePasswordlessSessions.update(user.id)
       session = Passwordless::Session.find_by_authenticatable_id(user.id)
-      MagicLinkEmails.notify(session.token, user.email)
+      MagicLinkEmails.notify_resend(session.token, user.email)
       MagicLinkEmails.record_email_sent(session)
     end
   end

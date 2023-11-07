@@ -16,6 +16,11 @@ class MagicLinkEmails
     notify.send_email(token, user_email)
   end
 
+  def self.notify_resend(token, user_email)
+    notify = NotifyService.new
+    notify.resend_magic_link_email(token, user_email)
+  end
+
   def self.record_email_sent(session)
     session.email_sent = true
     session.save
