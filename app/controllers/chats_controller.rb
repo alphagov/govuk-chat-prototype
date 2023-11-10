@@ -1,8 +1,10 @@
 class ChatsController < ApplicationController
   def index
+    @excludeJS = true
   end
 
   def onboarding
+    @excludeJS = true
   end
 
   def new
