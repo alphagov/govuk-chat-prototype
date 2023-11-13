@@ -6,12 +6,12 @@
     <% chats.each_with_index do |chat, index| %>
       <li>
         <div id="message-<%= chat.id %>" class="govuk-chat-message">
-          <%= render "chat_icon", { is_prompt: true, text: "You", timestamp: chat.created_at.strftime("%A %d %B %Y at %H:%M:%S"), includeLoadingIcon: false, index: index } %>
+          <%= render "chat_icon", { is_prompt: true, timestamp: chat.created_at.strftime("%A %d %B %Y at %H:%M:%S"), includeLoadingIcon: false, index: index } %>
           <p class="govuk-body govuk-chat-prompt"><%= chat.prompt %></p>
         </div>
         
         <div class="govuk-chat-message">
-          <%= render "chat_icon", { is_prompt: false, text: "GOV.UK chat (experimental)", includeLoadingIcon: false, index: index } %>
+          <%= render "chat_icon", { is_prompt: false, includeLoadingIcon: false, index: index } %>
           <div class="govuk-body govuk-chat-answer"><%= apply_govuk_styles(chat.answer) %>
             <% if chat.sources.any? %>
               <div class="govuk-body">

@@ -27,14 +27,18 @@
         </svg>
     <% end %>
     <h2 class="govuk-chat-icon__header govuk-heading-s govuk-!-margin-bottom-2">
-    <% if !includeLoadingIcon %>
-        <span class="govuk-visually-hidden">Message <% if defined?(index) %> <%= index + 1 %> <% end %> from</span>
-    <% end %>
-    <%= text %>
-        <% if includeLoadingIcon %>
-            <div class="govuk-chat-loading-indicator__wrapper">
-                <span class="govuk-chat-loading-indicator__dots"></span>
-            </div>
+        <% unless includeLoadingIcon %>
+            <span class="govuk-visually-hidden">Message <% if defined?(index) %> <%= index + 1 %> <% end %> from</span>
         <% end %>
+        <% if is_prompt %>
+            You
+        <% else %>
+            GOV.UK Chat <span aria-hidden="true">(experimental)</span> <% if includeLoadingIcon %> is generating an answer <% end %>
+        <% end %>
+            <% if includeLoadingIcon %>
+                <div class="govuk-chat-loading-indicator__wrapper">
+                    <span class="govuk-chat-loading-indicator__dots"></span>
+                </div>
+            <% end %>
     </h2>
 </div>
