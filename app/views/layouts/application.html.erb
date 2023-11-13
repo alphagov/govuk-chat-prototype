@@ -29,9 +29,9 @@
 
     <%= render "shared/header", { new_header: true } %>
 
-    <div class="govuk-chat-container-wrapper" id="main-content">
+    <main class="govuk-chat-container-wrapper" id="main-content" role="main">
       <%= yield %>
-    </div>
+    </main>
 
     <footer class="govuk-footer" role="contentinfo" hidden="true">
       <div class="govuk-width-container ">
