@@ -5,13 +5,13 @@
   <%= form.hidden_field :level %>
   <%= hidden_field_tag :js_enabled, false %>
 
- <% @groups.each do |group| %>
-    <div class="govuk-chat__survey-group">
-      <h2 class="govuk-heading-l"><%= "#{group['group_name']}" %></h2>
-      <% group['questions']&.each do |question| %>
-        <%= render "feedbacks/#{question['datatype']}", question: question %>
-      <% end %>
-    </div>
+<% @groups.each do |group| %>
+  <div class="govuk-chat__survey-group <% if group == @groups.last %> govuk-chat__survey-group-last-item <% end %>">
+    <h2 class="govuk-heading-l"><%= "#{group['group_name']}" %></h2>
+    <% group['questions']&.each do |question| %>
+      <%= render "feedbacks/#{question['datatype']}", question: question %>
+    <% end %>
+  </div>
 <% end %>
 
   <div class="govuk-error-message__container" role="alert" aria-relevant="all" hidden>
