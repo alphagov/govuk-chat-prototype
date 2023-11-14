@@ -139,6 +139,7 @@ function detectPIIOnSubmit(input) {
     }
 
     submitBtn.addEventListener('click', function(e) {
+        input.removeAttribute("aria-describedby");
         var errorMessageContainer = document.querySelector(".govuk-error-message__container");
         var errorDetected = checkInputForPII(input.value).indexOf("[redacted]") !== -1 ? true : false;
 
@@ -152,6 +153,8 @@ function detectPIIOnSubmit(input) {
             var errorMessageText = errorMessageEl.textContent;
             errorMessageEl.textContent = "";
             errorMessageEl.textContent = errorMessageText;
+
+            input.setAttribute("aria-describedby", errorMessageEl.id)
         }
         else {
             errorMessageContainer.hidden = true;
