@@ -15,7 +15,7 @@
             var newMessageReceived = hasReceivedNewMessage(messageCount);
             addDismissListeners();
             setJSEnabled();
-            detectPIIOnSubmit();
+            detectPIIOnSubmit(document.getElementById("govuk-chat-input"));
             addCharacterCountListener();
 
             if(document.querySelector(".govuk-chat-form") && newMessageReceived) {
@@ -27,8 +27,11 @@
         } else if(document.querySelectorAll(".govuk-chat-message").length === 1) {
             addTurboSubmitListeners();
             setJSEnabled();
-            detectPIIOnSubmit();
+            detectPIIOnSubmit(document.getElementById("govuk-chat-input"));
             addCharacterCountListener();
+        }
+        else if(document.querySelectorAll(".govuk-chat-survey")) {
+            detectPIIOnSubmit(document.querySelector(".govuk-chat-survey textarea"));
         }
     });
 
@@ -127,7 +130,7 @@ function getOuterHeight(element) {
     return height;
 }
 
-function detectPIIOnSubmit() {
+function detectPIIOnSubmit(input) {
     var submitBtn = document.querySelector("[data-govuk-chat-send-button]");
 
     // Prevents the listener being added more than once, as this attribute only exists once the listener is attached.
@@ -136,14 +139,13 @@ function detectPIIOnSubmit() {
     }
 
     submitBtn.addEventListener('click', function(e) {
-        var chatInput = document.getElementById("govuk-chat-input");
         var errorMessageContainer = document.querySelector(".govuk-error-message__container");
-        var errorDetected = checkInputForPII(chatInput.value).indexOf("[redacted]") !== -1 ? true : false;
+        var errorDetected = checkInputForPII(input.value).indexOf("[redacted]") !== -1 ? true : false;
 
         if(errorDetected) {
             e.preventDefault();
 
-            chatInput.style.border = "2px solid #d4351c";
+            input.style.border = "2px solid #d4351c";
             errorMessageContainer.hidden = false;
 
             var errorMessageEl = errorMessageContainer.querySelector(".govuk-error-message");
@@ -153,7 +155,7 @@ function detectPIIOnSubmit() {
         }
         else {
             errorMessageContainer.hidden = true;
-            chatInput.style.border = "2px solid #0b0c0c";
+            input.style.border = "2px solid #0b0c0c";
         }
     })
 
