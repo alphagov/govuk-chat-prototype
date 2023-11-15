@@ -356,8 +356,16 @@ ul.govuk-chat__list {
   margin-bottom: 5rem;
 }
 
-.govuk-chat__survey-group:last-of-type {
+.govuk-chat__survey-group-last-item {
   margin-bottom: 0;
+}
+
+.govuk-chat__survey-group-last-item .govuk-form-group:last-of-type {
+  margin-bottom: 0;
+}
+
+#govuk-chat-survey-error {
+  margin-top: -15px;
 }
 
 .govuk-chat__survey-group .govuk-inset-text {
