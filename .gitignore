@@ -34,3 +34,5 @@
 .env
 
 app.yaml
+
+/coverage
