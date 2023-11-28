@@ -1,0 +1,7 @@
+message:
+  chat_id: chats(:valid_json)
+  uuid: 12345678-1234-1234-1234-123456789ABC
+  version: v42
+  level: message
+  response: ""
+  created_at: <%= Time.parse("01-01-1970 00:00:00") %>
