@@ -47,8 +47,6 @@ private
   end
 
   def record_count(uuid)
-    record_count = 0
-    chat = Chat.where(uuid: uuid)
-    record_count = chat.count if chat
+    Chat.where(uuid: uuid).count
   end
 end
