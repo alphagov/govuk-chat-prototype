@@ -1,7 +1,10 @@
 ENV["RAILS_ENV"] ||= "test"
 
 require "simplecov"
-SimpleCov.start "rails"
+SimpleCov.start "rails" do
+  add_filter "/channels/"
+  add_filter "/mailers/"
+end
 
 # Previous content of test helper now starts here
 require_relative "../config/environment"
