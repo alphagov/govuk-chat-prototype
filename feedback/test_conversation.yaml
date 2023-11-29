@@ -1,0 +1,17 @@
+test:
+  title: Test
+  groups:
+    - group_name: Group A
+      questions:
+        - id: "2345"
+          header: dummy_1
+          options:
+            - "Yes"
+            - "No"
+    - group_name: Group B
+      questions:
+        - id: "3456"
+          header: dummy_2
+          options:
+            - "Yes"
+            - "No"

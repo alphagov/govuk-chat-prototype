@@ -50,8 +50,11 @@ class Feedback < ApplicationRecord
 private
 
   def self.load_questions(level)
-    config = YAML.load_file("feedback/#{level}.yaml")
-    config[ENV["#{level.upcase}_FEEDBACK_VERSION"]]
+    filename = ENV["#{level.upcase}_FEEDBACK_FILENAME"]
+    version = ENV["#{level.upcase}_FEEDBACK_VERSION"]
+
+    config = YAML.load_file("feedback/#{filename}.yaml")
+    config[version]
   end
 
   def answers(questions)

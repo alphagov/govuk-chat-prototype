@@ -1,6 +1,10 @@
 require "test_helper"
 
 class ChatTest < ActiveSupport::TestCase
+  test ".for_csv_export scope" do
+    assert_equal 1, Chat.for_csv_export.size
+  end
+
   test "#created_at_formatted" do
     assert_equal "01/01/1970 00:00:00", chats(:valid_json).created_at_formatted
   end
