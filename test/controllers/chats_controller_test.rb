@@ -29,14 +29,13 @@ class ChatsControllerTest < ActionDispatch::IntegrationTest
     assert_includes @response.body, 'GOV.UK Chat is still generating'
   end
 
-  test "should redirect  chat" do
+  test "should redirect to the chat if new message" do
     get refresh_url, params: { uuid: @chat.uuid, count: 0 }, headers: auth_headers
     assert_redirected_to new_chat_path(uuid: Chat.last.uuid)
   end
 
-  test "should render refresh if more chats with same uuid" do
-    Chat.create!(uuid: @chat.uuid)
-    get refresh_url, params: { uuid: @chat.uuid, count: 0 }, headers: auth_headers
+  test "should render refresh if no more chats created" do
+    get refresh_url, params: { uuid: @chat.uuid, count: 1 }, headers: auth_headers
     assert_response :success
     assert_includes @response.body, 'GOV.UK Chat is still generating'
   end
