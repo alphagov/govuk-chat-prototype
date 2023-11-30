@@ -5,6 +5,7 @@ test:
       questions:
         - id: "2345"
           header: dummy_1
+          datatype: radio
           options:
             - "Yes"
             - "No"
@@ -12,6 +13,7 @@ test:
       questions:
         - id: "3456"
           header: dummy_2
+          datatype: radio
           options:
             - "Yes"
             - "No"

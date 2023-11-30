@@ -7,6 +7,7 @@ class FeedbackTest < ActiveSupport::TestCase
                               {
                                 "id" => "1234",
                                 "header" => "dummy_0",
+                                "datatype" => "radio",
                                 "options" => ["Yes", "No"]
                               }
                             ]
@@ -21,6 +22,7 @@ class FeedbackTest < ActiveSupport::TestCase
             {
               "id" => "2345",
               "header" => "dummy_1",
+              "datatype" => "radio",
               "options" => ["Yes", "No"]
             }
           ]
@@ -30,6 +32,7 @@ class FeedbackTest < ActiveSupport::TestCase
             {
               "id" => "3456",
               "header" => "dummy_2",
+              "datatype" => "radio",
               "options" => ["Yes", "No"]
             }
           ]
