@@ -19,20 +19,12 @@ class Feedback < ApplicationRecord
     @@message_questions ||= load_questions("message")
   end
 
-  def message_questions
-    self.class.message_questions
-  end
-
   def self.conversation_questions
     @@conversation_questions ||= load_questions("conversation")
   end
 
-  def conversation_questions
-    self.class.conversation_questions
-  end
-
   def self.message_headers
-    self.message_questions["questions"].pluck("header")
+    message_questions["questions"].pluck("header")
   end
 
   def self.conversation_headers
@@ -40,11 +32,11 @@ class Feedback < ApplicationRecord
   end
 
   def message_answers
-    answers(message_questions["questions"])
+    answers(self.class.message_questions["questions"])
   end
 
   def conversation_answers
-    conversation_questions["groups"].flat_map { |group| answers(group["questions"]) }
+    self.class.conversation_questions["groups"].flat_map { |group| answers(group["questions"]) }
   end
 
 private

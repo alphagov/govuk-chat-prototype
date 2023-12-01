@@ -57,16 +57,8 @@ class FeedbackTest < ActiveSupport::TestCase
     assert_equal @message_questions, Feedback.message_questions
   end
 
-  test "#message_questions" do
-    assert_equal @message_questions, feedbacks(:message).message_questions
-  end
-
   test ".conversation_questions" do
     assert_equal @conversation_questions, Feedback.conversation_questions
-  end
-
-  test "#conversation_questions" do
-    assert_equal @conversation_questions, feedbacks(:message).conversation_questions
   end
 
   test ".message_headers" do
