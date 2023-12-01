@@ -22,7 +22,8 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "dotenv-rails"
-  gem 'byebug'
+  gem "byebug"
+  gem "rubocop-govuk", require: false
 end
 
 group :development do
@@ -31,7 +32,7 @@ end
 
 group :test do
   gem "capybara"
-  gem 'simplecov', require: false
+  gem "simplecov", require: false
   gem "selenium-webdriver"
   gem "webdrivers"
 end
