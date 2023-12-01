@@ -23,7 +23,7 @@ class ChatsController < ApplicationController
     else
       current_chat_record_count = record_count(@chat.uuid)
       BackgroundApiCallJob.perform_now(@chat.uuid, @chat.prompt, current_chat_record_count)
-      render "refresh", locals: { uuid: @chat.uuid, current_chat_record_count: current_chat_record_count, page_refreshed: true }
+      render "refresh", locals: { uuid: @chat.uuid, current_chat_record_count:, page_refreshed: true }
     end
   end
 
@@ -36,7 +36,7 @@ class ChatsController < ApplicationController
     if current_chat_record_count > @count.to_i
       redirect_to new_chat_path(uuid: @uuid)
     else
-      render "refresh", locals: { uuid: @uuid, current_chat_record_count: current_chat_record_count, page_refreshed: true }
+      render "refresh", locals: { uuid: @uuid, current_chat_record_count:, page_refreshed: true }
     end
   end
 
@@ -47,6 +47,6 @@ private
   end
 
   def record_count(uuid)
-    Chat.where(uuid: uuid).count
+    Chat.where(uuid:).count
   end
 end

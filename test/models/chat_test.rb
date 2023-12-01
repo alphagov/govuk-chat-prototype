@@ -10,7 +10,7 @@ class ChatTest < ActiveSupport::TestCase
   end
 
   test ".headers" do
-    assert_equal [:id, :uuid, :prompt, :created_at], Chat.headers
+    assert_equal %i[id uuid prompt created_at], Chat.headers
   end
 
   test "#answer is valid JSON" do
@@ -26,7 +26,7 @@ class ChatTest < ActiveSupport::TestCase
   end
 
   test "#sources is valid JSON" do
-    assert_equal ["one", "two", "three"], chats(:valid_json).sources
+    assert_equal %w[one two three], chats(:valid_json).sources
   end
 
   test "#sources is invalid JSON" do

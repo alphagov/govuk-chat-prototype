@@ -1,9 +1,9 @@
 class Feedback < ApplicationRecord
   belongs_to :chat, optional: true
 
-  scope :for_csv_export, -> {
-    select(self.headers, :response).where(
-      version: [ENV["CONVERSATION_FEEDBACK_VERSION"], ENV["MESSAGE_FEEDBACK_VERSION"]]
+  scope :for_csv_export, lambda {
+    select(headers, :response).where(
+      version: [ENV["CONVERSATION_FEEDBACK_VERSION"], ENV["MESSAGE_FEEDBACK_VERSION"]],
     )
   }
 
@@ -12,15 +12,15 @@ class Feedback < ApplicationRecord
   end
 
   def self.headers
-    [:chat_id, :uuid, :version, :level, :created_at]
+    %i[chat_id uuid version level created_at]
   end
 
   def self.message_questions
-    @@message_questions ||= load_questions("message")
+    @message_questions ||= load_questions("message")
   end
 
   def self.conversation_questions
-    @@conversation_questions ||= load_questions("conversation")
+    @conversation_questions ||= load_questions("conversation")
   end
 
   def self.message_headers
@@ -48,6 +48,8 @@ private
     config = YAML.load_file("feedback/#{filename}.yaml")
     config[version]
   end
+
+  private_class_method :load_questions
 
   def answers(questions)
     questions.map do |question|

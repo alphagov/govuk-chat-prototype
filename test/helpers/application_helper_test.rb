@@ -12,6 +12,7 @@ class ApplicationHelperTest < ActionView::TestCase
   test "#apply_govuk_styles with valid html" do
     assert_dom_equal(
       '<p class="govuk-body">Hello world</p>',
-      apply_govuk_styles("<p>Hello world</p>"))
+      apply_govuk_styles("<p>Hello world</p>"),
+    )
   end
 end

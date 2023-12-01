@@ -1,8 +1,8 @@
 require "nokogiri"
 
 class StyleUpdater
-  def style(html)
-    raise RuntimeError, "Abstract method called"
+  def style(_html)
+    raise "Abstract method called"
   end
 end
 

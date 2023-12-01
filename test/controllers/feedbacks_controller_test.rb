@@ -33,11 +33,12 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
     assert_includes @response.body, "Thank you for taking part in our research."
   end
 
-  private
+private
 
   def auth_headers
     encoded_login = ActionController::HttpAuthentication::Basic.encode_credentials(
-      ENV["USERNAME"], ENV["PASSWORD"])
-    { 'Authorization' => encoded_login }
+      ENV["USERNAME"], ENV["PASSWORD"]
+    )
+    { "Authorization" => encoded_login }
   end
 end
