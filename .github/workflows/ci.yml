@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:11-alpine
+        ports:
+          - "5432:5432"
+        env:
+          POSTGRES_DB: rails_test
+          POSTGRES_USER: rails
+          POSTGRES_PASSWORD: password
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
+      USERNAME: username
+      PASSWORD: password
+      CHAT_API_URL: https://www.example.com
+      API_AUTH_USERNAME: username
+      API_AUTH_PASSWORD: password
+      MESSAGE_FEEDBACK_FILENAME: test_message
+      MESSAGE_FEEDBACK_VERSION: test
+      CONVERSATION_FEEDBACK_FILENAME: test_conversation
+      CONVERSATION_FEEDBACK_VERSION: test
+      EXPORT_TO_CLOUD_STORAGE: false
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
+        with:
+          bundler-cache: true
+      - name: Set up database
+        run: bundle exec rails db:schema:load
+      - name: Run tests
+        run: bundle exec rake test
+      - name: Run brakeman
+        run: bundle exec brakeman -q -w2
+      - name: Run rubocop
+        run: bundle exec rubocop --parallel
