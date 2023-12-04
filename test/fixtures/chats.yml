@@ -2,10 +2,10 @@ valid_json:
   uuid: 12345678-1234-1234-1234-123456789ABC
   prompt: How are you?
   reply: '{ "answer": "<p>Fine thanks!</p>", "sources": ["one", "two", "three"] }'
-  created_at: <%= Time.parse("01-01-1970 00:00:00") %>
+  created_at: <%= Time.zone.parse("01-01-1970 00:00:00") %>
 
 invalid_json:
   uuid: 12345678-1234-1234-1234-123456789DEF
   prompt: How are you?
   reply: Fine thanks!
-  created_at: <%= Time.parse("01-01-1970 00:00:00") %>
+  created_at: <%= Time.zone.parse("01-01-1970 00:00:00") %>

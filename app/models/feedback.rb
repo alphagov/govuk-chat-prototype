@@ -45,7 +45,7 @@ private
     filename = ENV["#{level.upcase}_FEEDBACK_FILENAME"]
     version = ENV["#{level.upcase}_FEEDBACK_VERSION"]
 
-    config = YAML.load_file("feedback/#{filename}.yaml")
+    config = YAML.load_file(Rails.root.join("feedback", "#{filename}.yaml"))
     config[version]
   end
 

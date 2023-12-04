@@ -4,7 +4,7 @@ message:
   version: test
   level: test_message
   response: { "1234": "Yes" }
-  created_at: <%= Time.parse("01-01-1970 00:00:00") %>
+  created_at: <%= Time.zone.parse("01-01-1970 00:00:00") %>
 
 conversation:
   chat_id:
@@ -12,4 +12,4 @@ conversation:
   version: test
   level: test_conversation
   response: { "2345": "Yes", "3456": "No" }
-  created_at: <%= Time.parse("01-01-1970 00:00:00") %>
+  created_at: <%= Time.zone.parse("01-01-1970 00:00:00") %>
