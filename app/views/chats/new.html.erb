@@ -18,7 +18,7 @@
     <% end %>
     <%= render("conversation", chats: @chats) %>
     <div class="govuk-chat-loading-indicator" role="region" aria-live="polite">
-      <%= render "chat_icon", { is_prompt: false, text: "GOV.UK Chat (experimental) is generating an answer", includeLoadingIcon: true } %>
+      <%= render "chat_icon", { is_prompt: false, includeLoadingIcon: true } %>
     </div>
   </div>
 </div>
