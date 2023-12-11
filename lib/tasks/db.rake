@@ -12,18 +12,18 @@ namespace :db do
   desc "Exports data from Chats as CSV"
   task export_chat: :environment do
     csv_data = CSV.generate do |csv|
-      csv << Chat.headers + [:answer, :sources]
+      csv << Chat.headers + %i[answer sources]
       Chat.for_csv_export.each do |chat|
         chat_instance = Chat.find(chat.id)
         csv << [
-                 chat.id,
-                 chat.uuid,
-                 chat.prompt,
-                 chat.created_at_formatted
-               ] + [
-                 chat_instance.answer_formatted,
-                 chat_instance.sources_formatted
-               ]
+          chat.id,
+          chat.uuid,
+          chat.prompt,
+          chat.created_at_formatted,
+        ] + [
+          chat_instance.answer_formatted,
+          chat_instance.sources_formatted,
+        ]
       end
     end
     write_file("chat", csv_data)
@@ -38,12 +38,12 @@ namespace :db do
         question_answers = feedback.message_answers
         question_answers += feedback.conversation_answers
         csv << [
-                 feedback.chat_id,
-                 feedback.uuid,
-                 feedback.version,
-                 feedback.level,
-                 feedback.created_at_formatted
-              ] + [prompt] + question_answers
+          feedback.chat_id,
+          feedback.uuid,
+          feedback.version,
+          feedback.level,
+          feedback.created_at_formatted,
+        ] + [prompt] + question_answers
       end
     end
     write_file("feedback", csv_data)

@@ -31,6 +31,7 @@
 /config/master.key
 
 # Ignore dotenv files
-.env
+.env.development
+.env.test
 
-app.yaml
+/coverage

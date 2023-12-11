@@ -1,9 +1,9 @@
 class Feedback < ApplicationRecord
   belongs_to :chat, optional: true
 
-  scope :for_csv_export, -> {
-    select(self.headers, :response).where(
-      version: [ENV["CONVERSATION_FEEDBACK_VERSION"], ENV["MESSAGE_FEEDBACK_VERSION"]]
+  scope :for_csv_export, lambda {
+    select(headers, :response).where(
+      version: [ENV["CONVERSATION_FEEDBACK_VERSION"], ENV["MESSAGE_FEEDBACK_VERSION"]],
     )
   }
 
@@ -12,27 +12,19 @@ class Feedback < ApplicationRecord
   end
 
   def self.headers
-    [:chat_id, :uuid, :version, :level, :created_at]
+    %i[chat_id uuid version level created_at]
   end
 
   def self.message_questions
-    @@message_questions ||= load_questions("message")
-  end
-
-  def message_questions
-    self.class.message_questions
+    @message_questions ||= load_questions("message")
   end
 
   def self.conversation_questions
-    @@conversation_questions ||= load_questions("conversation")
-  end
-
-  def conversation_questions
-    self.class.conversation_questions
+    @conversation_questions ||= load_questions("conversation")
   end
 
   def self.message_headers
-    self.message_questions["questions"].pluck("header")
+    message_questions["questions"].pluck("header")
   end
 
   def self.conversation_headers
@@ -40,19 +32,24 @@ class Feedback < ApplicationRecord
   end
 
   def message_answers
-    answers(message_questions["questions"])
+    answers(self.class.message_questions["questions"])
   end
 
   def conversation_answers
-    conversation_questions["groups"].flat_map { |group| answers(group["questions"]) }
+    self.class.conversation_questions["groups"].flat_map { |group| answers(group["questions"]) }
   end
 
 private
 
   def self.load_questions(level)
-    config = YAML.load_file("feedback/#{level}.yaml")
-    config[ENV["#{level.upcase}_FEEDBACK_VERSION"]]
+    filename = ENV["#{level.upcase}_FEEDBACK_FILENAME"]
+    version = ENV["#{level.upcase}_FEEDBACK_VERSION"]
+
+    config = YAML.load_file(Rails.root.join("feedback", "#{filename}.yaml"))
+    config[version]
   end
+
+  private_class_method :load_questions
 
   def answers(questions)
     questions.map do |question|

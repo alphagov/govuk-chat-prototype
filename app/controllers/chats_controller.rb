@@ -1,10 +1,14 @@
 class ChatsController < ApplicationController
   def index
+    # rubocop:disable Naming/VariableName
     @excludeJS = true
+    # rubocop:enable Naming/VariableName
   end
 
   def onboarding
+    # rubocop:disable Naming/VariableName
     @excludeJS = true
+    # rubocop:enable Naming/VariableName
   end
 
   def new
@@ -23,7 +27,7 @@ class ChatsController < ApplicationController
     else
       current_chat_record_count = record_count(@chat.uuid)
       BackgroundApiCallJob.perform_now(@chat.uuid, @chat.prompt, current_chat_record_count)
-      render "refresh", locals: { uuid: @chat.uuid, current_chat_record_count: current_chat_record_count, page_refreshed: true }
+      render "refresh", locals: { uuid: @chat.uuid, current_chat_record_count:, page_refreshed: true }
     end
   end
 
@@ -36,7 +40,7 @@ class ChatsController < ApplicationController
     if current_chat_record_count > @count.to_i
       redirect_to new_chat_path(uuid: @uuid)
     else
-      render "refresh", locals: { uuid: @uuid, current_chat_record_count: current_chat_record_count, page_refreshed: true }
+      render "refresh", locals: { uuid: @uuid, current_chat_record_count:, page_refreshed: true }
     end
   end
 
@@ -47,8 +51,6 @@ private
   end
 
   def record_count(uuid)
-    record_count = 0
-    chat = Chat.where(uuid: uuid)
-    record_count = chat.count if chat
+    Chat.where(uuid:).count
   end
 end

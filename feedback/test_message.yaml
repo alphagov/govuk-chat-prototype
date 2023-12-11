@@ -1,0 +1,8 @@
+test:
+  questions:
+    - id: "1234"
+      header: dummy_0
+      datatype: radio
+      options:
+        - "Yes"
+        - "No"
