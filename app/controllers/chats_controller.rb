@@ -1,10 +1,14 @@
 class ChatsController < ApplicationController
   def index
+    # rubocop:disable Naming/VariableName
     @excludeJS = true
+    # rubocop:enable Naming/VariableName
   end
 
   def onboarding
+    # rubocop:disable Naming/VariableName
     @excludeJS = true
+    # rubocop:enable Naming/VariableName
   end
 
   def new
