@@ -74,14 +74,14 @@ class GovukStylerTest < ActiveSupport::TestCase
 
   test "#update with anchor - govuk" do
     assert_equal(
-      '<a href="https://www.gov.uk/hello-world" class="govuk-link" target="_blank">Hello world</a>',
+      '<a href="https://www.gov.uk/hello-world" class="govuk-link" target="_blank">Hello world (opens in a new tab)</a>',
       GovukStyler.new('<a href="/hello-world">Hello world</a>').update,
     )
   end
 
   test "#update with anchor - non-govuk" do
     assert_equal(
-      '<a href="https://www.example.com/hello-world" class="govuk-link" target="_blank">Hello world</a>',
+      '<a href="https://www.example.com/hello-world" class="govuk-link" target="_blank">Hello world (opens in a new tab)</a>',
       GovukStyler.new('<a href="https://www.example.com/hello-world">Hello world</a>').update,
     )
   end

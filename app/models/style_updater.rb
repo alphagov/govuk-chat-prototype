@@ -13,6 +13,7 @@ class Anchor < StyleUpdater
       link.attribute_nodes.first.value = "https://www.gov.uk#{href}" if href.start_with?("/")
       link["class"] = "govuk-link"
       link["target"] = "_blank"
+      link.content = "#{link.content} (opens in a new tab)"
     end
     html
   end
