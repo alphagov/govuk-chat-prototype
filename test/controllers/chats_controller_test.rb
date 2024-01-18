@@ -20,7 +20,7 @@ class ChatsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create chat with JS disabled" do
-    assert_difference("Chat.count") do
+    assert_enqueued_with(job: BackgroundApiCallJob) do
       post chats_url, params: { chat: { prompt: "Hello", uuid: SecureRandom.uuid }, js_enabled: "false" }, headers: auth_headers
     end
 
