@@ -26,7 +26,7 @@ class ChatsController < ApplicationController
       end
     else
       current_chat_record_count = record_count(@chat.uuid)
-      BackgroundApiCallJob.perform_now(@chat.uuid, @chat.prompt, current_chat_record_count)
+      BackgroundApiCallJob.perform_later(@chat.uuid, @chat.prompt, current_chat_record_count)
       render "refresh", locals: { uuid: @chat.uuid, current_chat_record_count:, page_refreshed: true }
     end
   end
