@@ -28,7 +28,7 @@
     <% end %>
     <h2 class="govuk-chat-icon__header govuk-heading-s govuk-!-margin-bottom-2">
         <% unless includeLoadingIcon %>
-            <span class="govuk-visually-hidden">Message <% if defined?(index) %> <%= index + 1 %> <% end %> from</span>
+            <span class="govuk-visually-hidden">Message <% if defined?(id) %> <%= id %> <% end %> from</span>
         <% end %>
         <% if is_prompt %>
             You

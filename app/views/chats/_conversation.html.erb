@@ -1,49 +1,5 @@
-<ul class="govuk-list govuk-chat__list">
+<ul class="govuk-list govuk-chat__list" id="messages">
   <li>
     <%= render "chat_header" %>
   </li>
-  <% if chats.any? %>
-    <% chats.each_with_index do |chat, index| %>
-      <li>
-        <div id="message-<%= chat.id %>" class="govuk-chat-message">
-          <%= render "chat_icon", { is_prompt: true, timestamp: chat.created_at.strftime("%A %d %B %Y at %H:%M:%S"), includeLoadingIcon: false, index: index } %>
-          <p class="govuk-body govuk-chat-prompt"><%= chat.prompt %></p>
-        </div>
-        
-        <div class="govuk-chat-message">
-          <%= render "chat_icon", { is_prompt: false, includeLoadingIcon: false, index: index } %>
-          <div class="govuk-body govuk-chat-answer"><%= apply_govuk_styles(chat.answer) %>
-            <% if chat.sources.any? %>
-              <div class="govuk-body">
-                <details class="govuk-details" data-module="govuk-details">
-                  <summary class="govuk-details__summary">
-                    <span class="govuk-details__summary-text">
-                      Show pages used to generate this answer
-                    </span>
-                  </summary>
-                  <div class="govuk-details__text">
-                    <ul class="govuk-list govuk-list--bullet">
-                      <% chat.sources.each do |source| %>
-                        <li class=><%= link_to source, source, class: "govuk-link", target: "_blank" %></li>
-                      <% end %>
-                    </ul>
-                  </div>
-                </details>
-              </div>
-            <% end %>
-          </div>
-        </div>
-
-        <% if chat.feedbacks.any? %>
-        <div class="govuk-chat__feedback-confirmation" data-govuk-chat-id="<%= chat.id %>">
-          <p id="feedback-<%= chat.id %>" class="govuk-body">Thank you, your feedback has been submitted. <button hidden class="govuk-link govuk-chat__feedback-button" data-govuk-chat-feedback-dismiss-button>Dismiss <span class="sr-only">this message</span></button></p>
-        </div>
-        <% else %>
-          <% feedback = Feedback.new(chat: chat, level: "message", uuid: chat.uuid, version: ENV["MESSAGE_FEEDBACK_VERSION"]) %>
-          <% question = Feedback.message_questions["questions"].first %>
-          <%= render "feedbacks/single_question_form", feedback: feedback, question: question, id: chat.id %>
-        <% end %>
-      </li>
-    <% end %>
-  <% end %>
 </ul>
