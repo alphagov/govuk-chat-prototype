@@ -2,4 +2,9 @@
   <li>
     <%= render "chat_header" %>
   </li>
+  <% if chats.any? %>
+    <% chats.each_with_index do |chat, index| %>
+      <%= render "message", { chat: chat } %>
+    <% end %>
+  <% end %>
 </ul>
