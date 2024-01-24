@@ -29,7 +29,7 @@
 
     <%= render "shared/header", { new_header: true } %>
 
-    <main class="govuk-chat-container-wrapper" id="main-content" role="main">
+    <main class="govuk-chat-container-wrapper" id="main-content" <% if current_page?(:controller => 'chats', :action => 'new') %> data-controller="chat" <% end %> role="main">
       <%= yield %>
     </main>
 
@@ -52,10 +52,5 @@
         </div>
       </div>
     </footer>
-
-    <script src="../../app.js"></script>
-    <script>
-      window.GOVUKFrontend.initAll()
-    </script>
   </body>
 </html>
