@@ -1,9 +1,9 @@
-<%= form_with(model: chat, class: "govuk-form govuk-chat-form") do |form| %>
+<%= form_with(model: chat, class: "govuk-form govuk-chat-form", data: { controller: "input" }) do |form| %>
   <%= form.hidden_field :uuid %>
   <%= hidden_field_tag :js_enabled, false %>
   <%= form.label "Enter your question (please do not share personal or sensitive information in your conversations with GOV UK Chat)", for: "govuk-chat-input", class: "sr-only" %>
-  <%= form.text_field :prompt, id: "govuk-chat-input", value: "", rows: 4, class: "gem-c-input govuk-input", required: "true", maxlength: 300 %>
-  <%= form.submit "Send", class: "govuk-button govuk-button--start", data: { "govuk-chat-send-button": ""} %>
+  <%= form.text_field :prompt, id: "govuk-chat-input", value: "", rows: 4, class: "gem-c-input govuk-input", data: { "govuk-chat-input": "", action: "keyup: input#countCharacters"}, required: "true", maxlength: 300 %>
+  <%= form.submit "Send", class: "govuk-button govuk-button--start", data: { "govuk-chat-send-button": "", action: "click: input#submit"} %>
 <% end %>
 
 <div class="govuk-error-message__container" role="alert" aria-relevant="all" hidden>

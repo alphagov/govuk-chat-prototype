@@ -1,24 +1,26 @@
-<%= form_with(model: feedback, class: "govuk-form govuk-chat__feedback-form", id: "feedback-#{id}") do |form| %>
-  <%= form.hidden_field :chat_id %>
-  <%= form.hidden_field :uuid %>
-  <%= form.hidden_field :version %>
-  <%= form.hidden_field :level %>
-  <%= hidden_field_tag :js_enabled, false %>
+<turbo-frame id="feedback-#{id}">
+  <%= form_with(model: feedback, class: "govuk-form govuk-chat__feedback-form") do |form| %>
+    <%= form.hidden_field :chat_id %>
+    <%= form.hidden_field :uuid %>
+    <%= form.hidden_field :version %>
+    <%= form.hidden_field :level %>
+    <%= hidden_field_tag :js_enabled, false %>
 
-  <fieldset class="govuk-fieldset">
-    <legend class="govuk-fieldset__legend--s"><%= question["title"] %></legend>
-    <div class="govuk-chat__feedback-buttons">
-      <div class="govuk-chat__feedback-button-group">
-        <%= button_tag(type: 'submit', name: "answers[#{question['id']}]", value: question["options"][0], class: "govuk-link govuk-chat__feedback-button") do %>
-          <%= question["options"][0] %> <span class="sr-only">this answer was useful</span>
-        <% end %>
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend--s"><%= question["title"] %></legend>
+      <div class="govuk-chat__feedback-buttons">
+        <div class="govuk-chat__feedback-button-group">
+          <%= button_tag(type: 'submit', name: "answers[#{question['id']}]", value: question["options"][0], class: "govuk-link govuk-chat__feedback-button") do %>
+            <%= question["options"][0] %> <span class="sr-only">this answer was useful</span>
+          <% end %>
+        </div>
+        <span>or</span>
+        <div class="govuk-chat__feedback-button-group">
+          <%= button_tag(type: 'submit', name: "answers[#{question['id']}]", value: question["options"][1], class: "govuk-link govuk-chat__feedback-button") do %>
+            <%= question["options"][1] %> <span class="sr-only">this answer was not useful</span>
+          <% end %>
+        </div>
       </div>
-      <span>or</span>
-      <div class="govuk-chat__feedback-button-group">
-        <%= button_tag(type: 'submit', name: "answers[#{question['id']}]", value: question["options"][1], class: "govuk-link govuk-chat__feedback-button") do %>
-          <%= question["options"][1] %> <span class="sr-only">this answer was not useful</span>
-        <% end %>
-      </div>
-    </div>
-  </fieldset>
-<% end %>
+    </fieldset>
+  <% end %>
+</turbo-frame>

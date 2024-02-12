@@ -22,7 +22,7 @@ class ChatsController < ApplicationController
     if params[:js_enabled] == "true"
       @chat.reply = ChatApi.fetch(@chat.uuid, @chat.prompt)
       if @chat.save
-        redirect_to new_chat_path(uuid: @chat.uuid)
+        respond_to :turbo_stream
       end
     else
       current_chat_record_count = record_count(@chat.uuid)

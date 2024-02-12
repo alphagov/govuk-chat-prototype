@@ -1,4 +1,4 @@
-<%= form_with(model: feedback, class: "govuk-form") do |form| %>
+<%= form_with(model: feedback, class: "govuk-form", data: { controller: "input" }) do |form| %>
   <%= form.hidden_field :chat_id %>
   <%= form.hidden_field :uuid %>
   <%= form.hidden_field :version %>
@@ -17,5 +17,5 @@
   <div class="govuk-error-message__container" role="alert" aria-relevant="all" hidden>
     <p id="govuk-chat-survey-error" class="govuk-error-message"><span class="govuk-visually-hidden">Error: </span>We've detected personal data in your feedback. Please remove it before you submit your response.</p>
   </div>
-  <%= form.submit "Submit", class: "govuk-button govuk-button--start", data: { "govuk-chat-send-button": ""} %>
+  <%= form.submit "Submit", class: "govuk-button govuk-button--start", data: { "govuk-chat-send-button": "", action: "click: input#submit"} %>
 <% end %>

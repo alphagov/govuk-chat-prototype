@@ -12,11 +12,15 @@ class ChatsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create chat with JS enabled" do
+    get chats_url
+    assert_select "turbo-stream", 0
+
     assert_difference("Chat.count") do
-      post chats_url, params: { chat: { prompt: "Hello", uuid: SecureRandom.uuid }, js_enabled: "true" }, headers: auth_headers
+      post chats_url(format: :turbo_stream), params: { chat: { prompt: "Hello", uuid: SecureRandom.uuid }, js_enabled: "true" }, headers: auth_headers
     end
 
-    assert_redirected_to new_chat_path(uuid: Chat.last.uuid)
+    assert_response :success
+    assert_select "turbo-stream"
   end
 
   test "should create chat with JS disabled" do
