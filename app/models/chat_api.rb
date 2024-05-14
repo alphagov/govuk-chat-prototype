@@ -1,6 +1,7 @@
 class ChatApi
   def self.fetch(uuid, chat_prompt)
-    body = { chat_id: "proto_#{uuid}", user_query: chat_prompt }.to_json
+    prefix = ENV.fetch("CHAT_ID_PREFIX", "proto")
+    body = { chat_id: "#{prefix}_#{uuid}", user_query: chat_prompt }.to_json
     conn = Faraday.new(
       url: ENV["CHAT_API_URL"],
       headers: {
