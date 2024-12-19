@@ -1,5 +1,7 @@
 # GOV.UK Chat
 
+**Archived** A 2023 prototype of GOV.UK Chat that used the [govuk-chat-api](https://github.com/alphagov/govuk-chat-api) backend. Superseded by [govuk-chat](https://github.com/alphagov/govuk-chat).
+
 A chat bot style user interface prototype.
 
 ### Before running the app
